@@ -24,7 +24,7 @@ public class TaskDTO {
 	@NotNull(message = "Title must not be Null")
 	@NotEmpty(message = "Title must not be Empty")
 	@NotBlank(message = "Title is mandatory")
-	@Size(min = 10, max = 60, message = "Description must be atleast 10 characters "
+	@Size(min = 10, max = 60, message = "Title must be atleast 10 characters "
 			+ "& must not exceed 60 characters.")
 	@JsonProperty(required = true)
 	private String title;
@@ -43,10 +43,16 @@ public class TaskDTO {
 	
 	private String status;
 	
+	/**
+	 * Will be Ignored in API Response
+	 */
 	@JsonIgnore
 	@JsonProperty(access = Access.READ_WRITE)
 	private LocalDateTime taskCreatedAt;
 	
+	/**
+	 * Will be Ignored in API Response
+	 */
 	@JsonIgnore
 	@JsonProperty(access = Access.READ_WRITE)
 	private LocalDateTime taskUpdatedAt;

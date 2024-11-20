@@ -5,9 +5,27 @@ import java.util.UUID;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.example.taskmanagement.model.Status;
+import com.example.taskmanagement.enums.Status;
 import com.example.taskmanagement.model.Task;
 
+/**
+ * @Repository interface for managing @Task entities.
+ * 
+ *             This interface extends @JpaRepository, providing CRUD operations
+ *             and custom query methods for Task entities identified by a
+ *             unique @UUID.
+ * 
+ *             The repository is responsible for interacting with the database
+ *             to perform operations related to @Task entities, such as saving,
+ *             deleting, and retrieving tasks based on their status.
+ */
 public interface TaskRepository extends JpaRepository<Task, UUID> {
+
+	/**
+	 * Finds all tasks with the specified status.
+	 * 
+	 * @param @Status - the status of the tasks to retrieve
+	 * @return a list of tasks that match the given status
+	 */
 	List<Task> findByStatus(Status status);
 }
