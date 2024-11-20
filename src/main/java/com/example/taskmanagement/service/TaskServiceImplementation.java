@@ -1,5 +1,6 @@
 package com.example.taskmanagement.service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -9,14 +10,19 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.example.taskmanagement.dto.CreateTaskRequestDTO;
+import com.example.taskmanagement.dto.CreateTaskResponse;
 import com.example.taskmanagement.dto.TaskDTO;
+import com.example.taskmanagement.dto.UpdateTaskRequestDTO;
+import com.example.taskmanagement.dto.UpdateTaskResponse;
+import com.example.taskmanagement.exception.InvalidUUIDFormatException;
 import com.example.taskmanagement.exception.TaskNotFoundException;
 import com.example.taskmanagement.model.Status;
 import com.example.taskmanagement.model.Task;
 import com.example.taskmanagement.repository.TaskRepository;
 
 @Service(value = "TaskService")
-public class TaskServiceImplementation implements TaskService{
+public class TaskServiceImplementation implements TaskService {
 	
 	private TaskRepository taskRepository;
 	
@@ -44,24 +50,27 @@ public class TaskServiceImplementation implements TaskService{
 
 	@Override
 	@Transactional
-	public TaskDTO createANewTask(TaskDTO taskDTO) {
-		Task task = convertToEntity(taskDTO);
+	@Modifying
+	public CreateTaskResponse createANewTask(CreateTaskRequestDTO taskRequestDTO) {
+		LocalDate dueDate = (taskRequestDTO.getDueDate() != null)
+				? taskRequestDTO.getDueDate()
+				: LocalDate.now().plusDays(7);
+		Task task = convertToEntity(taskRequestDTO);
+		task.setDueDate(dueDate);
 		Task savedTask = taskRepository.save(task);
-		return convertToDTO(savedTask);
+		return convertToCreateTaskResponse(savedTask);
 	}
 
 	@Override
 	@Transactional
 	@Modifying
-	public TaskDTO updateAnExistingTask(String id, TaskDTO updatedTaskDTO) {
+	public UpdateTaskResponse updateAnExistingTask(String id, UpdateTaskRequestDTO updatedTaskDTO) {
 		UUID uuid = stringToUUIDConverter(id);
 		return 
 				taskRepository.findById(uuid).map(existingTask -> {
-					existingTask.setTitle(updatedTaskDTO.getTitle());
-					existingTask.setDescription(updatedTaskDTO.getDescription());
-					existingTask.setDueDate(updatedTaskDTO.getDueDate());
+					updateTaskFromDTO(existingTask, updatedTaskDTO);
 					Task updatedTask = taskRepository.save(existingTask);
-					return convertToDTO(updatedTask);
+					return convertToUpdateTaskResponse(updatedTask);
 				}).orElseThrow(() -> new TaskNotFoundException("Task Not Found with the given UUID : " + id));
 	}
 
@@ -70,6 +79,9 @@ public class TaskServiceImplementation implements TaskService{
 	@Modifying
 	public void deleteAnExistingTask(String id) {
 		UUID uuid = stringToUUIDConverter(id);
+		if (!taskRepository.findById(uuid).isPresent()) {
+			throw new TaskNotFoundException("Task Not Found with the given UUID : " + id);
+		}
 		taskRepository.deleteById(uuid);
 	}
 
@@ -86,25 +98,61 @@ public class TaskServiceImplementation implements TaskService{
 	}
 	
 	private UUID stringToUUIDConverter(String id) {
-		UUID uuid = UUID.fromString(id);
-		return uuid;
+			if (id == null || !id.matches("^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$")) {
+		        throw new InvalidUUIDFormatException("Invalid UUID Format: " + id);
+		    }
+			UUID uuid = UUID.fromString(id);
+			return uuid;
 	}
 	
-	private Task convertToEntity(TaskDTO taskDTO) {
+	private Task convertToEntity(CreateTaskRequestDTO taskDTO) {
 		Task task = new Task();
 		task.setTitle(taskDTO.getTitle());
 		task.setDescription(taskDTO.getDescription());
-		task.setDueDate(taskDTO.getDueDate());
 		return task;
 	}
 	
 	private TaskDTO convertToDTO(Task task) {
 		return new 
 				TaskDTO(
-						task.getId(),
+						task.getId().toString(),
 						task.getTitle(),
 						task.getDescription(),
-						task.getDueDate(),
-						task.getStatus());
+						task.getDueDate().toString(),
+						task.getStatus().toString()
+						);
+	}
+	
+	private CreateTaskResponse convertToCreateTaskResponse(Task task) {
+		return 
+				new CreateTaskResponse(task.getId().toString(), 
+						task.getTitle(), 
+						task.getDescription(), 
+						task.getDueDate().toString(), 
+						task.getStatus().toString()
+						);
+	}
+	
+	private Task updateTaskFromDTO(Task existingTask, UpdateTaskRequestDTO taskRequestDTO) {
+		if (taskRequestDTO.getTitle() != null && !taskRequestDTO.getTitle().isBlank()) {
+			existingTask.setTitle(taskRequestDTO.getTitle());
+		}
+		if (taskRequestDTO.getDescription() != null && !taskRequestDTO.getDescription().isBlank()) {
+			existingTask.setDescription(taskRequestDTO.getDescription());
+		}
+		if (taskRequestDTO.getDueDate() != null ) {
+			existingTask.setDueDate(taskRequestDTO.getDueDate());
+		}
+		return existingTask; 
+	}
+	
+	private UpdateTaskResponse convertToUpdateTaskResponse(Task task) {
+		return new UpdateTaskResponse(
+		        task.getId().toString(),
+		        task.getTitle(),
+		        task.getDescription(),
+		        task.getStatus().toString(),
+		        task.getDueDate().toString()
+		    );
 	}
 }

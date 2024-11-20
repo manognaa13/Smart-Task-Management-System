@@ -1,10 +1,6 @@
 package com.example.taskmanagement.dto;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.UUID;
-
-import com.example.taskmanagement.model.Status;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
@@ -23,7 +19,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class TaskDTO {
 	
-	private UUID id;
+	private String id;
 	
 	@NotNull(message = "Title must not be Null")
 	@NotEmpty(message = "Title must not be Empty")
@@ -43,9 +39,9 @@ public class TaskDTO {
 	
 	@Future(message = "Date must be in the Future.")
 	@JsonProperty(access = Access.READ_WRITE, required = true)
-	private LocalDate dueDate;
+	private String dueDate;
 	
-	private Status status;
+	private String status;
 	
 	@JsonIgnore
 	@JsonProperty(access = Access.READ_WRITE)
@@ -55,11 +51,11 @@ public class TaskDTO {
 	@JsonProperty(access = Access.READ_WRITE)
 	private LocalDateTime taskUpdatedAt;
 	
-	public TaskDTO(UUID id,
+	public TaskDTO(String id, 
 				String title, 
 				String description, 
-				LocalDate dueDate, 
-				Status status) {
+				String dueDate, 
+				String status) {
 		this.id=id;
 		this.title=title;
 		this.description=description;
