@@ -1,4 +1,4 @@
-package com.example.taskmanagement.service.scheduler;
+package com.example.taskmanagement.scheduler;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;

@@ -1,4 +1,4 @@
-package com.example.taskmanagement.dto;
+package com.example.taskmanagement.dto.createtask;
 
 import java.time.LocalDate;
 
@@ -17,7 +17,7 @@ import lombok.Data;
  * data transfer object for creating a new task.
  */
 @Data
-public class CreateTaskRequestDTO {
+public class CreateTaskDTO {
 
 	@NotNull(message = "Title must not be Null")
 	@NotEmpty(message = "Title must not be Empty")

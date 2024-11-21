@@ -1,4 +1,4 @@
-package com.example.taskmanagement.appconfiguration;
+package com.example.taskmanagement.requestinterceptor;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

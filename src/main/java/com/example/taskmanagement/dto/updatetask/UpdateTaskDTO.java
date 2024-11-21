@@ -1,4 +1,4 @@
-package com.example.taskmanagement.dto;
+package com.example.taskmanagement.dto.updatetask;
 
 import java.time.LocalDate;
 
@@ -15,7 +15,7 @@ import lombok.Data;
  * encapsulate the fields that can be updated for a task.
  */
 @Data
-public class UpdateTaskRequestDTO {
+public class UpdateTaskDTO {
 
 	/**
 	 * Title of the task. this class member is optional for updates and must be

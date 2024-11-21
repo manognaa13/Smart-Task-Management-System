@@ -17,12 +17,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.taskmanagement.dto.CreateTaskRequestDTO;
-import com.example.taskmanagement.dto.CreateTaskResponse;
 import com.example.taskmanagement.dto.TaskDTO;
-import com.example.taskmanagement.dto.UpdateTaskRequestDTO;
-import com.example.taskmanagement.dto.UpdateTaskResponse;
-import com.example.taskmanagement.service.TaskService;
+import com.example.taskmanagement.dto.createtask.CreateTaskDTO;
+import com.example.taskmanagement.dto.createtask.CreateTaskResponse;
+import com.example.taskmanagement.dto.updatetask.UpdateTaskDTO;
+import com.example.taskmanagement.dto.updatetask.UpdateTaskResponse;
+import com.example.taskmanagement.service.taskservice.TaskService;
 
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
@@ -80,7 +80,7 @@ public class TaskController {
 	 *         response.
 	 */
 	@PostMapping
-	public ResponseEntity<CreateTaskResponse> createTask(@Valid @RequestBody CreateTaskRequestDTO taskRequestDTO) {
+	public ResponseEntity<CreateTaskResponse> createTask(@Valid @RequestBody CreateTaskDTO taskRequestDTO) {
 		logger.info("Creating a new task with details: {} ", taskRequestDTO);
 		CreateTaskResponse response = taskService.createANewTask(taskRequestDTO);
 		return ResponseEntity.status(HttpStatus.CREATED).body(response);
@@ -124,7 +124,7 @@ public class TaskController {
 	 */
 	@PutMapping("/id")
 	public ResponseEntity<UpdateTaskResponse> updateTask(@RequestParam String id,
-			@Valid @RequestBody UpdateTaskRequestDTO requestDTO) {
+			@Valid @RequestBody UpdateTaskDTO requestDTO) {
 		logger.info("Updating task with ID: {} with new details: {} ", id, requestDTO);
 		return ResponseEntity.ok(taskService.updateAnExistingTask(id, requestDTO));
 	}

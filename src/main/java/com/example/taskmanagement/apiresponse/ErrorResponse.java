@@ -1,4 +1,4 @@
-package com.example.taskmanagement.exception;
+package com.example.taskmanagement.apiresponse;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -14,7 +14,7 @@ import lombok.Data;
  */
 @Data
 @AllArgsConstructor
-public class TaskErrorResponse implements Serializable {
+public class ErrorResponse implements Serializable {
 
 	private static final long serialVersionUID = 5737285503669998642L;
 

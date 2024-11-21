@@ -1,4 +1,4 @@
-package com.example.taskmanagement.exception;
+package com.example.taskmanagement.exceptionhandler.customexception;
 
 /**
  * Custom exception class to handle invalid @UUID format errors.

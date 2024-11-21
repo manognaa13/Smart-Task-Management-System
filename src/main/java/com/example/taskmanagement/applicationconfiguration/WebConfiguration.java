@@ -1,8 +1,10 @@
-package com.example.taskmanagement.appconfiguration;
+package com.example.taskmanagement.applicationconfiguration;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+import com.example.taskmanagement.requestinterceptor.RequestInterceptor;
 
 /**
  * Web configuration class for setting up MVC-related configurations.

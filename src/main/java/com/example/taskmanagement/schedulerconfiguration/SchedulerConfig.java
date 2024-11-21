@@ -1,4 +1,4 @@
-package com.example.taskmanagement.service.schedulerconfiguration;
+package com.example.taskmanagement.schedulerconfiguration;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

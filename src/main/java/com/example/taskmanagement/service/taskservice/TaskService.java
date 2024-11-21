@@ -1,4 +1,4 @@
-package com.example.taskmanagement.service;
+package com.example.taskmanagement.service.taskservice;
 
 /**
  * service interface for managing tasks.
@@ -10,11 +10,11 @@ package com.example.taskmanagement.service;
 import java.util.List;
 import java.util.Optional;
 
-import com.example.taskmanagement.dto.CreateTaskRequestDTO;
-import com.example.taskmanagement.dto.CreateTaskResponse;
 import com.example.taskmanagement.dto.TaskDTO;
-import com.example.taskmanagement.dto.UpdateTaskRequestDTO;
-import com.example.taskmanagement.dto.UpdateTaskResponse;
+import com.example.taskmanagement.dto.createtask.CreateTaskDTO;
+import com.example.taskmanagement.dto.createtask.CreateTaskResponse;
+import com.example.taskmanagement.dto.updatetask.UpdateTaskDTO;
+import com.example.taskmanagement.dto.updatetask.UpdateTaskResponse;
 
 public interface TaskService {
 
@@ -40,7 +40,7 @@ public interface TaskService {
 	 * @return a @CreateTaskResponse response @Record object containing details of
 	 *         the created task
 	 */
-	abstract CreateTaskResponse createANewTask(CreateTaskRequestDTO newTaskDTO);
+	abstract CreateTaskResponse createANewTask(CreateTaskDTO newTaskDTO);
 
 	/**
 	 * Updates an existing task.
@@ -50,7 +50,7 @@ public interface TaskService {
 	 * @return a @UpdateTaskResponse response @Record object containing details of
 	 *         the updated task
 	 */
-	abstract UpdateTaskResponse updateAnExistingTask(String id, UpdateTaskRequestDTO updatedTask);
+	abstract UpdateTaskResponse updateAnExistingTask(String id, UpdateTaskDTO updatedTask);
 
 	/**
 	 * Deletes an existing task by its id.

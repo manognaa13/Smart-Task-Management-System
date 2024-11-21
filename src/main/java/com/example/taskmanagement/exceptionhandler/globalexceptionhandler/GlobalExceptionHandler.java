@@ -1,4 +1,4 @@
-package com.example.taskmanagement.exception;
+package com.example.taskmanagement.exceptionhandler.globalexceptionhandler;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;
@@ -17,6 +17,10 @@ import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.resource.NoResourceFoundException;
+
+import com.example.taskmanagement.apiresponse.ErrorResponse;
+import com.example.taskmanagement.exceptionhandler.customexception.InvalidUUIDFormatException;
+import com.example.taskmanagement.exceptionhandler.customexception.TaskNotFoundException;
 
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
@@ -38,7 +42,7 @@ public class GlobalExceptionHandler {
 	public final ResponseEntity<Map<String, Object>> handleHttpRequestMethodNotSupportedException(
 			HttpRequestMethodNotSupportedException httpRequestMethodNotSupportedException,
 			HttpServletRequest httpServletRequest) {
-		TaskErrorResponse response = new TaskErrorResponse(HttpStatus.METHOD_NOT_ALLOWED,
+		ErrorResponse response = new ErrorResponse(HttpStatus.METHOD_NOT_ALLOWED,
 				HttpStatus.METHOD_NOT_ALLOWED.value(),
 				httpRequestMethodNotSupportedException.getLocalizedMessage().toString(),
 				LocalDateTime.now(ZoneId.systemDefault()));
@@ -54,9 +58,9 @@ public class GlobalExceptionHandler {
 	 * Handles @TaskNotFoundException
 	 */
 	@ExceptionHandler(TaskNotFoundException.class)
-	public final ResponseEntity<TaskErrorResponse> handleTaskNotFoundException(
+	public final ResponseEntity<ErrorResponse> handleTaskNotFoundException(
 			TaskNotFoundException notFoundException) {
-		TaskErrorResponse errorResponse = new TaskErrorResponse(HttpStatus.NOT_FOUND, HttpStatus.NOT_FOUND.value(),
+		ErrorResponse errorResponse = new ErrorResponse(HttpStatus.NOT_FOUND, HttpStatus.NOT_FOUND.value(),
 				notFoundException.getLocalizedMessage().toString(), LocalDateTime.now(ZoneId.systemDefault()));
 		return new ResponseEntity<>(errorResponse, HttpStatus.NOT_FOUND);
 	}
@@ -65,9 +69,9 @@ public class GlobalExceptionHandler {
 	 * Handles @InvalidUUIDFormatException
 	 */
 	@ExceptionHandler(InvalidUUIDFormatException.class)
-	public final ResponseEntity<TaskErrorResponse> handleInvalidUUIDFormatException(
+	public final ResponseEntity<ErrorResponse> handleInvalidUUIDFormatException(
 			InvalidUUIDFormatException invalidUUIDFormatException) {
-		TaskErrorResponse errorResponse = new TaskErrorResponse(HttpStatus.BAD_REQUEST, HttpStatus.BAD_REQUEST.value(),
+		ErrorResponse errorResponse = new ErrorResponse(HttpStatus.BAD_REQUEST, HttpStatus.BAD_REQUEST.value(),
 				invalidUUIDFormatException.getLocalizedMessage().toString(), LocalDateTime.now(ZoneId.systemDefault()));
 		return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
 	}
@@ -94,7 +98,7 @@ public class GlobalExceptionHandler {
 	@ExceptionHandler(NoResourceFoundException.class)
 	public final ResponseEntity<Map<String, Object>> handleNoResourceFoundException(
 			NoResourceFoundException noResourceFoundException, HttpServletRequest request) {
-		TaskErrorResponse response = new TaskErrorResponse(HttpStatus.NOT_FOUND, HttpStatus.NOT_FOUND.value(),
+		ErrorResponse response = new ErrorResponse(HttpStatus.NOT_FOUND, HttpStatus.NOT_FOUND.value(),
 				noResourceFoundException.getLocalizedMessage().toString(), LocalDateTime.now(ZoneId.systemDefault()));
 		Map<String, Object> errorDetails = new HashMap<>();
 		errorDetails.put("response", response);
@@ -111,7 +115,7 @@ public class GlobalExceptionHandler {
 	@ExceptionHandler(HttpMessageNotReadableException.class)
 	public final ResponseEntity<Map<String, Object>> handleHttpMessageNotReadableException(
 			HttpMessageNotReadableException httpMessageNotReadableException, HttpServletRequest request) {
-		TaskErrorResponse response = new TaskErrorResponse(HttpStatus.BAD_REQUEST, HttpStatus.BAD_REQUEST.value(),
+		ErrorResponse response = new ErrorResponse(HttpStatus.BAD_REQUEST, HttpStatus.BAD_REQUEST.value(),
 				httpMessageNotReadableException.getLocalizedMessage().toString(),
 				LocalDateTime.now(ZoneId.systemDefault()));
 		Map<String, Object> errorDetails = new HashMap<>();
@@ -128,7 +132,7 @@ public class GlobalExceptionHandler {
 	public final ResponseEntity<Map<String, Object>> handleMissingServletRequestParameterException(
 			MissingServletRequestParameterException missingServletRequestParameterException,
 			HttpServletRequest request) {
-		TaskErrorResponse response = new TaskErrorResponse(HttpStatus.BAD_REQUEST, HttpStatus.BAD_REQUEST.value(),
+		ErrorResponse response = new ErrorResponse(HttpStatus.BAD_REQUEST, HttpStatus.BAD_REQUEST.value(),
 				missingServletRequestParameterException.getLocalizedMessage().toString(),
 				LocalDateTime.now(ZoneId.systemDefault()));
 		Map<String, Object> errorDetails = new HashMap<>();

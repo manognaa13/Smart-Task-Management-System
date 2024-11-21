@@ -1,4 +1,4 @@
-package com.example.taskmanagement.service;
+package com.example.taskmanagement.service.impltaskservice;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -12,16 +12,17 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.example.taskmanagement.dto.CreateTaskRequestDTO;
-import com.example.taskmanagement.dto.CreateTaskResponse;
 import com.example.taskmanagement.dto.TaskDTO;
-import com.example.taskmanagement.dto.UpdateTaskRequestDTO;
-import com.example.taskmanagement.dto.UpdateTaskResponse;
+import com.example.taskmanagement.dto.createtask.CreateTaskDTO;
+import com.example.taskmanagement.dto.createtask.CreateTaskResponse;
+import com.example.taskmanagement.dto.updatetask.UpdateTaskDTO;
+import com.example.taskmanagement.dto.updatetask.UpdateTaskResponse;
 import com.example.taskmanagement.enums.Status;
-import com.example.taskmanagement.exception.InvalidUUIDFormatException;
-import com.example.taskmanagement.exception.TaskNotFoundException;
+import com.example.taskmanagement.exceptionhandler.customexception.TaskNotFoundException;
 import com.example.taskmanagement.model.Task;
 import com.example.taskmanagement.repository.TaskRepository;
+import com.example.taskmanagement.service.taskservice.TaskService;
+import com.example.taskmanagement.service.utilities.UUIDConverter;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -40,13 +41,16 @@ public class ITaskService implements TaskService {
 
 	private TaskRepository taskRepository;
 
+	private UUIDConverter uuidConverter;
+
 	/**
 	 * @Constructor for @ITaskService
 	 * 
 	 * @param repository - the @TaskRepository to be used for task operations
 	 */
-	public ITaskService(TaskRepository repository) {
+	public ITaskService(TaskRepository repository, UUIDConverter converter) {
 		this.taskRepository = repository;
+		this.uuidConverter = converter;
 	}
 
 	public List<Task> getTasksByStatus(Status status) {
@@ -65,7 +69,7 @@ public class ITaskService implements TaskService {
 	@Override
 	public Optional<TaskDTO> getTaskById(String id) {
 		logger.info("Retrieving task with ID: {} ", id);
-		UUID uuid = stringToUUIDConverter(id);
+		UUID uuid = uuidConverter.stringToUUIDConverter(id);
 		if (!taskRepository.findById(uuid).isPresent()) {
 			logger.error("Task Not Found with the given UUID: {} ", id);
 			throw new TaskNotFoundException("Task Not Found with the given UUID : " + id);
@@ -76,7 +80,7 @@ public class ITaskService implements TaskService {
 	@Override
 	@Transactional
 	@Modifying
-	public CreateTaskResponse createANewTask(CreateTaskRequestDTO taskRequestDTO) {
+	public CreateTaskResponse createANewTask(CreateTaskDTO taskRequestDTO) {
 		logger.info("Creating a new task with details: {} ", taskRequestDTO);
 		LocalDate dueDate = (taskRequestDTO.getDueDate() != null) ? taskRequestDTO.getDueDate()
 				: LocalDate.now().plusDays(7);
@@ -90,9 +94,9 @@ public class ITaskService implements TaskService {
 	@Override
 	@Transactional
 	@Modifying
-	public UpdateTaskResponse updateAnExistingTask(String id, UpdateTaskRequestDTO updatedTaskDTO) {
+	public UpdateTaskResponse updateAnExistingTask(String id, UpdateTaskDTO updatedTaskDTO) {
 		logger.info("Updating task with ID: {} ", id);
-		UUID uuid = stringToUUIDConverter(id);
+		UUID uuid = uuidConverter.stringToUUIDConverter(id);
 		return taskRepository.findById(uuid).map(existingTask -> {
 			updateTaskFromDTO(existingTask, updatedTaskDTO);
 			Task updatedTask = taskRepository.save(existingTask);
@@ -109,7 +113,7 @@ public class ITaskService implements TaskService {
 	@Modifying
 	public void deleteAnExistingTask(String id) {
 		logger.info("Deleting task with ID: {} ", id);
-		UUID uuid = stringToUUIDConverter(id);
+		UUID uuid = uuidConverter.stringToUUIDConverter(id);
 		if (!taskRepository.findById(uuid).isPresent()) {
 			logger.error("Task Not Found with the given UUID: {} ", id);
 			throw new TaskNotFoundException("Task Not Found with the given UUID : " + id);
@@ -123,7 +127,7 @@ public class ITaskService implements TaskService {
 	@Modifying
 	public TaskDTO markTaskAsCompleted(String id) {
 		logger.info("Marking task with ID: {} as completed.", id);
-		UUID uuid = stringToUUIDConverter(id);
+		UUID uuid = uuidConverter.stringToUUIDConverter(id);
 		return taskRepository.findById(uuid).map(task -> {
 			task.setStatus(Status.COMPLETED);
 			Task updatedTask = taskRepository.save(task);
@@ -135,19 +139,7 @@ public class ITaskService implements TaskService {
 		});
 	}
 
-	private UUID stringToUUIDConverter(String id) {
-		logger.debug("Converting string to UUID: {} ", id);
-		if (id == null
-				|| !id.matches("^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$")) {
-			logger.error("Invalid UUID Format: {} ", id);
-			throw new InvalidUUIDFormatException("Invalid UUID Format: " + id);
-		}
-		UUID uuid = UUID.fromString(id);
-		logger.debug("Converted string to UUID: {} ", uuid);
-		return uuid;
-	}
-
-	private Task convertToEntity(CreateTaskRequestDTO taskDTO) {
+	private Task convertToEntity(CreateTaskDTO taskDTO) {
 		logger.debug("Converting CreateTaskRequestDTO to Task entity: {} ", taskDTO);
 		Task task = new Task();
 		task.setTitle(taskDTO.getTitle());
@@ -167,7 +159,7 @@ public class ITaskService implements TaskService {
 				task.getDueDate().toString(), task.getStatus().toString());
 	}
 
-	private Task updateTaskFromDTO(Task existingTask, UpdateTaskRequestDTO taskRequestDTO) {
+	private Task updateTaskFromDTO(Task existingTask, UpdateTaskDTO taskRequestDTO) {
 		logger.debug("Updating existing Task with new details: {} ", taskRequestDTO);
 		if (taskRequestDTO.getTitle() != null && !taskRequestDTO.getTitle().isBlank()) {
 			existingTask.setTitle(taskRequestDTO.getTitle());
