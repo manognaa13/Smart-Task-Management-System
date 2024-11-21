@@ -44,7 +44,7 @@
 <div align="center">
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&style=social&logoColor=blue)](https://linkedin.com/in/bhimavarapu-manoj-kumar-reddy) [![GitHub](https://img.shields.io/badge/GitHub-100000?style=social&logo=github&logoColor=brown)](https://github.com/BHIMAVARAPU-MANOJ-KUMAR) [![Instagram](https://img.shields.io/badge/Instagram-E4405F?style=social&logo=instagram&logoColor=darkpink)](https://www.instagram.com/manoj.kumar.reddy.bhimavarapu/) [![WhatsApp](https://img.shields.io/badge/WhatsApp-25D366?style=social&logo=whatsapp&logoColor=darkgreen)](https://web.whatsapp.com/send?phone=919010917345&text=Hello%2C%20I%20found%20you%20on%20GitHub.%0AI%27m%20impressed!)
-[![Gmail](https://img.shields.io/badge/Gmail-D14836?style=social&logo=gmail&logoColor=red)](manojbh1999@gmail.com)
+[![Gmail](https://img.shields.io/badge/Gmail-D14836?style=social&logo=gmail&logoColor=red&link=mailto:manojbh1999@gmail.com)](mailto:manojbh1999@gmail.com)
 
 </div>
 
