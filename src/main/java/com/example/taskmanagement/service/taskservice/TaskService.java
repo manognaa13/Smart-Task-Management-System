@@ -15,6 +15,8 @@ import com.example.taskmanagement.dto.createtask.CreateTaskDTO;
 import com.example.taskmanagement.dto.createtask.CreateTaskResponse;
 import com.example.taskmanagement.dto.updatetask.UpdateTaskDTO;
 import com.example.taskmanagement.dto.updatetask.UpdateTaskResponse;
+import com.example.taskmanagement.enums.Status;
+import com.example.taskmanagement.model.Task;
 
 public interface TaskService {
 
@@ -66,4 +68,12 @@ public interface TaskService {
 	 * @return the updated @TaskDTO representing the completed task
 	 */
 	abstract TaskDTO markTaskAsCompleted(String id);
+	
+	/**
+	 * Get a @Task by @Status
+	 * 
+	 * @param status - the status of the task
+	 * @return a @List of @Task tasks
+	 */
+	abstract List<Task> getTasksByStatus(Status status);
 }

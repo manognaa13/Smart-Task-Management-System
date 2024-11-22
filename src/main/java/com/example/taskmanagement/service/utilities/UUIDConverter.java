@@ -4,15 +4,21 @@ import java.util.UUID;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Component;
 
 import com.example.taskmanagement.exceptionhandler.customexception.InvalidUUIDFormatException;
 
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-@Component
-public class UUIDConverter {
+//@Component(value = "UUIDConverter")
+/**
+ * utility classes generally contain static methods or static variables & do not
+ * need spring’s dependency injection or lifecycle management.
+ * 
+ * Using @Component on a utility class is unnecessary because it does not need
+ * to be instantiated or managed by spring.
+ */
+public final class UUIDConverter {
 
 	private static final Logger logger = LoggerFactory.getLogger(UUIDConverter.class);
 
@@ -24,7 +30,7 @@ public class UUIDConverter {
 	 * @throws @InvalidUUIDFormatException if the input string is null or not in the
 	 *                                     valid @UUID format
 	 */
-	public UUID stringToUUIDConverter(String id) {
+	public static final UUID stringToUUIDConverter(String id) {
 		logger.debug("Starting Conversion of String to UUID: {} ", id);
 		// Check if the input string is null or does not match the UUID format
 		if (id == null

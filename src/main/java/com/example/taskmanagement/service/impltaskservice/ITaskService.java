@@ -41,18 +41,16 @@ public class ITaskService implements TaskService {
 
 	private TaskRepository taskRepository;
 
-	private UUIDConverter uuidConverter;
-
 	/**
 	 * @Constructor for @ITaskService
 	 * 
 	 * @param repository - the @TaskRepository to be used for task operations
 	 */
-	public ITaskService(TaskRepository repository, UUIDConverter converter) {
+	public ITaskService(TaskRepository repository) {
 		this.taskRepository = repository;
-		this.uuidConverter = converter;
 	}
 
+	@Override
 	public List<Task> getTasksByStatus(Status status) {
 		logger.info("Fetching tasks with status: {} ", status);
 		List<Task> tasks = taskRepository.findByStatus(status);
@@ -69,7 +67,7 @@ public class ITaskService implements TaskService {
 	@Override
 	public Optional<TaskDTO> getTaskById(String id) {
 		logger.info("Retrieving task with ID: {} ", id);
-		UUID uuid = uuidConverter.stringToUUIDConverter(id);
+		UUID uuid = UUIDConverter.stringToUUIDConverter(id);
 		if (!taskRepository.findById(uuid).isPresent()) {
 			logger.error("Task Not Found with the given UUID: {} ", id);
 			throw new TaskNotFoundException("Task Not Found with the given UUID : " + id);
@@ -96,7 +94,7 @@ public class ITaskService implements TaskService {
 	@Modifying
 	public UpdateTaskResponse updateAnExistingTask(String id, UpdateTaskDTO updatedTaskDTO) {
 		logger.info("Updating task with ID: {} ", id);
-		UUID uuid = uuidConverter.stringToUUIDConverter(id);
+		UUID uuid = UUIDConverter.stringToUUIDConverter(id);
 		return taskRepository.findById(uuid).map(existingTask -> {
 			updateTaskFromDTO(existingTask, updatedTaskDTO);
 			Task updatedTask = taskRepository.save(existingTask);
@@ -113,7 +111,7 @@ public class ITaskService implements TaskService {
 	@Modifying
 	public void deleteAnExistingTask(String id) {
 		logger.info("Deleting task with ID: {} ", id);
-		UUID uuid = uuidConverter.stringToUUIDConverter(id);
+		UUID uuid = UUIDConverter.stringToUUIDConverter(id);
 		if (!taskRepository.findById(uuid).isPresent()) {
 			logger.error("Task Not Found with the given UUID: {} ", id);
 			throw new TaskNotFoundException("Task Not Found with the given UUID : " + id);
@@ -127,7 +125,7 @@ public class ITaskService implements TaskService {
 	@Modifying
 	public TaskDTO markTaskAsCompleted(String id) {
 		logger.info("Marking task with ID: {} as completed.", id);
-		UUID uuid = uuidConverter.stringToUUIDConverter(id);
+		UUID uuid = UUIDConverter.stringToUUIDConverter(id);
 		return taskRepository.findById(uuid).map(task -> {
 			task.setStatus(Status.COMPLETED);
 			Task updatedTask = taskRepository.save(task);

@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.example.taskmanagement.enums.Status;
 import com.example.taskmanagement.model.Task;
 import com.example.taskmanagement.repository.TaskRepository;
+import com.example.taskmanagement.service.taskservice.TaskService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -31,14 +32,18 @@ public class TaskStatusScheduler {
 	private static final Logger logger = LoggerFactory.getLogger(TaskStatusScheduler.class);
 
 	private TaskRepository taskRepository;
+	
+	private TaskService taskService;
 
 	/**
 	 * @Constructor for @TaskStatusScheduler
 	 * 
 	 * @param repository the @TaskRepository to be used for task operations
 	 */
-	public TaskStatusScheduler(TaskRepository repository) {
+	public TaskStatusScheduler(TaskRepository repository,
+			TaskService service) {
 		this.taskRepository = repository;
+		this.taskService = service;
 	}
 
 	/**
@@ -53,7 +58,7 @@ public class TaskStatusScheduler {
 	@Modifying
 	public void updateTaskStatus() {
 		logger.info("Checking for tasks to update status...");
-		List<Task> updatePendingTasksToInProgressStatus = taskRepository.findByStatus(Status.PENDING);
+		List<Task> updatePendingTasksToInProgressStatus = taskService.getTasksByStatus(Status.PENDING);
 		logger.info("Found {} pending tasks. ", updatePendingTasksToInProgressStatus.size());
 
 		for (Task task : updatePendingTasksToInProgressStatus) {

@@ -51,9 +51,15 @@ public class TaskController {
 	 * @return a list of @TaskDTO representing all tasks.
 	 */
 	@GetMapping
-	public List<TaskDTO> getAllTasks() {
+	public ResponseEntity<Object> getAllTasks() {
 		logger.info("Fetching all tasks");
-		return taskService.getAllTasks();
+		List<TaskDTO> tasks = taskService.getAllTasks();
+		if (tasks.isEmpty()) {
+			Map<String, String> response = Map.of("message", "No tasks found, please create a few tasks.");
+			return 
+					ResponseEntity.status(HttpStatus.OK).body(response);
+		}
+		return ResponseEntity.status(HttpStatus.OK).body(tasks);
 	}
 
 	/**
@@ -97,7 +103,7 @@ public class TaskController {
 		logger.info("Deleting task with ID: {} ", id);
 		taskService.deleteAnExistingTask(id);
 		Map<String, String> response = Map.of("Message", "Task has been Deleted Successfully.", "id", id);
-		return ResponseEntity.status(HttpStatus.ACCEPTED).body(response);
+		return ResponseEntity.status(HttpStatus.NO_CONTENT).body(response);
 	}
 
 	/**
