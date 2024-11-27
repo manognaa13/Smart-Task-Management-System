@@ -27,13 +27,16 @@ import com.example.taskmanagement.service.utilities.UUIDConverter;
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * implementation of the @TaskService interface for managing tasks.
+ * implementation of the <strong> @TaskService </strong> interface for managing
+ * tasks.
  * 
- * This service provides methods to create, retrieve, update, and delete tasks,
- * as well as to mark them as completed. It interacts with the @TaskRepository
- * to perform CRUD operations.
+ * <p>
+ * this service provides methods to <em>create, retrieve, update, and delete
+ * tasks,</em> as well as to mark them as <em>completed</em>. It interacts with
+ * the <strong> @TaskRepository </strong> to perform CRUD operations.
+ * </p>
  */
-@Service(value = "TaskService")
+@Service
 @Slf4j
 public class ITaskService implements TaskService {
 
@@ -44,12 +47,19 @@ public class ITaskService implements TaskService {
 	/**
 	 * @Constructor for @ITaskService
 	 * 
-	 * @param repository - the @TaskRepository to be used for task operations
+	 * @param repository - the <strong> @TaskRepository </strong> to be used for
+	 *                   task operations
 	 */
 	public ITaskService(TaskRepository repository) {
 		this.taskRepository = repository;
 	}
 
+	/**
+	 * Retrieve the list of tasks from the task repository based on the provided
+	 * status. The method is expected to return a list of <strong> @Task </strong>
+	 * objects. return the list of tasks that match the specified status to the
+	 * caller.
+	 */
 	@Override
 	public List<Task> getTasksByStatus(Status status) {
 		logger.info("Fetching tasks with status: {} ", status);
@@ -58,12 +68,24 @@ public class ITaskService implements TaskService {
 		return tasks;
 	}
 
+	/**
+	 * fetch all tasks from the task repository, convert each <strong> @Task
+	 * </strong> entity to <strong> @TaskDTO </strong>, and collect the results into
+	 * a <strong> @List </strong> of <strong> @TaskDTO </strong> objects.
+	 */
 	@Override
 	public List<TaskDTO> getAllTasks() {
 		logger.info("Retrieving all tasks.");
 		return taskRepository.findAll().stream().map(this::convertToDTO).collect(Collectors.toList());
 	}
 
+	/**
+	 * this method retrieves a task by its unique identifier <strong> @UUID
+	 * </strong> after converting the provided string id. if the task is not found,
+	 * it logs an error and throws a <strong> @TaskNotFoundException </strong>. if
+	 * found, it converts the <strong> @Task </strong> entity to a <strong> @TaskDTO
+	 * </strong> and returns it.
+	 */
 	@Override
 	public Optional<TaskDTO> getTaskById(String id) {
 		logger.info("Retrieving task with ID: {} ", id);
@@ -75,28 +97,43 @@ public class ITaskService implements TaskService {
 		return taskRepository.findById(uuid).map(this::convertToDTO);
 	}
 
+	/**
+	 * this method creates a new <strong> @Task </strong> based on the provided
+	 * <strong> @CreateTaskDTO </strong>, defaulting the due date to one week from
+	 * now if not specified. It converts the DTO to a <strong> @Task </strong>
+	 * entity, saves it to the repository, and logs the successful creation.
+	 * Finally, it returns a <strong> @CreateTaskResponse </strong> containing the
+	 * details of the newly created task.
+	 */
 	@Override
 	@Transactional
 	@Modifying
-	public CreateTaskResponse createANewTask(CreateTaskDTO taskRequestDTO) {
-		logger.info("Creating a new task with details: {} ", taskRequestDTO);
-		LocalDate dueDate = (taskRequestDTO.getDueDate() != null) ? taskRequestDTO.getDueDate()
-				: LocalDate.now().plusDays(7);
-		Task task = convertToEntity(taskRequestDTO);
+	public CreateTaskResponse createANewTask(CreateTaskDTO createTask) {
+		logger.info("Creating a new task with details: {} ", createTask);
+		LocalDate dueDate = (createTask.getDueDate() != null) ? createTask.getDueDate() : LocalDate.now().plusDays(7);
+		Task task = convertToEntity(createTask);
 		task.setDueDate(dueDate);
 		Task savedTask = taskRepository.save(task);
 		logger.info("Task created successfully with ID: {} ", savedTask.getId());
 		return convertToCreateTaskResponse(savedTask);
 	}
 
+	/**
+	 * this method updates a task identified by its <strong> @UUID </strong> using
+	 * the provided <strong> @UpdateTaskDTO </strong>. It retrieves the existing
+	 * task, applies the updates, saves the modified task to the repository, it
+	 * returns a <strong> @UpdateTaskResponse </strong> containing the details of
+	 * the updated task, logs the successful update. if the task is not found, it
+	 * logs an error and throws a <strong> @TaskNotFoundException </strong>.
+	 */
 	@Override
 	@Transactional
 	@Modifying
-	public UpdateTaskResponse updateAnExistingTask(String id, UpdateTaskDTO updatedTaskDTO) {
+	public UpdateTaskResponse updateAnExistingTask(String id, UpdateTaskDTO updateTask) {
 		logger.info("Updating task with ID: {} ", id);
 		UUID uuid = UUIDConverter.stringToUUIDConverter(id);
 		return taskRepository.findById(uuid).map(existingTask -> {
-			updateTaskFromDTO(existingTask, updatedTaskDTO);
+			updateTaskFromDTO(existingTask, updateTask);
 			Task updatedTask = taskRepository.save(existingTask);
 			logger.info("Task updated successfully with ID: {} ", updatedTask.getId());
 			return convertToUpdateTaskResponse(updatedTask);
@@ -106,6 +143,13 @@ public class ITaskService implements TaskService {
 		});
 	}
 
+	/**
+	 * this method deletes a task identified by its <strong> @UUID </strong> after
+	 * confirming its existence in the repository. if the task is not found, it logs
+	 * an error and throws a <strong> @TaskNotFoundException </strong>. Upon
+	 * successful deletion, it logs a confirmation message indicating the task has
+	 * been deleted.
+	 */
 	@Override
 	@Transactional
 	@Modifying
@@ -120,6 +164,14 @@ public class ITaskService implements TaskService {
 		logger.info("Task deleted successfully with ID: {} ", id);
 	}
 
+	/**
+	 * this method updates the status of a task identified by its
+	 * 
+	 * @UUID to <strong><em>"COMPLETED."</em></strong> It retrieves the task from
+	 *       the repository, updates its status, and saves the changes while logging
+	 *       the operation. if the task is not found, it logs an error and throws a
+	 *       <strong> @TaskNotFoundException </strong>.
+	 */
 	@Override
 	@Transactional
 	@Modifying
@@ -137,11 +189,11 @@ public class ITaskService implements TaskService {
 		});
 	}
 
-	private Task convertToEntity(CreateTaskDTO taskDTO) {
-		logger.debug("Converting CreateTaskRequestDTO to Task entity: {} ", taskDTO);
+	private Task convertToEntity(CreateTaskDTO createTaskDTO) {
+		logger.debug("Converting CreateTaskRequestDTO to Task entity: {} ", createTaskDTO);
 		Task task = new Task();
-		task.setTitle(taskDTO.getTitle());
-		task.setDescription(taskDTO.getDescription());
+		task.setTitle(createTaskDTO.getTitle());
+		task.setDescription(createTaskDTO.getDescription());
 		return task;
 	}
 
@@ -157,16 +209,16 @@ public class ITaskService implements TaskService {
 				task.getDueDate().toString(), task.getStatus().toString());
 	}
 
-	private Task updateTaskFromDTO(Task existingTask, UpdateTaskDTO taskRequestDTO) {
-		logger.debug("Updating existing Task with new details: {} ", taskRequestDTO);
-		if (taskRequestDTO.getTitle() != null && !taskRequestDTO.getTitle().isBlank()) {
-			existingTask.setTitle(taskRequestDTO.getTitle());
+	private Task updateTaskFromDTO(Task existingTask, UpdateTaskDTO updateTaskDTO) {
+		logger.debug("Updating existing Task with new details: {} ", updateTaskDTO);
+		if (updateTaskDTO.getTitle() != null && !updateTaskDTO.getTitle().isBlank()) {
+			existingTask.setTitle(updateTaskDTO.getTitle());
 		}
-		if (taskRequestDTO.getDescription() != null && !taskRequestDTO.getDescription().isBlank()) {
-			existingTask.setDescription(taskRequestDTO.getDescription());
+		if (updateTaskDTO.getDescription() != null && !updateTaskDTO.getDescription().isBlank()) {
+			existingTask.setDescription(updateTaskDTO.getDescription());
 		}
-		if (taskRequestDTO.getDueDate() != null) {
-			existingTask.setDueDate(taskRequestDTO.getDueDate());
+		if (updateTaskDTO.getDueDate() != null) {
+			existingTask.setDueDate(updateTaskDTO.getDueDate());
 		}
 		return existingTask;
 	}

@@ -35,9 +35,9 @@ import lombok.NoArgsConstructor;
 /**
  * @Entity class representing a task.
  * 
- *         This class defines the structure of a task, including its @UUID,
- *         title, description, due date, status, and timestamps for creation and
- *         updates.
+ *         this class defines the structure of a task, including its
+ *         <strong><em> @UUID, title, description, due date, status, and
+ *         timestamps for creation and updates </em></strong>.
  */
 @AllArgsConstructor
 @NoArgsConstructor
@@ -78,7 +78,8 @@ public class Task implements Serializable {
 	private LocalDate dueDate;
 
 	/**
-	 * @Status of the task (PENDING, IN_PROGRESS, COMPLETED).
+	 * <strong> @Status </strong> of the task (<strong><em>PENDING</em></strong>,
+	 * <strong><em>IN_PROGRESS</em></strong>, <strong><em>COMPLETED</em></strong>).
 	 */
 	@Column(name = "task_status", nullable = false)
 	@Enumerated(value = EnumType.STRING)
@@ -107,10 +108,15 @@ public class Task implements Serializable {
 	}
 
 	/**
+	 * <p>
 	 * method called before persisting a new task.
+	 * </p>
 	 * 
-	 * sets the creation and update timestamps, and initializes the status to
-	 * PENDING.
+	 * <p>
+	 * sets the creation and update timestamps, decided by the <strong><em> Java
+	 * Virtual Machine </em></strong>, and initializes the status to <strong>
+	 * PENDING </strong>.
+	 * </p>
 	 */
 	@PrePersist
 	private void onPrePersist() {
@@ -120,9 +126,13 @@ public class Task implements Serializable {
 	}
 
 	/**
+	 * <p>
 	 * method called before updating an existing task.
+	 * <p>
 	 * 
+	 * <p>
 	 * Updates the update timestamp.
+	 * </p>
 	 */
 	@PreUpdate
 	private void onPreUpdate() {

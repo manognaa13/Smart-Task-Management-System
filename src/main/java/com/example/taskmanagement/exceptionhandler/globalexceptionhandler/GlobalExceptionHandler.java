@@ -16,6 +16,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.servlet.NoHandlerFoundException;
 import org.springframework.web.servlet.resource.NoResourceFoundException;
 
 import com.example.taskmanagement.apiresponse.ErrorResponse;
@@ -36,14 +37,16 @@ public class GlobalExceptionHandler {
 	private static final Logger logger = LoggerFactory.getLogger(GlobalExceptionHandler.class);
 
 	/**
-	 * Handles @HttpRequestMethodNotSupportedException
+	 * Handles <strong> @HttpRequestMethodNotSupportedException </strong>
+	 * 
+	 * @Exception thrown when a request handler does not support a specific request
+	 *            method.
 	 */
 	@ExceptionHandler(HttpRequestMethodNotSupportedException.class)
 	public final ResponseEntity<Map<String, Object>> handleHttpRequestMethodNotSupportedException(
 			HttpRequestMethodNotSupportedException httpRequestMethodNotSupportedException,
 			HttpServletRequest httpServletRequest) {
-		ErrorResponse response = new ErrorResponse(HttpStatus.METHOD_NOT_ALLOWED,
-				HttpStatus.METHOD_NOT_ALLOWED.value(),
+		ErrorResponse response = new ErrorResponse(HttpStatus.METHOD_NOT_ALLOWED, HttpStatus.METHOD_NOT_ALLOWED.value(),
 				httpRequestMethodNotSupportedException.getLocalizedMessage().toString(),
 				LocalDateTime.now(ZoneId.systemDefault()));
 		Map<String, Object> errors = new HashMap<>();
@@ -55,18 +58,20 @@ public class GlobalExceptionHandler {
 	}
 
 	/**
-	 * Handles @TaskNotFoundException
+	 * Handles <strong> @TaskNotFoundException </strong> Custom exception class to
+	 * handle situations where a task cannot be found.
 	 */
 	@ExceptionHandler(TaskNotFoundException.class)
-	public final ResponseEntity<ErrorResponse> handleTaskNotFoundException(
-			TaskNotFoundException notFoundException) {
+	public final ResponseEntity<ErrorResponse> handleTaskNotFoundException(TaskNotFoundException notFoundException) {
 		ErrorResponse errorResponse = new ErrorResponse(HttpStatus.NOT_FOUND, HttpStatus.NOT_FOUND.value(),
 				notFoundException.getLocalizedMessage().toString(), LocalDateTime.now(ZoneId.systemDefault()));
 		return new ResponseEntity<>(errorResponse, HttpStatus.NOT_FOUND);
 	}
 
 	/**
-	 * Handles @InvalidUUIDFormatException
+	 * Handles <strong> @InvalidUUIDFormatException </strong> Custom exception class
+	 * to handle invalid <strong> @UUID </strong> format errors and it's related
+	 * errors.
 	 */
 	@ExceptionHandler(InvalidUUIDFormatException.class)
 	public final ResponseEntity<ErrorResponse> handleInvalidUUIDFormatException(
@@ -77,78 +82,101 @@ public class GlobalExceptionHandler {
 	}
 
 	/**
-	 * Handles @MethodArgumentNotValidException for validation errors.
+	 * Handles <strong> @MethodArgumentNotValidException </strong> for validation
+	 * errors. <strong> @Exception </strong> to be thrown when validation on an
+	 * argument annotated with <strong><em> @Valid </em></strong> fails.
 	 */
 	@ExceptionHandler(MethodArgumentNotValidException.class)
-	public final ResponseEntity<Map<String, Object>> handleValidationExceptions(MethodArgumentNotValidException ex,
-			HttpServletRequest request) {
+	public final ResponseEntity<Map<String, Object>> handleValidationExceptions(
+			MethodArgumentNotValidException methodArgumentNotValidException) {
 		Map<String, Object> errors = new HashMap<>();
 		errors.put("httpStatus", HttpStatus.BAD_REQUEST);
 		errors.put("httpStatusCode", HttpStatus.BAD_REQUEST.value());
 		errors.put("timeStamp", LocalDateTime.now(ZoneId.systemDefault()));
-		for (FieldError error : ex.getBindingResult().getFieldErrors()) {
+		for (FieldError error : methodArgumentNotValidException.getBindingResult().getFieldErrors()) {
 			errors.put(error.getField(), error.getDefaultMessage());
 		}
 		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errors);
 	}
 
 	/**
-	 * Handles @NoResourceFoundException
+	 * Handles <strong> @NoResourceFoundException </strong> Raised when
+	 * <strong> @ResourceHttpRequestHandler </strong> can not find a resource.
 	 */
 	@ExceptionHandler(NoResourceFoundException.class)
 	public final ResponseEntity<Map<String, Object>> handleNoResourceFoundException(
-			NoResourceFoundException noResourceFoundException, HttpServletRequest request) {
+			NoResourceFoundException noResourceFoundException, HttpServletRequest servletRequest) {
 		ErrorResponse response = new ErrorResponse(HttpStatus.NOT_FOUND, HttpStatus.NOT_FOUND.value(),
 				noResourceFoundException.getLocalizedMessage().toString(), LocalDateTime.now(ZoneId.systemDefault()));
 		Map<String, Object> errorDetails = new HashMap<>();
 		errorDetails.put("response", response);
 		errorDetails.put("message",
 				"The requested Static Resource could not be found on the server. Please check the resource URL and try again.");
-		errorDetails.put("Requested URL", request.getRequestURI().toString());
-		errorDetails.put("Requested URL", request.getRequestURL().toString());
+		errorDetails.put("Requested URL", servletRequest.getRequestURI().toString());
+		errorDetails.put("Requested URL", servletRequest.getRequestURL().toString());
 		return new ResponseEntity<>(errorDetails, HttpStatus.NOT_FOUND);
 	}
 
 	/**
-	 * Handles @HttpMessageNotReadableException
+	 * Handles <strong> @NoHandlerFoundException </strong> Raised when the
+	 * <strong> @DispatcherServlet </strong> can not find a handler for a request.
+	 */
+	@ExceptionHandler(NoHandlerFoundException.class)
+	public final ResponseEntity<Map<String, Object>> handleNoHandlerFoundException(
+			NoHandlerFoundException noHandlerFoundException, HttpServletRequest servletRequest) {
+		ErrorResponse response = new ErrorResponse(HttpStatus.NOT_FOUND, HttpStatus.NOT_FOUND.value(),
+				noHandlerFoundException.getLocalizedMessage().toString(), LocalDateTime.now(ZoneId.systemDefault()));
+		Map<String, Object> errorDetails = new HashMap<>();
+		errorDetails.put("response", response);
+		errorDetails.put("message", "The requested endpoint does not exist.");
+		errorDetails.put("Requested URL", servletRequest.getRequestURI().toString());
+		errorDetails.put("Requested URL", servletRequest.getRequestURL().toString());
+		return new ResponseEntity<>(errorDetails, HttpStatus.NOT_FOUND);
+	}
+
+	/**
+	 * Handles <strong> @HttpMessageNotReadableException </strong> Thrown by
+	 * <strong> @HttpMessageConverter </strong> implementations when the
+	 * <strong><em> @HttpMessageConverter.read </em></strong> method fails.
 	 */
 	@ExceptionHandler(HttpMessageNotReadableException.class)
 	public final ResponseEntity<Map<String, Object>> handleHttpMessageNotReadableException(
-			HttpMessageNotReadableException httpMessageNotReadableException, HttpServletRequest request) {
+			HttpMessageNotReadableException httpMessageNotReadableException, HttpServletRequest servletRequest) {
 		ErrorResponse response = new ErrorResponse(HttpStatus.BAD_REQUEST, HttpStatus.BAD_REQUEST.value(),
 				httpMessageNotReadableException.getLocalizedMessage().toString(),
 				LocalDateTime.now(ZoneId.systemDefault()));
 		Map<String, Object> errorDetails = new HashMap<>();
 		errorDetails.put("response", response);
-		errorDetails.put("Requested URL", request.getRequestURI().toString());
-		errorDetails.put("Requested URL", request.getRequestURL().toString());
+		errorDetails.put("Requested URL", servletRequest.getRequestURI().toString());
+		errorDetails.put("Requested URL", servletRequest.getRequestURL().toString());
 		return new ResponseEntity<>(errorDetails, HttpStatus.BAD_REQUEST);
 	}
 
 	/**
-	 * Handles @MissingServletRequestParameterException
+	 * Handles <strong> @MissingServletRequestParameterException </strong> that
+	 * indicates a missing parameter.
 	 */
 	@ExceptionHandler(MissingServletRequestParameterException.class)
 	public final ResponseEntity<Map<String, Object>> handleMissingServletRequestParameterException(
 			MissingServletRequestParameterException missingServletRequestParameterException,
-			HttpServletRequest request) {
+			HttpServletRequest servletRequest) {
 		ErrorResponse response = new ErrorResponse(HttpStatus.BAD_REQUEST, HttpStatus.BAD_REQUEST.value(),
 				missingServletRequestParameterException.getLocalizedMessage().toString(),
 				LocalDateTime.now(ZoneId.systemDefault()));
 		Map<String, Object> errorDetails = new HashMap<>();
 		errorDetails.put("response", response);
-		errorDetails.put("Requested URL", request.getRequestURI().toString());
-		errorDetails.put("Requested URL", request.getRequestURL().toString());
+		errorDetails.put("Requested URL", servletRequest.getRequestURI().toString());
+		errorDetails.put("Requested URL", servletRequest.getRequestURL().toString());
 		return new ResponseEntity<>(errorDetails, HttpStatus.BAD_REQUEST);
 	}
 
 	/**
-	 * Handles Generic @Exception across the Application
+	 * Handles Generic <strong> @Exception </strong> across the Application.
 	 */
 	@ExceptionHandler(Exception.class)
-	public final ResponseEntity<Map<String, String>> handleGenericException(Exception ex) {
-		logger.error("An error occurred: {} ", ex.getMessage(), ex);
-		Map<String, String> error = Map.of("error", "An unexpected error occurred : " + ex.getMessage());
+	public final ResponseEntity<Map<String, String>> handleGenericException(Exception exception) {
+		logger.error("An error occurred: {} ", exception.getMessage(), exception);
+		Map<String, String> error = Map.of("error", "An unexpected error occurred : " + exception.getMessage());
 		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(error);
 	}
 }

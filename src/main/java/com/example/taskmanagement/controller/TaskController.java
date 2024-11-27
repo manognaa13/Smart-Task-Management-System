@@ -10,11 +10,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.taskmanagement.dto.TaskDTO;
@@ -27,6 +27,40 @@ import com.example.taskmanagement.service.taskservice.TaskService;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * @TaskController
+ * 
+ *                 this class serves as the REST controller for managing tasks
+ *                 in the application. It provides endpoints to perform CRUD
+ *                 (create, read, update, delete) operations on tasks, as well
+ *                 as additional features like marking tasks as completed.
+ * 
+ *                 Responsibilities: - handle incoming http requests related to
+ *                 task management. - delegate business logic to
+ *                 the @TaskService layer. - Ensure appropriate http responses
+ *                 are returned to clients. - validate input data and handle
+ *                 errors gracefully.
+ * 
+ *                 Design Rationale: - Separation of concerns: The controller
+ *                 focuses solely on handling http requests and responses,
+ *                 delegating the core business logic to the service layer. -
+ *                 Adherence to REST principles: each endpoint corresponds to a
+ *                 specific operation on the task resource, using appropriate
+ *                 http methods and status codes. - Scalability: The modular
+ *                 design allows the controller to remain lightweight, making it
+ *                 easier to extend functionality without cluttering the class.
+ * 
+ *                 key Endpoints: - GET /v1/tasks: Retrieve all tasks. - GET
+ *                 /v1/tasks/{id}: Retrieve a specific task by id. - POST
+ *                 /v1/tasks: Create a new task. - PUT /v1/tasks/{id}: update an
+ *                 existing task. - DELETE /v1/tasks/{id}: delete a task. -
+ *                 PATCH /v1/tasks/{id}/complete: mark a task as complete.
+ * 
+ *                 this class ensures a clean API interface for interacting with
+ *                 the task management system, supporting both usability and
+ *                 maintainability.
+ */
+
 @Slf4j
 @RestController
 @RequestMapping("/v1/tasks")
@@ -37,9 +71,10 @@ public class TaskController {
 	private TaskService taskService;
 
 	/**
-	 * @Constructor for @TaskController
+	 * @Constructor for <strong> @TaskController </strong>
 	 * 
-	 * @param service - the @TaskService to be used for task operations
+	 * @param service - the <strong> @TaskService </strong> to be used for task
+	 *                operations
 	 */
 	public TaskController(TaskService service) {
 		this.taskService = service;
@@ -48,7 +83,9 @@ public class TaskController {
 	/**
 	 * Retrieve all tasks.
 	 *
-	 * @return a list of @TaskDTO representing all tasks.
+	 * @return a list of <strong> @TaskDTO </strong> representing all tasks if
+	 *         found. otherwise a message <strong> "No tasks found, please create a
+	 *         few tasks" </strong> will be sent to the client.
 	 */
 	@GetMapping
 	public ResponseEntity<Object> getAllTasks() {
@@ -56,8 +93,7 @@ public class TaskController {
 		List<TaskDTO> tasks = taskService.getAllTasks();
 		if (tasks.isEmpty()) {
 			Map<String, String> response = Map.of("message", "No tasks found, please create a few tasks.");
-			return 
-					ResponseEntity.status(HttpStatus.OK).body(response);
+			return ResponseEntity.status(HttpStatus.OK).body(response);
 		}
 		return ResponseEntity.status(HttpStatus.OK).body(tasks);
 	}
@@ -65,12 +101,13 @@ public class TaskController {
 	/**
 	 * Retrieve a task by its id
 	 *
-	 * @param id - the id of the task to retrieve.
-	 * @return @ResponseEntity containing the @TaskDTO if found, otherwise
-	 *         a @HttpStatus.NOT_FOUND status.
+	 * @param id - the <strong> id </strong> of the task to retrieve.
+	 * @return <strong> @ResponseEntity </strong> containing the <strong> @TaskDTO
+	 *         </strong> if found, otherwise a <strong> @HttpStatus.NOT_FOUND
+	 *         </strong> status.
 	 */
-	@GetMapping("/id")
-	public ResponseEntity<TaskDTO> getTaskById(@RequestParam String id) {
+	@GetMapping("/{id}")
+	public ResponseEntity<TaskDTO> getTaskById(@PathVariable String id) {
 		logger.info("Fetching task with ID: {} ", id);
 		return taskService.getTaskById(id).map(ResponseEntity::ok).orElseGet(() -> {
 			logger.warn("Task with ID: {} not found ", id);
@@ -81,25 +118,26 @@ public class TaskController {
 	/**
 	 * Create a new task.
 	 *
-	 * @param @TaskRequestDTO the task data to create.
-	 * @return @ResponseEntity containing the @CreateTaskResponse created task
-	 *         response.
+	 * @param @CreateTaskDTO the task data to create.
+	 * @return <strong> @ResponseEntity </strong> containing the
+	 *         <strong> @CreateTaskResponse </strong> created task response.
 	 */
 	@PostMapping
-	public ResponseEntity<CreateTaskResponse> createTask(@Valid @RequestBody CreateTaskDTO taskRequestDTO) {
-		logger.info("Creating a new task with details: {} ", taskRequestDTO);
-		CreateTaskResponse response = taskService.createANewTask(taskRequestDTO);
+	public ResponseEntity<CreateTaskResponse> createTask(@Valid @RequestBody CreateTaskDTO createTaskDTO) {
+		logger.info("Creating a new task with details: {} ", createTaskDTO);
+		CreateTaskResponse response = taskService.createANewTask(createTaskDTO);
 		return ResponseEntity.status(HttpStatus.CREATED).body(response);
 	}
 
 	/**
 	 * Delete a task by its id
 	 *
-	 * @param id - the id of the task to delete.
-	 * @return @ResponseEntity containing a @HttpStatus.ACCEPTED message.
+	 * @param id - the <strong> id </strong> of the task to delete.
+	 * @return <strong> @ResponseEntity </strong> containing a
+	 *         <strong> @HttpStatus.NO_CONTENT </strong> message.
 	 */
-	@DeleteMapping("/id")
-	public ResponseEntity<Map<String, String>> deleteTask(@RequestParam String id) {
+	@DeleteMapping("/{id}")
+	public ResponseEntity<Map<String, String>> deleteTask(@PathVariable String id) {
 		logger.info("Deleting task with ID: {} ", id);
 		taskService.deleteAnExistingTask(id);
 		Map<String, String> response = Map.of("Message", "Task has been Deleted Successfully.", "id", id);
@@ -109,11 +147,12 @@ public class TaskController {
 	/**
 	 * mark a task as completed.
 	 *
-	 * @param id - the id of the task to mark as completed.
-	 * @return @ResponseEntity containing a success OK message and the updated task.
+	 * @param id - the <strong> id </strong> of the task to mark as completed.
+	 * @return <strong> @ResponseEntity </strong> containing a success
+	 *         <strong> @HttpStatus.OK </strong> message and the completed task.
 	 */
-	@PatchMapping("/id")
-	public ResponseEntity<Map<String, Object>> markTaskAsComplete(@RequestParam String id) {
+	@PatchMapping("/{id}/complete")
+	public ResponseEntity<Map<String, Object>> markTaskAsComplete(@PathVariable String id) {
 		logger.info("Marking task with ID: {} as completed", id);
 		TaskDTO dto = taskService.markTaskAsCompleted(id);
 		Map<String, Object> response = Map.of("Message", "Task has been Marked as Completed Successfully.", "task",
@@ -124,14 +163,15 @@ public class TaskController {
 	/**
 	 * update an existing task.
 	 *
-	 * @param id                   - the id of the task to update.
-	 * @param @UpdateaskRequestDTO to update the existing task data.
-	 * @return @ResponseEntity containing the updated task response.
+	 * @param id             - the <strong> id </strong> of the task to update.
+	 * @param @UpdateTaskDTO to update the existing task data.
+	 * @return <strong> @ResponseEntity </strong> containing the
+	 *         <strong> @UpdateTaskResponse </strong> updated task response.
 	 */
-	@PutMapping("/id")
-	public ResponseEntity<UpdateTaskResponse> updateTask(@RequestParam String id,
-			@Valid @RequestBody UpdateTaskDTO requestDTO) {
-		logger.info("Updating task with ID: {} with new details: {} ", id, requestDTO);
-		return ResponseEntity.ok(taskService.updateAnExistingTask(id, requestDTO));
+	@PutMapping("/{id}")
+	public ResponseEntity<UpdateTaskResponse> updateTask(@PathVariable String id,
+			@Valid @RequestBody UpdateTaskDTO updateTaskDTO) {
+		logger.info("Updating task with ID: {} with new details: {} ", id, updateTaskDTO);
+		return ResponseEntity.ok(taskService.updateAnExistingTask(id, updateTaskDTO));
 	}
 }

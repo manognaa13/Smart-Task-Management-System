@@ -10,29 +10,45 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * This class is the main entry point for the Task Management System Application to Start.
- * Enables asynchronous method execution, allowing methods annotated with to run in a separate thread.
- * Enables support for scheduled tasks, allowing methods annotated with @Scheduled to be executed at fixed intervals or according to cron expressions.
- * It enables asynchronous processing via @link org.springframework.scheduling.annotation.Async @Async
- * and supports scheduled tasks with @link org.springframework.scheduling.annotation.EnableScheduling @EnableScheduling
- */
-
-/**
  * <p>
- * This application utilizes SLF4J for @logging, allowing for flexible @logging
- * configurations and support for various @logging frameworks.
+ * this class is the main entry point for the <strong>Task Management System
+ * Application</strong> to Start.
+ * </p>
+ * <p>
+ * Enables asynchronous method execution, allowing methods annotated with to run
+ * in a separate thread. Enables support for scheduled tasks, allowing methods
+ * annotated with <strong> @Scheduled </strong> to be executed at fixed
+ * intervals or according to cron expressions.
+ * </p>
+ * <p>
+ * It enables asynchronous processing via <strong> @Async </strong> and supports
+ * scheduled tasks with <strong> @EnableScheduling </strong>
+ * </p>
+ * 
+ * <p>
+ * this application utilizes <bold> SLF4J </bold> for <strong> @logging
+ * </strong>, allowing for flexible <bold> @logging </bold> configurations and
+ * support for various <strong> @logging </strong> frameworks.
  * </p>
  * <p>
  * 
- * @Logging Levels: - INFO: Used for general application flow and important
- *          events. - DEBUG: Used for detailed debugging information. - WARN:
- *          Used for potentially harmful situations. - ERROR: Used for error
- *          events that might still allow the application to continue running.
+ * @Logging
+ *          <p>
+ *          <strong>INFO:</strong> Used for general application flow and
+ *          important events.
  *          </p>
  *          <p>
- *          SLF4J @Logger is initialized for this class to log application
- *          startup events.
+ *          <strong>DEBUG:</strong> Used for detailed debugging information.
  *          </p>
+ *          <p>
+ *          <strong>WARN:</strong> Used for potentially harmful situations.
+ *          </p>
+ *          <p>
+ *          <strong>ERROR:</strong> Used for error events that might still allow
+ *          the application to continue running.
+ *          </p>
+ *          <strong>SLF4J @Logger is initialized for this class to log
+ *          application startup events.</strong>
  */
 
 @SpringBootApplication

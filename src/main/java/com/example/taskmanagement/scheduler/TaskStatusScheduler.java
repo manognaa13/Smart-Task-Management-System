@@ -21,9 +21,10 @@ import lombok.extern.slf4j.Slf4j;
 /**
  * @Service for scheduling and updating the status of tasks.
  * 
- *          This service periodically checks for tasks that are in the PENDING
- *          status and updates their status to IN_PROGRESS if they have been
- *          pending for more than 5 minutes.
+ *          this service periodically checks for tasks that are in the
+ *          <strong><em> PENDING </em></strong> status and updates their status
+ *          to <strong><em> IN_PROGRESS </em></strong> if they have been pending
+ *          for more than <em> 5 minutes </em>.
  */
 @Service
 @Slf4j
@@ -32,26 +33,28 @@ public class TaskStatusScheduler {
 	private static final Logger logger = LoggerFactory.getLogger(TaskStatusScheduler.class);
 
 	private TaskRepository taskRepository;
-	
+
 	private TaskService taskService;
 
 	/**
-	 * @Constructor for @TaskStatusScheduler
+	 * @Constructor for <strong> @TaskStatusScheduler </strong>
 	 * 
-	 * @param repository the @TaskRepository to be used for task operations
+	 * @param repository the <strong> @TaskRepository </strong> to be used for task
+	 *                   operations
 	 */
-	public TaskStatusScheduler(TaskRepository repository,
-			TaskService service) {
+	public TaskStatusScheduler(TaskRepository repository, TaskService service) {
 		this.taskRepository = repository;
 		this.taskService = service;
 	}
 
 	/**
-	 * @Scheduled method that runs every 60 seconds to update task statuses.
+	 * @Scheduled method that runs every <strong> 60 seconds </strong> to update
+	 *            task statuses.
 	 * 
-	 *            This method retrieves all tasks with a PENDING status and checks
-	 *            if they have been created for more than 5 minutes. If so, their
-	 *            status is updated to IN_PROGRESS.
+	 *            this method retrieves all tasks with a <strong> PENDING </strong>
+	 *            status and checks if they have been created for more than <strong>
+	 *            5 minutes </strong>. If so, their status is updated to <strong>
+	 *            IN_PROGRESS </strong>.
 	 */
 	@Scheduled(fixedRate = 60000)
 	@Transactional

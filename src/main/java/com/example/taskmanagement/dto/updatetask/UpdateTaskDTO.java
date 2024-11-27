@@ -2,6 +2,7 @@ package com.example.taskmanagement.dto.updatetask;
 
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
@@ -38,10 +39,11 @@ public class UpdateTaskDTO {
 
 	/**
 	 * Due date of the task. this class member is optional for updates and must be
-	 * in the @Future if provided.
+	 * in the <strong> @Future </strong> if provided.
 	 */
 	@Future(message = "Date must be in the Future.")
 	@JsonProperty(access = Access.READ_WRITE)
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
 	@Nullable
 	private LocalDate dueDate;
 }

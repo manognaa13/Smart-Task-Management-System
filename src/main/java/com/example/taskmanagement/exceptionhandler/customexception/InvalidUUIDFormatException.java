@@ -1,36 +1,44 @@
 package com.example.taskmanagement.exceptionhandler.customexception;
 
 /**
- * Custom exception class to handle invalid @UUID format errors.
+ * Custom exception class to handle invalid <strong> @UUID </strong> format
+ * errors.
  */
 public class InvalidUUIDFormatException extends RuntimeException {
 
 	private static final long serialVersionUID = 6946666981705161746L;
 
 	/**
-     * Constructs a new @InvalidUUIDFormatException with the specified detail message.
-     *
-     * @param message - the detail message which is saved for later retrieval by the getMessage() method.
-     */
+	 * Constructs a new <strong> @InvalidUUIDFormatException </strong> with the
+	 * specified detail message.
+	 *
+	 * @param message - the detail message which is saved for later retrieval by the
+	 *                <strong><em> getMessage() </em></strong> method.
+	 */
 	public InvalidUUIDFormatException(String message) {
 		super(message);
 	}
 
 	/**
-     * Constructs a new @InvalidUUIDFormatException with the specified detail message and cause.
-     *
-     * @param message - the detail message (which is saved for later retrieval by the getMessage() method).
-     * @param cause - the cause (which is saved for later retrieval by the getCause() method).
-     */
+	 * Constructs a new <strong> @InvalidUUIDFormatException </strong> with the
+	 * specified detail message and cause.
+	 *
+	 * @param message - the detail message (which is saved for later retrieval by
+	 *                the <strong><em> getMessage() </em></strong> method).
+	 * @param cause   - the cause (which is saved for later retrieval by the
+	 *                <strong><em> getCause() </em></strong> method).
+	 */
 	public InvalidUUIDFormatException(String message, Throwable cause) {
 		super(message, cause);
 	}
 
 	/**
-     * Constructs a new @InvalidUUIDFormatException with the specified cause.
-     *
-     * @param cause - the cause (which is saved for later retrieval by the getCause() method).
-     */
+	 * Constructs a new <strong> @InvalidUUIDFormatException </strong> with the
+	 * specified cause.
+	 *
+	 * @param cause - the cause (which is saved for later retrieval by the
+	 *              <strong><em> getCause() </em></strong> method).
+	 */
 	public InvalidUUIDFormatException(Throwable cause) {
 		super(cause);
 	}

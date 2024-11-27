@@ -1,6 +1,8 @@
 package com.example.taskmanagement.dto;
 
 import java.time.LocalDateTime;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
@@ -15,36 +17,56 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * data transfer object for @Task entity. this DTO is used for transferring task
- * data between the application layers.
+ * data transfer object for <strong> @Task </strong> entity. this <strong> DTO
+ * </strong> is used for transferring task data between the application layers.
  */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class TaskDTO {
 
-	private String id; // unique identifier for the task
+	/**
+	 * unique identifier for the task
+	 */
+	private String id;
 
+	/**
+	 * Title of the task
+	 */
 	@NotNull(message = "Title must not be Null")
 	@NotEmpty(message = "Title must not be Empty")
 	@NotBlank(message = "Title is mandatory")
 	@Size(min = 10, max = 60, message = "Title must be atleast 10 characters " + "& must not exceed 60 characters.")
 	@JsonProperty(required = true)
-	private String title; // Title of the task
+	private String title;
 
+	/**
+	 * description of the task
+	 */
 	@NotNull(message = "Description must not be Null")
 	@NotEmpty(message = "Description must not be Empty")
 	@NotBlank(message = "Description is mandatory")
 	@Size(min = 25, max = 255, message = "Description must be atleast 25 characters "
 			+ "& must not exceed 255 characters.")
 	@JsonProperty(required = true)
-	private String description; // description of the task
+	private String description;
 
+	/**
+	 * Due date of the task
+	 */
 	@Future(message = "Date must be in the Future.")
 	@JsonProperty(access = Access.READ_WRITE, required = true)
-	private String dueDate; // Due date of the task
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+	private String dueDate;
 
-	private String status; // current status of the task (e.g., "Pending", "In_Progress", "Completed")
+	/**
+	 * <p>
+	 * current status of the task (e.g., <strong><em> "Pending" </em></strong>,
+	 * <strong><em> "In_Progress" </strong></em>, <strong><em> "Completed"
+	 * </strong></em>)
+	 * </p>
+	 */
+	private String status;
 
 	/**
 	 * Will be Ignored in API Response
@@ -61,8 +83,8 @@ public class TaskDTO {
 	private LocalDateTime taskUpdatedAt;
 
 	/**
-	 * constructor for a @TaskDTO without timestamps. this can be useful when
-	 * retrieving tasks form database.
+	 * constructor for a <strong> @TaskDTO </strong> without timestamps. this can be
+	 * useful when retrieving tasks form database.
 	 *
 	 * @param id          unique identifier for the task
 	 * @param title       Title of the task

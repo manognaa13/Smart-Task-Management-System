@@ -2,6 +2,7 @@ package com.example.taskmanagement.dto.createtask;
 
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
@@ -19,6 +20,9 @@ import lombok.Data;
 @Data
 public class CreateTaskDTO {
 
+	/**
+	 * Title of the task. must be between 10 and 60 characters.
+	 */
 	@NotNull(message = "Title must not be Null")
 	@NotEmpty(message = "Title must not be Empty")
 	@NotBlank(message = "Title is mandatory")
@@ -26,6 +30,9 @@ public class CreateTaskDTO {
 	@JsonProperty(required = true)
 	private String title;
 
+	/**
+	 * description of the task must be between 25 and 255 characters.
+	 */
 	@NotNull(message = "Description must not be Null")
 	@NotEmpty(message = "Description must not be Empty")
 	@NotBlank(message = "Description is mandatory")
@@ -34,8 +41,13 @@ public class CreateTaskDTO {
 	@JsonProperty(required = true)
 	private String description;
 
+	/**
+	 * Due date of the task. this class member is optional for creating a new task
+	 * and must be in the @Future if provided.
+	 */
 	@Future(message = "Date must be in the Future.")
 	@JsonProperty(access = Access.READ_WRITE)
-	@Nullable // @Nullable by default, so @Nullable is not necessary
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+	@Nullable
 	private LocalDate dueDate;
 }
