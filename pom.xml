@@ -113,6 +113,7 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		
 	</dependencies>
 
 	<profiles>
@@ -169,6 +170,7 @@
 				</configuration>
 			</plugin>
 		</plugins>
+		<finalName>taskmanagement-backend-app</finalName>
 	</build>
 
 </project>

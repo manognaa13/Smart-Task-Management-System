@@ -96,6 +96,10 @@ public class GlobalExceptionHandler {
 		for (FieldError error : methodArgumentNotValidException.getBindingResult().getFieldErrors()) {
 			errors.put(error.getField(), error.getDefaultMessage());
 		}
+		methodArgumentNotValidException.getBindingResult().getAllErrors().forEach(error -> {
+			String defaultMessage = error.getDefaultMessage();
+			errors.put("errorMessage", defaultMessage);
+		});
 		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errors);
 	}
 
@@ -111,7 +115,7 @@ public class GlobalExceptionHandler {
 		Map<String, Object> errorDetails = new HashMap<>();
 		errorDetails.put("response", response);
 		errorDetails.put("message",
-				"The requested Static Resource could not be found on the server. Please check the resource URL and try again.");
+				"The requested Static Resource could not be found on the server. Please check the resource URL and try again");
 		errorDetails.put("Requested URL", servletRequest.getRequestURI().toString());
 		errorDetails.put("Requested URL", servletRequest.getRequestURL().toString());
 		return new ResponseEntity<>(errorDetails, HttpStatus.NOT_FOUND);
@@ -128,7 +132,7 @@ public class GlobalExceptionHandler {
 				noHandlerFoundException.getLocalizedMessage().toString(), LocalDateTime.now(ZoneId.systemDefault()));
 		Map<String, Object> errorDetails = new HashMap<>();
 		errorDetails.put("response", response);
-		errorDetails.put("message", "The requested endpoint does not exist.");
+		errorDetails.put("message", "The requested endpoint does not exist");
 		errorDetails.put("Requested URL", servletRequest.getRequestURI().toString());
 		errorDetails.put("Requested URL", servletRequest.getRequestURL().toString());
 		return new ResponseEntity<>(errorDetails, HttpStatus.NOT_FOUND);
@@ -143,7 +147,7 @@ public class GlobalExceptionHandler {
 	public final ResponseEntity<Map<String, Object>> handleHttpMessageNotReadableException(
 			HttpMessageNotReadableException httpMessageNotReadableException, HttpServletRequest servletRequest) {
 		ErrorResponse response = new ErrorResponse(HttpStatus.BAD_REQUEST, HttpStatus.BAD_REQUEST.value(),
-				httpMessageNotReadableException.getLocalizedMessage().toString(),
+				"Request body is missing or malformed. Please provide Valid Input",
 				LocalDateTime.now(ZoneId.systemDefault()));
 		Map<String, Object> errorDetails = new HashMap<>();
 		errorDetails.put("response", response);

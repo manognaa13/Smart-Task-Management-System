@@ -10,4 +10,10 @@ docker-compose up --build
 
 docker-compose down
 
+docker exec -it <taskmanagement-db-1> <your-db-container-id> /bin/bash
+
+mysql -u root -p : This will ask for root Password on the next line
+
+Enter your Password and connect to MySQL in Docker
+
 Default Profile is PROD Environment.

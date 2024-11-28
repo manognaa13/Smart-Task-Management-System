@@ -2,6 +2,7 @@ package com.example.taskmanagement.dto.updatetask;
 
 import java.time.LocalDate;
 
+import com.example.taskmanagement.customvalidationannotation.AtLeastOneFieldNotNull;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
@@ -12,10 +13,16 @@ import jakarta.validation.constraints.Size;
 import lombok.Data;
 
 /**
+ * <p>
  * data transfer object for updating an existing task. this DTO is used to
  * encapsulate the fields that can be updated for a task.
+ * </p>
+ * <p>
+ * <strong> @AtLeastOneFieldNotNull Constraint Validator. Validation for Fields,
+ * atleast 1 field should be present for update.</strong>
  */
 @Data
+@AtLeastOneFieldNotNull(message = "At Least one field must be provided to Update.")
 public class UpdateTaskDTO {
 
 	/**
@@ -41,7 +48,7 @@ public class UpdateTaskDTO {
 	 * Due date of the task. this class member is optional for updates and must be
 	 * in the <strong> @Future </strong> if provided.
 	 */
-	@Future(message = "Date must be in the Future.")
+	@Future(message = "Date must be in the Future")
 	@JsonProperty(access = Access.READ_WRITE)
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
 	@Nullable

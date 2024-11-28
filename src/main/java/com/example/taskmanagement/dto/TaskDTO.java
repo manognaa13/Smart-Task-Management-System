@@ -9,8 +9,6 @@ import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
 import jakarta.validation.constraints.Future;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -33,9 +31,7 @@ public class TaskDTO {
 	/**
 	 * Title of the task
 	 */
-	@NotNull(message = "Title must not be Null")
-	@NotEmpty(message = "Title must not be Empty")
-	@NotBlank(message = "Title is mandatory")
+	@NotBlank(message = "Title is Mandatory")
 	@Size(min = 10, max = 60, message = "Title must be atleast 10 characters " + "& must not exceed 60 characters.")
 	@JsonProperty(required = true)
 	private String title;
@@ -43,9 +39,7 @@ public class TaskDTO {
 	/**
 	 * description of the task
 	 */
-	@NotNull(message = "Description must not be Null")
-	@NotEmpty(message = "Description must not be Empty")
-	@NotBlank(message = "Description is mandatory")
+	@NotBlank(message = "Description is Mandatory")
 	@Size(min = 25, max = 255, message = "Description must be atleast 25 characters "
 			+ "& must not exceed 255 characters.")
 	@JsonProperty(required = true)
@@ -54,7 +48,7 @@ public class TaskDTO {
 	/**
 	 * Due date of the task
 	 */
-	@Future(message = "Date must be in the Future.")
+	@Future(message = "Date must be in the Future")
 	@JsonProperty(access = Access.READ_WRITE, required = true)
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
 	private String dueDate;
