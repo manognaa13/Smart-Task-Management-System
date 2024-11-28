@@ -21,19 +21,19 @@
 
 <p align="center">
   <a href="https://skillicons.dev">
-    <img src="https://skillicons.dev/icons?i=aws,docker,github,git,vscode,eclipse"/>
+    <img src="https://skillicons.dev/icons?i=aws,docker,github,git,vscode,eclipse,javascript"/>
   </a>
 </p>
 
 <p align="center">
   <a href="https://skillicons.dev">
-    <img src="https://skillicons.dev/icons?i=java,maven,spring,hibernate,rabbitmq,kafka"/>
+    <img src="https://skillicons.dev/icons?i=java,maven,spring,hibernate,rabbitmq,kafka,typescript"/>
   </a>
 </p>
 
 <p align="center">
   <a href="https://skillicons.dev">
-    <img src="https://skillicons.dev/icons?i=postman,postgres,mysql,md,html,css,bootstrap,angular"/>
+    <img src="https://skillicons.dev/icons?i=postman,postgres,mysql,md,html,css,mongodb,bootstrap,angular,idea,prometheus"/>
   </a>
 </p>
 
@@ -102,13 +102,21 @@ The system allows users to **`Create`**, **`Read`**, **`Update`**, **`Delete`** 
    - This ensures the flexibility to refactor entity classes without impacting external clients.
 
 8. **`Interceptors Concept :- `**
-9. **`Authentication & Authorization Using Spring Security, JWT - Jason Web Tokens :- `**
 
-10. **`Project Lombok :- `**
+   - A **`Request Interceptor`** in Spring Boot is a component that intercepts incoming HTTP requests before they are processed by the controller.
+   - It allows you to perform **`Pre-Processing Tasks`**, such as **`Logging`**, **`Authentication`**, **`Validation`**, or Modifying the request/response, before passing it to the controller.
 
-    - Project **`Lombok`** is a **`Java Library`** that reduces boilerplate code, making code easier to read, maintain, and less error-prone.
-    - **`Lombok`** uses **`Annotations`** to replace **`Repetitive`**, **`Tedious`**, or **`Boilerplate`** Java code.
-    - For example, you can avoid writing **`Constructors`** with no arguments, **`toString()`**, **`equals()`**, and **`hashCode()`** methods by adding a few **`Annotations`**.
+- **`Example Use Cases :-`**
+  - **Logging Incoming Requests**
+  - **Authentication and Authorization**
+  - **Adding Custom Headers**
+  - **Request/Response Modification**
+
+9. **`Project Lombok :- `**
+
+   - Project **`Lombok`** is a **`Java Library`** that reduces boilerplate code, making code easier to read, maintain, and less error-prone.
+   - **`Lombok`** uses **`Annotations`** to replace **`Repetitive`**, **`Tedious`**, or **`Boilerplate`** Java code.
+   - For example, you can avoid writing **`Constructors`** with no arguments, **`toString()`**, **`equals()`**, and **`hashCode()`** methods by adding a few **`Annotations`**.
 
 <br>
 
@@ -135,8 +143,13 @@ The system allows users to **`Create`**, **`Read`**, **`Update`**, **`Delete`** 
 
 <p align="center">
   <a href="https://skillicons.dev">
-  <img src="https://skillicons.dev/icons?i=java,eclipse,hibernate,maven,md,mysql,postman,spring&theme=light"/>
+  <img src="https://skillicons.dev/icons?i=java,eclipse,hibernate,maven,md,mysql&theme=light"/>
   </a>
+</p>
+
+<p align="center">
+<a href="https://skillicons.dev">
+<img src="https://skillicons.dev/icons?i=idea,vscode,docker,aws,spring,postman">
 </p>
 
 <hr>
