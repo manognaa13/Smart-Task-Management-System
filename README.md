@@ -682,6 +682,196 @@ mvn test
 <br>
 <hr>
 
+# **`Application Deployment Documentation`**
+
+## **Table of Contents**
+
+1. **`Prerequisites`**
+2. **`Creating an RDS MySQL Instance`**
+3. **`Creating an EC2 Instance`**
+4. **`Configuring Security Groups`**
+5. **`Connecting to EC2 Instance`**
+6. **`Installing Java JDK`**
+7. **`Transferring Files to EC2`**
+8. **`Configuring Application Properties`**
+9. **`Running the Application`**
+10. **`API Endpoints`**
+11. **`Conclusion`**
+
+## **`Prerequisites`**
+
+- **An AWS Account Free tier.**
+- **Basic knowledge of AWS services (EC2, RDS).**
+- **Local system with PuTTY and WinSCP installed.**
+
+## **`Creating an RDS MySQL Instance`**
+
+- **Log in to the AWS Management Console.**
+- **Navigate to the RDS service.**
+- **Click on "Create database."**
+- **Select "Standard Create."**
+- **Choose "MySQL" as the database engine.**
+- **Select the version you want to use.**
+- **Configure the DB instance settings :-**
+  - **DB Instance Identifier :** **`your-db-instance-name`**
+  - **Master username :** **`your-username`**
+  - **Master password :** **`your-password`**
+  - **DB Instance Class:** **`Choose an appropriate instance class (e.g., db.t2.micro for free tier).`**
+- **Configure the settings for DB instance size, storage, etc. Select Free Tier**
+- **Click "Create database" and wait for the instance to be available.**
+- **Note the RDS endpoint URL, which will be used in the application configuration.**
+
+## **`Creating an EC2 Instance`**
+
+- **Navigate to the EC2 service in the AWS Management Console.**
+- **Click on "Launch Instance."**
+- **Choose an Amazon Machine Image (AMI), e.g., Amazon Linux 2.**
+- **Select an instance type (e.g., t2.micro for free tier).**
+- **Configure the instance details as needed.**
+- **Add storage if necessary.(default is usually sufficient)**
+- **Configure security group :**
+  - **Create a new security group or select an existing one.**
+  - **Allow inbound traffic on port 8090 (custom port for your application).**
+  - **Allow inbound traffic on port 3306 for MySQL (for RDS access).**
+- **Review and launch the instance.**
+- **Create a new key pair, download the `.pem` file, and save it securely.**
+
+## **`Configuring Security Groups`**
+
+- **Navigate to "Security Groups" in the EC2 dashboard.**
+- **Select the security group associated with your EC2 instance.**
+- **Click on "Inbound rules."**
+- **Click on "Edit inbound rules."**
+- **Add a rule for custom TCP `(port 8090)` and set the source to "`Anywhere or IPv4`" `(0.0.0.0/0)`.**
+- **Ensure that the RDS instance's security group allows inbound traffic from the EC2 instance.**
+
+## **`Connecting to EC2 Instance`**
+
+- **Convert the `.pem` key to `.ppk` format using `PuTTYgen.`**
+- **Open PuTTY and enter the `public IPv4 DNS` of your `EC2` instance on the Host Name or IP Address on PuTTY.**
+- **Under `"Connection" > "SSH" > "Auth" > "Credentials"`, browse for your .ppk file.**
+- **Click "Open" to connect to the instance.**
+- **Log in as `ec2-user` (or the appropriate user for your `AMI`).**
+
+## **`Installing Java JDK`**
+
+- **Install Amazon Corretto (Java JDK) 17 or Higher**
+
+```sh
+sudo dnf install java-17-amazon-corretto
+```
+
+- **Verify the Installation**
+
+```sh
+java -version
+```
+
+## **`Transferring Files to EC2`**
+
+- **Open `WinSCP` and enter the public `IPv4 DNS of your EC2 instance`.**
+- **Select `"SCP"` as the file protocol.**
+- **Use `ec2-user` as the username and specify the path or select from the directory, your .ppk file for authentication.**
+- **Connect to the instance and transfer your `.jar` file to a desired directory (e.g., `/home/ec2-user/`).**
+
+## **`Configuring Application Properties`**
+
+- **Update the following properties with your RDS details :-**
+
+```sh
+spring.datasource.url=jdbc:mysql://<RDS-ENDPOINT>:3306/your_database_name
+spring.datasource.username=your-username_rds
+spring.datasource.password=your-password_rds
+```
+
+## **`Running the Application`**
+
+- **Once you have copied your JAR file to the EC2 instance and configured the application properties, you can run the application as follows :**
+
+1. **Navigate to the Directory :**
+
+   - **Open your SSH terminal (PuTTY) and navigate to the directory where you copied the JAR file**
+
+   ```sh
+   Type below Command to list the files in the Amazon Linux ec2-user terminal
+   ls
+   ```
+
+2. **Run the Application :**
+
+   - **Use the `nohup` command to run your JAR file in the background, allowing it to continue running even after you disconnect from the SSH session :**
+
+   ```sh
+   nohup java -jar your_jar_backend_application_name.jar &
+   cat nohup.out
+   ```
+
+   - **`nohup`: This command runs the process immune to hangups.**
+   - **`java -jar your-application.jar`: This command starts your Spring Boot application.**
+   - **`nohup.out`: Standard output and Standard error to the `nohup.out` file.**
+   - **`&`: This runs the command in the background.**
+
+3. **Check Application Logs :**
+
+   - **You can view the application logs to ensure it is running correctly :**
+
+   ```sh
+   tail -f nohup.out
+   ```
+
+## **API Endpoints Documentation**
+
+**Documenting your API endpoints is crucial for users and developers who will interact with your application.**
+
+### **`API Endpoints`**
+
+- **`Base URL`** **`http://ec2-65-0-106-182.ap-south-1.compute.amazonaws.com:8090`**
+
+### **`EndPoints`**
+
+| `HTTP Method` |                   `API Endpoint`                   |            `Description`            |
+| :-----------: | :------------------------------------------------: | :---------------------------------: |
+|    **GET**    |        **`http://<baseurl>:8090/v1/tasks`**        |         Retrieve all tasks          |
+|    **GET**    |     **`http://<baseurl>:8090/v1/tasks/{id}`**      |     Retrieve a task by its UUID     |
+|   **POST**    |        **`http://<baseurl>:8090/v1/tasks`**        |          Create a new Task          |
+|    **PUT**    |     **`http://<baseurl>:8090/v1/tasks/{id}`**      | Update an existing Task by its UUID |
+|  **DELETE**   |     **`http://<baseurl>:8090/v1/tasks/{id}`**      | Delete an existing Task by its UUID |
+|   **PATCH**   | **`http://<baseurl>:8090/v1/tasks/{id}/complete`** |       Mark a task as complete       |
+
+## **`Test EndPoints AWS Live`**
+
+- **`GET - Retrieve all tasks`**
+
+  ```sh
+  curl -X GET http://http://ec2-65-0-106-182.ap-south-1.compute.amazonaws.com:8090/v1/tasks
+  ```
+
+  ```sh
+  Response
+  [
+   {
+      "id": "4f652b56-8410-46a4-a9b4-d7de9a96e09c",
+      "title": "Updated Task Title",
+      "description": "Updated description of the task",
+      "dueDate": "2024-12-09",
+      "status": "COMPLETED"
+   },
+   {
+      "id": "a6adfa05-d1fa-470a-b99c-b703ba39b19a",
+      "title": "Wellness360 Software Engineering Intern.",
+      "description": "Wellness360 Software Engineer Intern Last and Final Task EC2 Instance completed.",
+      "dueDate": "2024-12-05",
+      "status": "COMPLETED"
+   }
+  ]
+  ```
+
+### **`MS Word File for Complete Documentation with ScreenShots`**
+
+- **[For Complete Documentation](https://1drv.ms/w/c/11be4e85e9cf4010/EaXNvamMCZZIqaYKHlhHQqcBMfWKQe6xpoQWyZtvDZipeA?e=mw4l6T)**
+
+<br>
+
 # **`Contribution`**
 
 ### Contributions are welcome! Please fork the repository and submit a pull request for review. Connect me on **[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=flat&logo=linkedin&logoColor=navy)](https://in.linkedin.com/in/bhimavarapu-manoj-kumar-reddy)**
