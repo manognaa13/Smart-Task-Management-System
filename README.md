@@ -843,7 +843,7 @@ spring.datasource.password=your-password_rds
 - **`GET - Retrieve all tasks`**
 
   ```sh
-  curl -X GET http://http://ec2-65-0-106-182.ap-south-1.compute.amazonaws.com:8090/v1/tasks
+  curl -X GET http://ec2-65-0-106-182.ap-south-1.compute.amazonaws.com:8090/v1/tasks
   ```
 
   ```sh
