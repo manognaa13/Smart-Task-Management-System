@@ -295,10 +295,6 @@ The system allows users to **`Create`**, **`Read`**, **`Update`**, **`Delete`** 
    - Improve HAL Explorer's capabilities to support more complex interactions and visualizations.
    - Provide comprehensive documentation and examples for developers to leverage HATEOAS effectively.
 
-9. **`Monitoring`**
-
-   - **`Production Logging`** :- Consider integrating monitoring tools (e.g., Prometheus, Grafana) to monitor database performance and health.
-
 **`Example HAL Representation`**
 
 ```sh
@@ -324,41 +320,45 @@ A typical HAL response will look as follows
   - Self-Descriptive API :- HAL provides a standard format for representing resources and their relationships, making the API more understandable.
   - Improved Usability :- Developers can leverage HAL Explorer to visualize API endpoints and navigate through resources interactively.
 
-9. **`Spring Boot Starter Actuator`**
+9. **`Monitoring`**
 
-   - To Implement **`Spring Boot Actuator`**, it adds several **`Production Grade`** service to the Application. It mainly exposes operational information about the running application like health, metrics, info, dump, env, etc.
+   - **`Production Logging`** :- Consider integrating monitoring tools (e.g., Prometheus, Grafana) to monitor database performance and health.
 
-10. **`Model Mapper, MapStruct or Dozer`**
+10. **`Spring Boot Starter Actuator`**
+
+    - To Implement **`Spring Boot Actuator`**, it adds several **`Production Grade`** service to the Application. It mainly exposes operational information about the running application like health, metrics, info, dump, env, etc.
+
+11. **`Model Mapper, MapStruct or Dozer`**
 
     - Implement Object mapping Frameworks with atleast Mapping tool.
     - To simplify the process of converting between different object types, we will implement an object mapping framework.
     - This will enable efficient and flexible data transformation between entities, DTOs, and other objects.
 
-11. **`Stored Procedure in MySQL`**
+12. **`Stored Procedure in MySQL`**
 
     - To improve database performance and encapsulate complex logic, we will utilize stored procedures in MySQL.
     - Stored procedures allow us to define a set of SQL statements that can be executed as a single unit, reducing the overhead of multiple queries.
     - Can use this for Security purposes also.
 
-12. **`Docker Image for the Application`**
+13. **`Docker Image for the Application`**
 
     - To simplify the deployment process and ensure a consistent environment, we will create a Docker image for the application.
     - This will enable users to run the application in a containerized environment, reducing the risk of compatibility issues and making it easier to deploy the application.
 
-13. **`Logging Configuration with SLF4J and Logback`**
+14. **`Logging Configuration with SLF4J and Logback`**
 
     - To enhance logging capabilities in our application, we will utilize SLF4J as the logging facade and Logback as the logging implementation.
     - This configuration will allow us to maintain separate log files for production and development environments, facilitating easier debugging and monitoring.
     - As of now there are no seperate logs folders for the production and development environment. Implement it in future.
 
-14. **`Streak and Points System for High-Priority Tasks`**
+15. **`Streak and Points System for High-Priority Tasks`**
 
     - **`Major Feature for the Application`**
     - To encourage users to complete high-priority tasks, we will implement a streak and points system.
     - Users will earn points and maintain a streak when they complete a minimum of three high-priority tasks each day.
     - This system will motivate users to stay productive and engaged with their tasks.
 
-15. **`Email Notification Service`**
+16. **`Email Notification Service`**
 
     - In the future, I plan to implement an Email Notification Service to enhance user experience by notifying users when a new task is created and when a task is marked as complete.
     - This feature will utilize either Google SMTP or Amazon Simple Email Service (SES) for sending emails.
@@ -369,7 +369,7 @@ A typical HAL response will look as follows
 <br>
 <hr>
 
-### **`Example Package Structure`**
+### **`Package Structure`**
 
 Here's how the package structure might look
 
@@ -497,7 +497,7 @@ spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
 
 - For more go to **`application-dev.properties`** in the project [here](https://github.com/BHIMAVARAPU-MANOJ-KUMAR/Task-Management-System-Using-Spring-Boot/blob/main/src/main/resources/application-dev.properties)
 
-3. **`Build the Project`**
+4. **`Build the Project`**
 
 - **Maven Command to Build Project**
 
@@ -505,7 +505,7 @@ spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
 mvn clean install
 ```
 
-4. **`Package the Application`**
+5. **`Package the Application`**
 
 - **Maven Command to Package**
 
@@ -513,7 +513,7 @@ mvn clean install
 mvn clean package
 ```
 
-5. **`Run the Application`**
+6. **`Run the Application`**
 
 - **Maven Command to Run the Application**
 
@@ -521,13 +521,13 @@ mvn clean package
 mvn spring-boot:run
 ```
 
-6. **`Access the Application`**
+7. **`Access the Application`**
 
 ```sh
 `http://localhost:8090/v1/tasks/**`
 ```
 
-7. **`Run the Application on Development Environment`**
+8. **`Run the Application on Development Environment`**
 
 ```sh
 mvn spring-boot:run -Dspring-boot.run.arguments="--spring.profiles.active=dev"
@@ -535,13 +535,13 @@ mvn spring-boot:run -Dspring-boot.run.arguments="--spring.profiles.active=dev"
 
 - **Access H2 Database - `http://localhost:8080/h2-console`**
 
-8. **`Run the Application on Production Environment`**
+9. **`Run the Application on Production Environment`**
 
 ```sh
 mvn spring-boot:run -Dspring-boot.run.arguments="--spring.profiles.active=prod"
 ```
 
-9. **`Testing the Application`**
+10. **`Testing the Application`**
 
 - **Run Unit Tests**
 
@@ -561,6 +561,123 @@ mvn test
 |    **PUT**    |     **`/v1/tasks/{id}`**      | Update an existing Task by its UUID |
 |  **DELETE**   |     **`/v1/tasks/{id}`**      | Delete an existing Task by its UUID |
 |   **PATCH**   | **`/v1/tasks/{id}/complete`** |       Mark a task as complete       |
+
+- **Test the APIs (These are just an Example representation)**
+
+  - **`GET - Retrieve all tasks`**
+
+  ```sh
+  curl -X GET http://localhost:8090/v1/tasks
+  ```
+
+  ```sh
+  Response
+  [
+      {
+         "id": "a6adfa05-d1fa-470a-b99c-b703ba39b19a",
+         "title": "Wellness360 Software Engineering Intern.",
+         "description": "Wellness360 Software Engineer Intern Last and Final Task EC2 Instance completed.",
+         "dueDate": "2024-12-05",
+         "status": "PENDING"
+      }
+  ]
+  ```
+
+  - **`GET - Retrieve a Task by its UUID`**
+
+  ```sh
+  curl -X GET http://localhost:8090/v1/tasks/a6adfa05-d1fa-470a-b99c-b703ba39b19a
+  ```
+
+  ```sh
+  Response
+  {
+      "id": "a6adfa05-d1fa-470a-b99c-b703ba39b19a",
+      "title": "Wellness360 Software Engineering Intern.",
+      "description": "Wellness360 Software Engineer Intern Last and Final Task EC2 Instance completed.",
+      "dueDate": "2024-12-05",
+      "status": "PENDING"
+  }
+  ```
+
+  - **`POST - Create a New Task`**
+
+  ```sh
+  curl -X POST http://localhost:8090/v1/tasks -H "Content-Type: application/json" -d '{"title": "New Task. New Task Title.", "description": "Description of the new task. Description of the new Task.", "dueDate": "2024-12-31"}'
+  ```
+
+  ```sh
+  Response
+  {
+      "id": "18e51f3b-f256-4e93-aa4f-731e12705451",
+      "title": "New Task. New Task Title.",
+      "description": "Description of the new task. Description of the new Task.",
+      "dueDate": "2024-12-31",
+      "status": "PENDING"
+  }
+  ```
+
+  - **`DELETE - Delete an existing task by its UUID`**
+
+  ```sh
+  curl -X DELETE http://localhost:8090/v1/tasks/18e51f3b-f256-4e93-aa4f-731e12705451
+  ```
+
+  ```sh
+  Response
+
+  204 No Content. It's actually Success message. If you try to retrieve the task with the deleted UUID it gives us 404 Not Found.
+
+  {
+      "httpStatus": "NOT_FOUND",
+      "httpStatusCode": 404,
+      "errorMessage": "Task Not Found with the given UUID : 18e51f3b-f256-4e93-aa4f-731e12705451",
+      "timeStamp": "2024-11-29 10:25:43"
+  }
+  ```
+
+  - **`PATCH - Mark an existing Task as Completed Status`**
+
+  ```sh
+  curl -X PATCH http://localhost:8090/v1/tasks/4f652b56-8410-46a4-a9b4-d7de9a96e09c/complete
+  ```
+
+  ```sh
+  Response
+  {
+      "Message": "Task has been Marked as Completed Successfully.",
+      "task": {
+            "id": "4f652b56-8410-46a4-a9b4-d7de9a96e09c",
+            "title": "New Task. New Task Title.",
+            "description": "Description of the new task. Description of the new Task.",
+            "dueDate": "2024-12-31",
+            "status": "COMPLETED"
+  }
+  }
+  ```
+
+  - **`PUT - Update an existing Task by its UUID`**
+
+  ```sh
+  curl -X PUT http://localhost:8090/v1/tasks/4f652b56-8410-46a4-a9b4-d7de9a96e09c \
+  -H "Content-Type: application/json" \
+  -d '{
+  "title": "Updated Task Title",
+  "description": "Updated description of the task",
+  "dueDate": "2024-12-09"
+  }'
+  ```
+
+  ```sh
+  Response
+  {
+      "id": "4f652b56-8410-46a4-a9b4-d7de9a96e09c",
+      "title": "Updated Task Title",
+      "description": "Updated description of the task",
+      "status": "COMPLETED",
+      "dueDate": "2024-12-09"
+  }
+  ```
 
 <br>
 <hr>
