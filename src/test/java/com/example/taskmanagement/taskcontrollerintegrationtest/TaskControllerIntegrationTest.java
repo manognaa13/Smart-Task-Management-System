@@ -9,8 +9,10 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import java.time.LocalDate;
 import java.util.UUID;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,14 +21,17 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 
 import com.example.taskmanagement.TaskManagementSystemApplication;
+import com.example.taskmanagement.controller.TaskController;
 import com.example.taskmanagement.dto.updatetask.UpdateTaskDTO;
 import com.example.taskmanagement.dto.updatetask.UpdateTaskResponse;
 import com.example.taskmanagement.enums.Status;
 import com.example.taskmanagement.exceptionhandler.customexception.InvalidUUIDFormatException;
 import com.example.taskmanagement.exceptionhandler.customexception.TaskNotFoundException;
 import com.example.taskmanagement.service.taskservice.TaskService;
+
 
 @SpringBootTest(classes = TaskManagementSystemApplication.class)
 @AutoConfigureMockMvc
@@ -38,12 +43,13 @@ public class TaskControllerIntegrationTest {
 	@MockBean
 	private TaskService taskService;
 	
-//	@InjectMocks
-//	private TaskController taskController;
-
+	@InjectMocks	
+	private TaskController taskController;
+	
 	@BeforeEach
 	public void setup() {
 		MockitoAnnotations.openMocks(this);
+		Assertions.assertNotNull(mockMvc);
 	}
 	
 	@Test
@@ -51,9 +57,9 @@ public class TaskControllerIntegrationTest {
 		mockMvc.perform(
 				post("/v1/tasks")
 				.contentType(MediaType.APPLICATION_JSON)
-				.content("{\"title\":\"Sample Task\",\"description\":\"This is a sample task description.\",\"dueDate\":\"2024-12-02\"}"))
-		.andExpect(status().isCreated());
-		
+				.content("{\"title\":\"Sample Task\",\"description\":\"This is a sample task description.\",\"dueDate\":\"2024-12-05\"}"))
+		.andExpect(status().isCreated()).andDo(MockMvcResultHandlers.print())
+		.andReturn();
 	}
 	
 	@Test

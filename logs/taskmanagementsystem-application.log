@@ -1,347 +1,668 @@
-2024-11-29 10:09:34.75 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
-2024-11-29 10:09:34.86 [restartedMain] INFO  c.e.t.TaskManagementSystemApplication - Starting TaskManagementSystemApplication using Java 21 with PID 14220 (H:\Spring Examples, Guides, Projects and Academy\taskmanagement\target\classes started by MANOJ REDDY in H:\Spring Examples, Guides, Projects and Academy\taskmanagement)
-2024-11-29 10:09:34.86 [restartedMain] INFO  c.e.t.TaskManagementSystemApplication - The following 1 profile is active: "prod"
-2024-11-29 10:09:34.97 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2024-11-29 10:09:34.97 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2024-11-29 10:09:36.34 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2024-11-29 10:09:36.45 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 93 ms. Found 1 JPA repository interface.
-2024-11-29 10:09:37.48 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8090 (http)
-2024-11-29 10:09:37.50 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8090"]
-2024-11-29 10:09:37.50 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
-2024-11-29 10:09:37.50 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.31]
-2024-11-29 10:09:37.56 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-2024-11-29 10:09:37.57 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2584 ms
-2024-11-29 10:09:37.62 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
-2024-11-29 10:09:38.37 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@603716c7
-2024-11-29 10:09:38.37 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
-2024-11-29 10:09:38.42 [restartedMain] INFO  o.s.b.a.h.H2ConsoleAutoConfiguration - H2 console available at '/h2-console'. Database available at 'jdbc:mysql://taskmanagementsystem.cju6awocwpee.ap-south-1.rds.amazonaws.com:3306/taskmanagementdb?createDatabaseIfNotExist=true&useSSL=false&useUnicode=yes&characterEncoding=UTF-8&allowPublicKeyRetrieval=true'
-2024-11-29 10:09:38.60 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
-2024-11-29 10:09:38.67 [restartedMain] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.10.Final
-2024-11-29 10:09:38.75 [restartedMain] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
-2024-11-29 10:09:39.03 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
-2024-11-29 10:09:40.47 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2024-11-29 10:09:40.67 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2024-11-29 10:09:41.30 [restartedMain] INFO  c.e.t.s.SchedulerConfig - Configuring ThreadPoolTaskScheduler...
-2024-11-29 10:09:41.30 [restartedMain] INFO  c.e.t.s.SchedulerConfig - ThreadPoolTaskScheduler configured with pool size: 5 
-2024-11-29 10:09:41.41 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2024-11-29 10:09:42.35 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
-2024-11-29 10:09:42.38 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8090"]
-2024-11-29 10:09:42.46 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8090 (http) with context path ''
-2024-11-29 10:09:42.52 [restartedMain] INFO  c.e.t.TaskManagementSystemApplication - Started TaskManagementSystemApplication in 9.028 seconds (process running for 10.282)
-2024-11-29 10:09:42.55 [restartedMain] INFO  c.e.t.TaskManagementSystemApplication - Task Management System Application started successfully.
-2024-11-29 10:09:42.65 [TaskScheduler-1] INFO  c.e.t.scheduler.TaskStatusScheduler - Checking for tasks to update status...
-2024-11-29 10:09:42.66 [TaskScheduler-1] INFO  c.e.t.s.impltaskservice.ITaskService - Fetching tasks with status: PENDING 
-2024-11-29 10:09:43.01 [TaskScheduler-1] INFO  c.e.t.s.impltaskservice.ITaskService - Found 0 tasks with status: PENDING 
-2024-11-29 10:09:43.01 [TaskScheduler-1] INFO  c.e.t.scheduler.TaskStatusScheduler - Found 0 pending tasks. 
-2024-11-29 10:09:43.01 [TaskScheduler-1] INFO  c.e.t.scheduler.TaskStatusScheduler - Task status update process completed.
-2024-11-29 10:10:11.54 [http-nio-8090-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
-2024-11-29 10:10:11.54 [http-nio-8090-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
-2024-11-29 10:10:11.54 [http-nio-8090-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
-2024-11-29 10:10:11.58 [http-nio-8090-exec-1] INFO  c.e.t.r.RequestInterceptor - 1 - pre handle.
-2024-11-29 10:10:11.58 [http-nio-8090-exec-1] INFO  c.e.t.r.RequestInterceptor - METHOD type : GET
-2024-11-29 10:10:11.58 [http-nio-8090-exec-1] INFO  c.e.t.r.RequestInterceptor - Request URI : /v1/tasks
-2024-11-29 10:10:11.58 [http-nio-8090-exec-1] INFO  c.e.t.r.RequestInterceptor - Servlet PATH : /v1/tasks
-2024-11-29 10:10:11.58 [http-nio-8090-exec-1] INFO  c.e.t.r.RequestInterceptor - Controller name : com.example.taskmanagement.controller.TaskController
-2024-11-29 10:10:11.58 [http-nio-8090-exec-1] INFO  c.e.t.r.RequestInterceptor - Method name : getAllTasks
-2024-11-29 10:10:11.60 [http-nio-8090-exec-1] INFO  c.e.t.controller.TaskController - Fetching all tasks
-2024-11-29 10:10:11.61 [http-nio-8090-exec-1] INFO  c.e.t.s.impltaskservice.ITaskService - Retrieving all tasks.
-2024-11-29 10:10:11.96 [http-nio-8090-exec-1] INFO  c.e.t.r.RequestInterceptor - 2 - Post-handle : Request processed by controller.
-2024-11-29 10:10:11.97 [http-nio-8090-exec-1] INFO  c.e.t.r.RequestInterceptor - 3 - After completion: Request processing finished.
-2024-11-29 10:10:42.59 [TaskScheduler-1] INFO  c.e.t.scheduler.TaskStatusScheduler - Checking for tasks to update status...
-2024-11-29 10:10:42.59 [TaskScheduler-1] INFO  c.e.t.s.impltaskservice.ITaskService - Fetching tasks with status: PENDING 
-2024-11-29 10:10:42.62 [TaskScheduler-1] INFO  c.e.t.s.impltaskservice.ITaskService - Found 0 tasks with status: PENDING 
-2024-11-29 10:10:42.62 [TaskScheduler-1] INFO  c.e.t.scheduler.TaskStatusScheduler - Found 0 pending tasks. 
-2024-11-29 10:10:42.62 [TaskScheduler-1] INFO  c.e.t.scheduler.TaskStatusScheduler - Task status update process completed.
-2024-11-29 10:11:42.59 [TaskScheduler-1] INFO  c.e.t.scheduler.TaskStatusScheduler - Checking for tasks to update status...
-2024-11-29 10:11:42.59 [TaskScheduler-1] INFO  c.e.t.s.impltaskservice.ITaskService - Fetching tasks with status: PENDING 
-2024-11-29 10:11:42.63 [TaskScheduler-1] INFO  c.e.t.s.impltaskservice.ITaskService - Found 0 tasks with status: PENDING 
-2024-11-29 10:11:42.63 [TaskScheduler-1] INFO  c.e.t.scheduler.TaskStatusScheduler - Found 0 pending tasks. 
-2024-11-29 10:11:42.63 [TaskScheduler-1] INFO  c.e.t.scheduler.TaskStatusScheduler - Task status update process completed.
-2024-11-29 10:12:42.59 [TaskScheduler-2] INFO  c.e.t.scheduler.TaskStatusScheduler - Checking for tasks to update status...
-2024-11-29 10:12:42.59 [TaskScheduler-2] INFO  c.e.t.s.impltaskservice.ITaskService - Fetching tasks with status: PENDING 
-2024-11-29 10:12:42.63 [TaskScheduler-2] INFO  c.e.t.s.impltaskservice.ITaskService - Found 0 tasks with status: PENDING 
-2024-11-29 10:12:42.63 [TaskScheduler-2] INFO  c.e.t.scheduler.TaskStatusScheduler - Found 0 pending tasks. 
-2024-11-29 10:12:42.63 [TaskScheduler-2] INFO  c.e.t.scheduler.TaskStatusScheduler - Task status update process completed.
-2024-11-29 10:12:55.88 [http-nio-8090-exec-3] INFO  c.e.t.r.RequestInterceptor - 1 - pre handle.
-2024-11-29 10:12:55.88 [http-nio-8090-exec-3] INFO  c.e.t.r.RequestInterceptor - METHOD type : GET
-2024-11-29 10:12:55.88 [http-nio-8090-exec-3] INFO  c.e.t.r.RequestInterceptor - Request URI : /v1/tasks/a6adfa05-d1fa-470a-b99c-b703ba39b19a
-2024-11-29 10:12:55.88 [http-nio-8090-exec-3] INFO  c.e.t.r.RequestInterceptor - Servlet PATH : /v1/tasks/a6adfa05-d1fa-470a-b99c-b703ba39b19a
-2024-11-29 10:12:55.88 [http-nio-8090-exec-3] INFO  c.e.t.r.RequestInterceptor - Controller name : com.example.taskmanagement.controller.TaskController
-2024-11-29 10:12:55.88 [http-nio-8090-exec-3] INFO  c.e.t.r.RequestInterceptor - Method name : getTaskById
-2024-11-29 10:12:55.91 [http-nio-8090-exec-3] INFO  c.e.t.controller.TaskController - Fetching task with ID: a6adfa05-d1fa-470a-b99c-b703ba39b19a 
-2024-11-29 10:12:55.91 [http-nio-8090-exec-3] INFO  c.e.t.s.impltaskservice.ITaskService - Retrieving task with ID: a6adfa05-d1fa-470a-b99c-b703ba39b19a 
-2024-11-29 10:12:56.32 [http-nio-8090-exec-3] INFO  c.e.t.r.RequestInterceptor - 2 - Post-handle : Request processed by controller.
-2024-11-29 10:12:56.32 [http-nio-8090-exec-3] INFO  c.e.t.r.RequestInterceptor - 3 - After completion: Request processing finished.
-2024-11-29 10:13:42.59 [TaskScheduler-3] INFO  c.e.t.scheduler.TaskStatusScheduler - Checking for tasks to update status...
-2024-11-29 10:13:42.59 [TaskScheduler-3] INFO  c.e.t.s.impltaskservice.ITaskService - Fetching tasks with status: PENDING 
-2024-11-29 10:13:42.65 [TaskScheduler-3] INFO  c.e.t.s.impltaskservice.ITaskService - Found 0 tasks with status: PENDING 
-2024-11-29 10:13:42.65 [TaskScheduler-3] INFO  c.e.t.scheduler.TaskStatusScheduler - Found 0 pending tasks. 
-2024-11-29 10:13:42.65 [TaskScheduler-3] INFO  c.e.t.scheduler.TaskStatusScheduler - Task status update process completed.
-2024-11-29 10:14:42.58 [TaskScheduler-3] INFO  c.e.t.scheduler.TaskStatusScheduler - Checking for tasks to update status...
-2024-11-29 10:14:42.58 [TaskScheduler-3] INFO  c.e.t.s.impltaskservice.ITaskService - Fetching tasks with status: PENDING 
-2024-11-29 10:14:42.61 [TaskScheduler-3] INFO  c.e.t.s.impltaskservice.ITaskService - Found 0 tasks with status: PENDING 
-2024-11-29 10:14:42.63 [TaskScheduler-3] INFO  c.e.t.scheduler.TaskStatusScheduler - Found 0 pending tasks. 
-2024-11-29 10:14:42.63 [TaskScheduler-3] INFO  c.e.t.scheduler.TaskStatusScheduler - Task status update process completed.
-2024-11-29 10:15:42.80 [TaskScheduler-3] INFO  c.e.t.scheduler.TaskStatusScheduler - Checking for tasks to update status...
-2024-11-29 10:15:42.80 [TaskScheduler-3] INFO  c.e.t.s.impltaskservice.ITaskService - Fetching tasks with status: PENDING 
-2024-11-29 10:15:43.06 [TaskScheduler-3] INFO  c.e.t.s.impltaskservice.ITaskService - Found 0 tasks with status: PENDING 
-2024-11-29 10:15:43.07 [TaskScheduler-3] INFO  c.e.t.scheduler.TaskStatusScheduler - Found 0 pending tasks. 
-2024-11-29 10:15:43.07 [TaskScheduler-3] INFO  c.e.t.scheduler.TaskStatusScheduler - Task status update process completed.
-2024-11-29 10:15:50.46 [http-nio-8090-exec-6] INFO  c.e.t.r.RequestInterceptor - 1 - pre handle.
-2024-11-29 10:15:50.46 [http-nio-8090-exec-6] INFO  c.e.t.r.RequestInterceptor - METHOD type : GET
-2024-11-29 10:15:50.46 [http-nio-8090-exec-6] INFO  c.e.t.r.RequestInterceptor - Request URI : /v1/tasks
-2024-11-29 10:15:50.46 [http-nio-8090-exec-6] INFO  c.e.t.r.RequestInterceptor - Servlet PATH : /v1/tasks
-2024-11-29 10:15:50.47 [http-nio-8090-exec-6] INFO  c.e.t.r.RequestInterceptor - Controller name : com.example.taskmanagement.controller.TaskController
-2024-11-29 10:15:50.47 [http-nio-8090-exec-6] INFO  c.e.t.r.RequestInterceptor - Method name : getAllTasks
-2024-11-29 10:15:50.47 [http-nio-8090-exec-6] INFO  c.e.t.controller.TaskController - Fetching all tasks
-2024-11-29 10:15:50.47 [http-nio-8090-exec-6] INFO  c.e.t.s.impltaskservice.ITaskService - Retrieving all tasks.
-2024-11-29 10:15:50.70 [http-nio-8090-exec-6] INFO  c.e.t.r.RequestInterceptor - 2 - Post-handle : Request processed by controller.
-2024-11-29 10:15:50.70 [http-nio-8090-exec-6] INFO  c.e.t.r.RequestInterceptor - 3 - After completion: Request processing finished.
-2024-11-29 10:16:42.58 [TaskScheduler-3] INFO  c.e.t.scheduler.TaskStatusScheduler - Checking for tasks to update status...
-2024-11-29 10:16:42.58 [TaskScheduler-3] INFO  c.e.t.s.impltaskservice.ITaskService - Fetching tasks with status: PENDING 
-2024-11-29 10:16:42.62 [TaskScheduler-3] INFO  c.e.t.s.impltaskservice.ITaskService - Found 0 tasks with status: PENDING 
-2024-11-29 10:16:42.62 [TaskScheduler-3] INFO  c.e.t.scheduler.TaskStatusScheduler - Found 0 pending tasks. 
-2024-11-29 10:16:42.62 [TaskScheduler-3] INFO  c.e.t.scheduler.TaskStatusScheduler - Task status update process completed.
-2024-11-29 10:17:42.57 [TaskScheduler-3] INFO  c.e.t.scheduler.TaskStatusScheduler - Checking for tasks to update status...
-2024-11-29 10:17:42.57 [TaskScheduler-3] INFO  c.e.t.s.impltaskservice.ITaskService - Fetching tasks with status: PENDING 
-2024-11-29 10:17:42.62 [TaskScheduler-3] INFO  c.e.t.s.impltaskservice.ITaskService - Found 0 tasks with status: PENDING 
-2024-11-29 10:17:42.62 [TaskScheduler-3] INFO  c.e.t.scheduler.TaskStatusScheduler - Found 0 pending tasks. 
-2024-11-29 10:17:42.62 [TaskScheduler-3] INFO  c.e.t.scheduler.TaskStatusScheduler - Task status update process completed.
-2024-11-29 10:18:42.65 [TaskScheduler-3] INFO  c.e.t.scheduler.TaskStatusScheduler - Checking for tasks to update status...
-2024-11-29 10:18:42.65 [TaskScheduler-3] INFO  c.e.t.s.impltaskservice.ITaskService - Fetching tasks with status: PENDING 
-2024-11-29 10:18:42.70 [TaskScheduler-3] INFO  c.e.t.s.impltaskservice.ITaskService - Found 0 tasks with status: PENDING 
-2024-11-29 10:18:42.70 [TaskScheduler-3] INFO  c.e.t.scheduler.TaskStatusScheduler - Found 0 pending tasks. 
-2024-11-29 10:18:42.70 [TaskScheduler-3] INFO  c.e.t.scheduler.TaskStatusScheduler - Task status update process completed.
-2024-11-29 10:18:50.18 [http-nio-8090-exec-8] INFO  c.e.t.r.RequestInterceptor - 1 - pre handle.
-2024-11-29 10:18:50.18 [http-nio-8090-exec-8] INFO  c.e.t.r.RequestInterceptor - METHOD type : POST
-2024-11-29 10:18:50.18 [http-nio-8090-exec-8] INFO  c.e.t.r.RequestInterceptor - Request URI : /v1/tasks
-2024-11-29 10:18:50.19 [http-nio-8090-exec-8] INFO  c.e.t.r.RequestInterceptor - Servlet PATH : /v1/tasks
-2024-11-29 10:18:50.19 [http-nio-8090-exec-8] INFO  c.e.t.r.RequestInterceptor - Controller name : com.example.taskmanagement.controller.TaskController
-2024-11-29 10:18:50.19 [http-nio-8090-exec-8] INFO  c.e.t.r.RequestInterceptor - Method name : createTask
-2024-11-29 10:18:50.39 [http-nio-8090-exec-8] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity<com.example.taskmanagement.dto.createtask.CreateTaskResponse> com.example.taskmanagement.controller.TaskController.createTask(com.example.taskmanagement.dto.createtask.CreateTaskDTO) with 2 errors: [Field error in object 'createTaskDTO' on field 'dueDate': rejected value [2023-12-31]; codes [Future.createTaskDTO.dueDate,Future.dueDate,Future.java.time.LocalDate,Future]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [createTaskDTO.dueDate,dueDate]; arguments []; default message [dueDate]]; default message [Date must be in the Future]] [Field error in object 'createTaskDTO' on field 'title': rejected value [New Task]; codes [Size.createTaskDTO.title,Size.title,Size.java.lang.String,Size]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [createTaskDTO.title,title]; arguments []; default message [title],60,10]; default message [Title must be atleast 10 characters & must not exceed 60 characters.]] ]
-2024-11-29 10:18:50.39 [http-nio-8090-exec-8] INFO  c.e.t.r.RequestInterceptor - 3 - After completion: Request processing finished.
-2024-11-29 10:19:25.24 [http-nio-8090-exec-10] INFO  c.e.t.r.RequestInterceptor - 1 - pre handle.
-2024-11-29 10:19:25.25 [http-nio-8090-exec-10] INFO  c.e.t.r.RequestInterceptor - METHOD type : POST
-2024-11-29 10:19:25.25 [http-nio-8090-exec-10] INFO  c.e.t.r.RequestInterceptor - Request URI : /v1/tasks
-2024-11-29 10:19:25.25 [http-nio-8090-exec-10] INFO  c.e.t.r.RequestInterceptor - Servlet PATH : /v1/tasks
-2024-11-29 10:19:25.26 [http-nio-8090-exec-10] INFO  c.e.t.r.RequestInterceptor - Controller name : com.example.taskmanagement.controller.TaskController
-2024-11-29 10:19:25.26 [http-nio-8090-exec-10] INFO  c.e.t.r.RequestInterceptor - Method name : createTask
-2024-11-29 10:19:25.27 [http-nio-8090-exec-10] INFO  c.e.t.controller.TaskController - Creating a new task with details: CreateTaskDTO(title=New Task. New Task Title., description=Description of the new task. Description of the new Task., dueDate=2024-12-31) 
-2024-11-29 10:19:25.33 [http-nio-8090-exec-10] INFO  c.e.t.s.impltaskservice.ITaskService - Creating a new task with details: CreateTaskDTO(title=New Task. New Task Title., description=Description of the new task. Description of the new Task., dueDate=2024-12-31) 
-2024-11-29 10:19:25.36 [http-nio-8090-exec-10] INFO  c.e.t.s.impltaskservice.ITaskService - Task created successfully with ID: 18e51f3b-f256-4e93-aa4f-731e12705451 
-2024-11-29 10:19:25.51 [http-nio-8090-exec-10] INFO  c.e.t.r.RequestInterceptor - 2 - Post-handle : Request processed by controller.
-2024-11-29 10:19:25.51 [http-nio-8090-exec-10] INFO  c.e.t.r.RequestInterceptor - 3 - After completion: Request processing finished.
-2024-11-29 10:19:42.59 [TaskScheduler-3] INFO  c.e.t.scheduler.TaskStatusScheduler - Checking for tasks to update status...
-2024-11-29 10:19:42.59 [TaskScheduler-3] INFO  c.e.t.s.impltaskservice.ITaskService - Fetching tasks with status: PENDING 
-2024-11-29 10:19:42.64 [TaskScheduler-3] INFO  c.e.t.s.impltaskservice.ITaskService - Found 1 tasks with status: PENDING 
-2024-11-29 10:19:42.64 [TaskScheduler-3] INFO  c.e.t.scheduler.TaskStatusScheduler - Found 1 pending tasks. 
-2024-11-29 10:19:42.64 [TaskScheduler-3] INFO  c.e.t.scheduler.TaskStatusScheduler - Task status update process completed.
-2024-11-29 10:20:42.58 [TaskScheduler-3] INFO  c.e.t.scheduler.TaskStatusScheduler - Checking for tasks to update status...
-2024-11-29 10:20:42.58 [TaskScheduler-3] INFO  c.e.t.s.impltaskservice.ITaskService - Fetching tasks with status: PENDING 
-2024-11-29 10:20:42.63 [TaskScheduler-3] INFO  c.e.t.s.impltaskservice.ITaskService - Found 1 tasks with status: PENDING 
-2024-11-29 10:20:42.65 [TaskScheduler-3] INFO  c.e.t.scheduler.TaskStatusScheduler - Found 1 pending tasks. 
-2024-11-29 10:20:42.65 [TaskScheduler-3] INFO  c.e.t.scheduler.TaskStatusScheduler - Task status update process completed.
-2024-11-29 10:21:42.59 [TaskScheduler-3] INFO  c.e.t.scheduler.TaskStatusScheduler - Checking for tasks to update status...
-2024-11-29 10:21:42.59 [TaskScheduler-3] INFO  c.e.t.s.impltaskservice.ITaskService - Fetching tasks with status: PENDING 
-2024-11-29 10:21:42.63 [TaskScheduler-3] INFO  c.e.t.s.impltaskservice.ITaskService - Found 1 tasks with status: PENDING 
-2024-11-29 10:21:42.63 [TaskScheduler-3] INFO  c.e.t.scheduler.TaskStatusScheduler - Found 1 pending tasks. 
-2024-11-29 10:21:42.63 [TaskScheduler-3] INFO  c.e.t.scheduler.TaskStatusScheduler - Task status update process completed.
-2024-11-29 10:22:42.59 [TaskScheduler-3] INFO  c.e.t.scheduler.TaskStatusScheduler - Checking for tasks to update status...
-2024-11-29 10:22:42.66 [TaskScheduler-3] INFO  c.e.t.s.impltaskservice.ITaskService - Fetching tasks with status: PENDING 
-2024-11-29 10:22:42.84 [TaskScheduler-3] INFO  c.e.t.s.impltaskservice.ITaskService - Found 1 tasks with status: PENDING 
-2024-11-29 10:22:42.89 [TaskScheduler-3] INFO  c.e.t.scheduler.TaskStatusScheduler - Found 1 pending tasks. 
-2024-11-29 10:22:42.91 [TaskScheduler-3] INFO  c.e.t.scheduler.TaskStatusScheduler - Task status update process completed.
-2024-11-29 10:23:42.91 [TaskScheduler-3] INFO  c.e.t.scheduler.TaskStatusScheduler - Checking for tasks to update status...
-2024-11-29 10:23:42.92 [TaskScheduler-3] INFO  c.e.t.s.impltaskservice.ITaskService - Fetching tasks with status: PENDING 
-2024-11-29 10:23:42.96 [TaskScheduler-3] INFO  c.e.t.s.impltaskservice.ITaskService - Found 1 tasks with status: PENDING 
-2024-11-29 10:23:42.96 [TaskScheduler-3] INFO  c.e.t.scheduler.TaskStatusScheduler - Found 1 pending tasks. 
-2024-11-29 10:23:42.96 [TaskScheduler-3] INFO  c.e.t.scheduler.TaskStatusScheduler - Task status update process completed.
-2024-11-29 10:24:03.06 [http-nio-8090-exec-1] INFO  c.e.t.r.RequestInterceptor - 1 - pre handle.
-2024-11-29 10:24:03.06 [http-nio-8090-exec-1] INFO  c.e.t.r.RequestInterceptor - METHOD type : DELETE
-2024-11-29 10:24:03.06 [http-nio-8090-exec-1] INFO  c.e.t.r.RequestInterceptor - Request URI : /v1/tasks/18e51f3b-f256-4e93-aa4f-731e12705451
-2024-11-29 10:24:03.06 [http-nio-8090-exec-1] INFO  c.e.t.r.RequestInterceptor - Servlet PATH : /v1/tasks/18e51f3b-f256-4e93-aa4f-731e12705451
-2024-11-29 10:24:03.07 [http-nio-8090-exec-1] INFO  c.e.t.r.RequestInterceptor - Controller name : com.example.taskmanagement.controller.TaskController
-2024-11-29 10:24:03.07 [http-nio-8090-exec-1] INFO  c.e.t.r.RequestInterceptor - Method name : deleteTask
-2024-11-29 10:24:03.07 [http-nio-8090-exec-1] INFO  c.e.t.controller.TaskController - Deleting task with ID: 18e51f3b-f256-4e93-aa4f-731e12705451 
-2024-11-29 10:24:03.15 [http-nio-8090-exec-1] INFO  c.e.t.s.impltaskservice.ITaskService - Deleting task with ID: 18e51f3b-f256-4e93-aa4f-731e12705451 
-2024-11-29 10:24:03.20 [http-nio-8090-exec-1] INFO  c.e.t.s.impltaskservice.ITaskService - Task deleted successfully with ID: 18e51f3b-f256-4e93-aa4f-731e12705451 
-2024-11-29 10:24:03.31 [http-nio-8090-exec-1] INFO  c.e.t.r.RequestInterceptor - 2 - Post-handle : Request processed by controller.
-2024-11-29 10:24:03.31 [http-nio-8090-exec-1] INFO  c.e.t.r.RequestInterceptor - 3 - After completion: Request processing finished.
-2024-11-29 10:24:42.58 [TaskScheduler-3] INFO  c.e.t.scheduler.TaskStatusScheduler - Checking for tasks to update status...
-2024-11-29 10:24:42.58 [TaskScheduler-3] INFO  c.e.t.s.impltaskservice.ITaskService - Fetching tasks with status: PENDING 
-2024-11-29 10:24:42.63 [TaskScheduler-3] INFO  c.e.t.s.impltaskservice.ITaskService - Found 0 tasks with status: PENDING 
-2024-11-29 10:24:42.64 [TaskScheduler-3] INFO  c.e.t.scheduler.TaskStatusScheduler - Found 0 pending tasks. 
-2024-11-29 10:24:42.64 [TaskScheduler-3] INFO  c.e.t.scheduler.TaskStatusScheduler - Task status update process completed.
-2024-11-29 10:25:27.96 [http-nio-8090-exec-3] INFO  c.e.t.r.RequestInterceptor - 1 - pre handle.
-2024-11-29 10:25:27.96 [http-nio-8090-exec-3] INFO  c.e.t.r.RequestInterceptor - METHOD type : DELETE
-2024-11-29 10:25:27.96 [http-nio-8090-exec-3] INFO  c.e.t.r.RequestInterceptor - Request URI : /v1/tasks/18e51f3b-f256-4e93-aa4f-731e12705451
-2024-11-29 10:25:27.97 [http-nio-8090-exec-3] INFO  c.e.t.r.RequestInterceptor - Servlet PATH : /v1/tasks/18e51f3b-f256-4e93-aa4f-731e12705451
-2024-11-29 10:25:27.97 [http-nio-8090-exec-3] INFO  c.e.t.r.RequestInterceptor - Controller name : com.example.taskmanagement.controller.TaskController
-2024-11-29 10:25:27.97 [http-nio-8090-exec-3] INFO  c.e.t.r.RequestInterceptor - Method name : deleteTask
-2024-11-29 10:25:27.97 [http-nio-8090-exec-3] INFO  c.e.t.controller.TaskController - Deleting task with ID: 18e51f3b-f256-4e93-aa4f-731e12705451 
-2024-11-29 10:25:28.04 [http-nio-8090-exec-3] INFO  c.e.t.s.impltaskservice.ITaskService - Deleting task with ID: 18e51f3b-f256-4e93-aa4f-731e12705451 
-2024-11-29 10:25:28.08 [http-nio-8090-exec-3] ERROR c.e.t.s.impltaskservice.ITaskService - Task Not Found with the given UUID: 18e51f3b-f256-4e93-aa4f-731e12705451 
-2024-11-29 10:25:28.15 [http-nio-8090-exec-3] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [com.example.taskmanagement.exceptionhandler.customexception.TaskNotFoundException: Task Not Found with the given UUID : 18e51f3b-f256-4e93-aa4f-731e12705451]
-2024-11-29 10:25:28.15 [http-nio-8090-exec-3] INFO  c.e.t.r.RequestInterceptor - 3 - After completion: Request processing finished.
-2024-11-29 10:25:42.59 [TaskScheduler-3] INFO  c.e.t.scheduler.TaskStatusScheduler - Checking for tasks to update status...
-2024-11-29 10:25:42.59 [TaskScheduler-3] INFO  c.e.t.s.impltaskservice.ITaskService - Fetching tasks with status: PENDING 
-2024-11-29 10:25:42.63 [TaskScheduler-3] INFO  c.e.t.s.impltaskservice.ITaskService - Found 0 tasks with status: PENDING 
-2024-11-29 10:25:42.63 [TaskScheduler-3] INFO  c.e.t.scheduler.TaskStatusScheduler - Found 0 pending tasks. 
-2024-11-29 10:25:42.63 [TaskScheduler-3] INFO  c.e.t.scheduler.TaskStatusScheduler - Task status update process completed.
-2024-11-29 10:25:42.95 [http-nio-8090-exec-6] INFO  c.e.t.r.RequestInterceptor - 1 - pre handle.
-2024-11-29 10:25:42.95 [http-nio-8090-exec-6] INFO  c.e.t.r.RequestInterceptor - METHOD type : GET
-2024-11-29 10:25:42.96 [http-nio-8090-exec-6] INFO  c.e.t.r.RequestInterceptor - Request URI : /v1/tasks/18e51f3b-f256-4e93-aa4f-731e12705451
-2024-11-29 10:25:42.96 [http-nio-8090-exec-6] INFO  c.e.t.r.RequestInterceptor - Servlet PATH : /v1/tasks/18e51f3b-f256-4e93-aa4f-731e12705451
-2024-11-29 10:25:42.97 [http-nio-8090-exec-6] INFO  c.e.t.r.RequestInterceptor - Controller name : com.example.taskmanagement.controller.TaskController
-2024-11-29 10:25:42.97 [http-nio-8090-exec-6] INFO  c.e.t.r.RequestInterceptor - Method name : getTaskById
-2024-11-29 10:25:42.97 [http-nio-8090-exec-6] INFO  c.e.t.controller.TaskController - Fetching task with ID: 18e51f3b-f256-4e93-aa4f-731e12705451 
-2024-11-29 10:25:42.97 [http-nio-8090-exec-6] INFO  c.e.t.s.impltaskservice.ITaskService - Retrieving task with ID: 18e51f3b-f256-4e93-aa4f-731e12705451 
-2024-11-29 10:25:43.17 [http-nio-8090-exec-6] ERROR c.e.t.s.impltaskservice.ITaskService - Task Not Found with the given UUID: 18e51f3b-f256-4e93-aa4f-731e12705451 
-2024-11-29 10:25:43.17 [http-nio-8090-exec-6] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [com.example.taskmanagement.exceptionhandler.customexception.TaskNotFoundException: Task Not Found with the given UUID : 18e51f3b-f256-4e93-aa4f-731e12705451]
-2024-11-29 10:25:43.17 [http-nio-8090-exec-6] INFO  c.e.t.r.RequestInterceptor - 3 - After completion: Request processing finished.
-2024-11-29 10:26:42.58 [TaskScheduler-3] INFO  c.e.t.scheduler.TaskStatusScheduler - Checking for tasks to update status...
-2024-11-29 10:26:42.58 [TaskScheduler-3] INFO  c.e.t.s.impltaskservice.ITaskService - Fetching tasks with status: PENDING 
-2024-11-29 10:26:42.62 [TaskScheduler-3] INFO  c.e.t.s.impltaskservice.ITaskService - Found 0 tasks with status: PENDING 
-2024-11-29 10:26:42.62 [TaskScheduler-3] INFO  c.e.t.scheduler.TaskStatusScheduler - Found 0 pending tasks. 
-2024-11-29 10:26:42.63 [TaskScheduler-3] INFO  c.e.t.scheduler.TaskStatusScheduler - Task status update process completed.
-2024-11-29 10:27:42.60 [TaskScheduler-3] INFO  c.e.t.scheduler.TaskStatusScheduler - Checking for tasks to update status...
-2024-11-29 10:27:42.60 [TaskScheduler-3] INFO  c.e.t.s.impltaskservice.ITaskService - Fetching tasks with status: PENDING 
-2024-11-29 10:27:42.65 [TaskScheduler-3] INFO  c.e.t.s.impltaskservice.ITaskService - Found 0 tasks with status: PENDING 
-2024-11-29 10:27:42.65 [TaskScheduler-3] INFO  c.e.t.scheduler.TaskStatusScheduler - Found 0 pending tasks. 
-2024-11-29 10:27:42.66 [TaskScheduler-3] INFO  c.e.t.scheduler.TaskStatusScheduler - Task status update process completed.
-2024-11-29 10:28:42.58 [TaskScheduler-3] INFO  c.e.t.scheduler.TaskStatusScheduler - Checking for tasks to update status...
-2024-11-29 10:28:42.58 [TaskScheduler-3] INFO  c.e.t.s.impltaskservice.ITaskService - Fetching tasks with status: PENDING 
-2024-11-29 10:28:42.63 [TaskScheduler-3] INFO  c.e.t.s.impltaskservice.ITaskService - Found 0 tasks with status: PENDING 
-2024-11-29 10:28:42.63 [TaskScheduler-3] INFO  c.e.t.scheduler.TaskStatusScheduler - Found 0 pending tasks. 
-2024-11-29 10:28:42.63 [TaskScheduler-3] INFO  c.e.t.scheduler.TaskStatusScheduler - Task status update process completed.
-2024-11-29 10:29:20.92 [http-nio-8090-exec-8] INFO  c.e.t.r.RequestInterceptor - 1 - pre handle.
-2024-11-29 10:29:20.92 [http-nio-8090-exec-8] INFO  c.e.t.r.RequestInterceptor - METHOD type : GET
-2024-11-29 10:29:20.92 [http-nio-8090-exec-8] INFO  c.e.t.r.RequestInterceptor - Request URI : /v1/tasks
-2024-11-29 10:29:20.93 [http-nio-8090-exec-8] INFO  c.e.t.r.RequestInterceptor - Servlet PATH : /v1/tasks
-2024-11-29 10:29:20.93 [http-nio-8090-exec-8] INFO  c.e.t.r.RequestInterceptor - Controller name : com.example.taskmanagement.controller.TaskController
-2024-11-29 10:29:20.93 [http-nio-8090-exec-8] INFO  c.e.t.r.RequestInterceptor - Method name : getAllTasks
-2024-11-29 10:29:20.93 [http-nio-8090-exec-8] INFO  c.e.t.controller.TaskController - Fetching all tasks
-2024-11-29 10:29:20.93 [http-nio-8090-exec-8] INFO  c.e.t.s.impltaskservice.ITaskService - Retrieving all tasks.
-2024-11-29 10:29:21.17 [http-nio-8090-exec-8] INFO  c.e.t.r.RequestInterceptor - 2 - Post-handle : Request processed by controller.
-2024-11-29 10:29:21.17 [http-nio-8090-exec-8] INFO  c.e.t.r.RequestInterceptor - 3 - After completion: Request processing finished.
-2024-11-29 10:29:42.58 [TaskScheduler-3] INFO  c.e.t.scheduler.TaskStatusScheduler - Checking for tasks to update status...
-2024-11-29 10:29:42.58 [TaskScheduler-3] INFO  c.e.t.s.impltaskservice.ITaskService - Fetching tasks with status: PENDING 
-2024-11-29 10:29:42.62 [TaskScheduler-3] INFO  c.e.t.s.impltaskservice.ITaskService - Found 0 tasks with status: PENDING 
-2024-11-29 10:29:42.62 [TaskScheduler-3] INFO  c.e.t.scheduler.TaskStatusScheduler - Found 0 pending tasks. 
-2024-11-29 10:29:42.62 [TaskScheduler-3] INFO  c.e.t.scheduler.TaskStatusScheduler - Task status update process completed.
-2024-11-29 10:30:42.58 [TaskScheduler-3] INFO  c.e.t.scheduler.TaskStatusScheduler - Checking for tasks to update status...
-2024-11-29 10:30:42.58 [TaskScheduler-3] INFO  c.e.t.s.impltaskservice.ITaskService - Fetching tasks with status: PENDING 
-2024-11-29 10:30:42.62 [TaskScheduler-3] INFO  c.e.t.s.impltaskservice.ITaskService - Found 0 tasks with status: PENDING 
-2024-11-29 10:30:42.62 [TaskScheduler-3] INFO  c.e.t.scheduler.TaskStatusScheduler - Found 0 pending tasks. 
-2024-11-29 10:30:42.62 [TaskScheduler-3] INFO  c.e.t.scheduler.TaskStatusScheduler - Task status update process completed.
-2024-11-29 10:31:07.58 [http-nio-8090-exec-10] INFO  c.e.t.r.RequestInterceptor - 1 - pre handle.
-2024-11-29 10:31:07.58 [http-nio-8090-exec-10] INFO  c.e.t.r.RequestInterceptor - METHOD type : POST
-2024-11-29 10:31:07.58 [http-nio-8090-exec-10] INFO  c.e.t.r.RequestInterceptor - Request URI : /v1/tasks
-2024-11-29 10:31:07.58 [http-nio-8090-exec-10] INFO  c.e.t.r.RequestInterceptor - Servlet PATH : /v1/tasks
-2024-11-29 10:31:07.58 [http-nio-8090-exec-10] INFO  c.e.t.r.RequestInterceptor - Controller name : com.example.taskmanagement.controller.TaskController
-2024-11-29 10:31:07.59 [http-nio-8090-exec-10] INFO  c.e.t.r.RequestInterceptor - Method name : createTask
-2024-11-29 10:31:07.59 [http-nio-8090-exec-10] INFO  c.e.t.controller.TaskController - Creating a new task with details: CreateTaskDTO(title=New Task. New Task Title., description=Description of the new task. Description of the new Task., dueDate=2024-12-31) 
-2024-11-29 10:31:07.66 [http-nio-8090-exec-10] INFO  c.e.t.s.impltaskservice.ITaskService - Creating a new task with details: CreateTaskDTO(title=New Task. New Task Title., description=Description of the new task. Description of the new Task., dueDate=2024-12-31) 
-2024-11-29 10:31:07.66 [http-nio-8090-exec-10] INFO  c.e.t.s.impltaskservice.ITaskService - Task created successfully with ID: 4f652b56-8410-46a4-a9b4-d7de9a96e09c 
-2024-11-29 10:31:07.77 [http-nio-8090-exec-10] INFO  c.e.t.r.RequestInterceptor - 2 - Post-handle : Request processed by controller.
-2024-11-29 10:31:07.78 [http-nio-8090-exec-10] INFO  c.e.t.r.RequestInterceptor - 3 - After completion: Request processing finished.
-2024-11-29 10:31:42.81 [TaskScheduler-3] INFO  c.e.t.scheduler.TaskStatusScheduler - Checking for tasks to update status...
-2024-11-29 10:31:42.81 [TaskScheduler-3] INFO  c.e.t.s.impltaskservice.ITaskService - Fetching tasks with status: PENDING 
-2024-11-29 10:31:43.07 [TaskScheduler-3] INFO  c.e.t.s.impltaskservice.ITaskService - Found 1 tasks with status: PENDING 
-2024-11-29 10:31:43.07 [TaskScheduler-3] INFO  c.e.t.scheduler.TaskStatusScheduler - Found 1 pending tasks. 
-2024-11-29 10:31:43.07 [TaskScheduler-3] INFO  c.e.t.scheduler.TaskStatusScheduler - Task status update process completed.
-2024-11-29 10:32:08.16 [http-nio-8090-exec-1] INFO  c.e.t.r.RequestInterceptor - 1 - pre handle.
-2024-11-29 10:32:08.17 [http-nio-8090-exec-1] INFO  c.e.t.r.RequestInterceptor - METHOD type : PATCH
-2024-11-29 10:32:08.17 [http-nio-8090-exec-1] INFO  c.e.t.r.RequestInterceptor - Request URI : /v1/tasks/4f652b56-8410-46a4-a9b4-d7de9a96e09c/complete
-2024-11-29 10:32:08.17 [http-nio-8090-exec-1] INFO  c.e.t.r.RequestInterceptor - Servlet PATH : /v1/tasks/4f652b56-8410-46a4-a9b4-d7de9a96e09c/complete
-2024-11-29 10:32:08.17 [http-nio-8090-exec-1] INFO  c.e.t.r.RequestInterceptor - Controller name : com.example.taskmanagement.controller.TaskController
-2024-11-29 10:32:08.18 [http-nio-8090-exec-1] INFO  c.e.t.r.RequestInterceptor - Method name : markTaskAsComplete
-2024-11-29 10:32:08.19 [http-nio-8090-exec-1] INFO  c.e.t.controller.TaskController - Marking task with ID: 4f652b56-8410-46a4-a9b4-d7de9a96e09c as completed
-2024-11-29 10:32:08.25 [http-nio-8090-exec-1] INFO  c.e.t.s.impltaskservice.ITaskService - Marking task with ID: 4f652b56-8410-46a4-a9b4-d7de9a96e09c as completed.
-2024-11-29 10:32:08.30 [http-nio-8090-exec-1] INFO  c.e.t.s.impltaskservice.ITaskService - Task marked as completed with ID: 4f652b56-8410-46a4-a9b4-d7de9a96e09c 
-2024-11-29 10:32:08.42 [http-nio-8090-exec-1] INFO  c.e.t.r.RequestInterceptor - 2 - Post-handle : Request processed by controller.
-2024-11-29 10:32:08.42 [http-nio-8090-exec-1] INFO  c.e.t.r.RequestInterceptor - 3 - After completion: Request processing finished.
-2024-11-29 10:32:42.57 [TaskScheduler-3] INFO  c.e.t.scheduler.TaskStatusScheduler - Checking for tasks to update status...
-2024-11-29 10:32:42.57 [TaskScheduler-3] INFO  c.e.t.s.impltaskservice.ITaskService - Fetching tasks with status: PENDING 
-2024-11-29 10:32:42.62 [TaskScheduler-3] INFO  c.e.t.s.impltaskservice.ITaskService - Found 0 tasks with status: PENDING 
-2024-11-29 10:32:42.62 [TaskScheduler-3] INFO  c.e.t.scheduler.TaskStatusScheduler - Found 0 pending tasks. 
-2024-11-29 10:32:42.62 [TaskScheduler-3] INFO  c.e.t.scheduler.TaskStatusScheduler - Task status update process completed.
-2024-11-29 10:33:42.58 [TaskScheduler-3] INFO  c.e.t.scheduler.TaskStatusScheduler - Checking for tasks to update status...
-2024-11-29 10:33:42.60 [TaskScheduler-3] INFO  c.e.t.s.impltaskservice.ITaskService - Fetching tasks with status: PENDING 
-2024-11-29 10:33:42.65 [TaskScheduler-3] INFO  c.e.t.s.impltaskservice.ITaskService - Found 0 tasks with status: PENDING 
-2024-11-29 10:33:42.65 [TaskScheduler-3] INFO  c.e.t.scheduler.TaskStatusScheduler - Found 0 pending tasks. 
-2024-11-29 10:33:42.65 [TaskScheduler-3] INFO  c.e.t.scheduler.TaskStatusScheduler - Task status update process completed.
-2024-11-29 10:34:27.23 [http-nio-8090-exec-3] INFO  c.e.t.r.RequestInterceptor - 1 - pre handle.
-2024-11-29 10:34:27.23 [http-nio-8090-exec-3] INFO  c.e.t.r.RequestInterceptor - METHOD type : GET
-2024-11-29 10:34:27.24 [http-nio-8090-exec-3] INFO  c.e.t.r.RequestInterceptor - Request URI : /v1/tasks
-2024-11-29 10:34:27.24 [http-nio-8090-exec-3] INFO  c.e.t.r.RequestInterceptor - Servlet PATH : /v1/tasks
-2024-11-29 10:34:27.24 [http-nio-8090-exec-3] INFO  c.e.t.r.RequestInterceptor - Controller name : com.example.taskmanagement.controller.TaskController
-2024-11-29 10:34:27.24 [http-nio-8090-exec-3] INFO  c.e.t.r.RequestInterceptor - Method name : getAllTasks
-2024-11-29 10:34:27.24 [http-nio-8090-exec-3] INFO  c.e.t.controller.TaskController - Fetching all tasks
-2024-11-29 10:34:27.24 [http-nio-8090-exec-3] INFO  c.e.t.s.impltaskservice.ITaskService - Retrieving all tasks.
-2024-11-29 10:34:27.48 [http-nio-8090-exec-3] INFO  c.e.t.r.RequestInterceptor - 2 - Post-handle : Request processed by controller.
-2024-11-29 10:34:27.48 [http-nio-8090-exec-3] INFO  c.e.t.r.RequestInterceptor - 3 - After completion: Request processing finished.
-2024-11-29 10:34:42.59 [TaskScheduler-3] INFO  c.e.t.scheduler.TaskStatusScheduler - Checking for tasks to update status...
-2024-11-29 10:34:42.59 [TaskScheduler-3] INFO  c.e.t.s.impltaskservice.ITaskService - Fetching tasks with status: PENDING 
-2024-11-29 10:34:42.64 [TaskScheduler-3] INFO  c.e.t.s.impltaskservice.ITaskService - Found 0 tasks with status: PENDING 
-2024-11-29 10:34:42.64 [TaskScheduler-3] INFO  c.e.t.scheduler.TaskStatusScheduler - Found 0 pending tasks. 
-2024-11-29 10:34:42.64 [TaskScheduler-3] INFO  c.e.t.scheduler.TaskStatusScheduler - Task status update process completed.
-2024-11-29 10:35:42.59 [TaskScheduler-3] INFO  c.e.t.scheduler.TaskStatusScheduler - Checking for tasks to update status...
-2024-11-29 10:35:42.59 [TaskScheduler-3] INFO  c.e.t.s.impltaskservice.ITaskService - Fetching tasks with status: PENDING 
-2024-11-29 10:35:42.64 [TaskScheduler-3] INFO  c.e.t.s.impltaskservice.ITaskService - Found 0 tasks with status: PENDING 
-2024-11-29 10:35:42.64 [TaskScheduler-3] INFO  c.e.t.scheduler.TaskStatusScheduler - Found 0 pending tasks. 
-2024-11-29 10:35:42.64 [TaskScheduler-3] INFO  c.e.t.scheduler.TaskStatusScheduler - Task status update process completed.
-2024-11-29 10:36:42.58 [TaskScheduler-3] INFO  c.e.t.scheduler.TaskStatusScheduler - Checking for tasks to update status...
-2024-11-29 10:36:42.58 [TaskScheduler-3] INFO  c.e.t.s.impltaskservice.ITaskService - Fetching tasks with status: PENDING 
-2024-11-29 10:36:42.63 [TaskScheduler-3] INFO  c.e.t.s.impltaskservice.ITaskService - Found 0 tasks with status: PENDING 
-2024-11-29 10:36:42.63 [TaskScheduler-3] INFO  c.e.t.scheduler.TaskStatusScheduler - Found 0 pending tasks. 
-2024-11-29 10:36:42.63 [TaskScheduler-3] INFO  c.e.t.scheduler.TaskStatusScheduler - Task status update process completed.
-2024-11-29 10:37:42.59 [TaskScheduler-3] INFO  c.e.t.scheduler.TaskStatusScheduler - Checking for tasks to update status...
-2024-11-29 10:37:42.59 [TaskScheduler-3] INFO  c.e.t.s.impltaskservice.ITaskService - Fetching tasks with status: PENDING 
-2024-11-29 10:37:42.64 [TaskScheduler-3] INFO  c.e.t.s.impltaskservice.ITaskService - Found 0 tasks with status: PENDING 
-2024-11-29 10:37:42.64 [TaskScheduler-3] INFO  c.e.t.scheduler.TaskStatusScheduler - Found 0 pending tasks. 
-2024-11-29 10:37:42.64 [TaskScheduler-3] INFO  c.e.t.scheduler.TaskStatusScheduler - Task status update process completed.
-2024-11-29 10:38:42.58 [TaskScheduler-3] INFO  c.e.t.scheduler.TaskStatusScheduler - Checking for tasks to update status...
-2024-11-29 10:38:42.58 [TaskScheduler-3] INFO  c.e.t.s.impltaskservice.ITaskService - Fetching tasks with status: PENDING 
-2024-11-29 10:38:42.65 [TaskScheduler-3] INFO  c.e.t.s.impltaskservice.ITaskService - Found 0 tasks with status: PENDING 
-2024-11-29 10:38:42.65 [TaskScheduler-3] INFO  c.e.t.scheduler.TaskStatusScheduler - Found 0 pending tasks. 
-2024-11-29 10:38:42.65 [TaskScheduler-3] INFO  c.e.t.scheduler.TaskStatusScheduler - Task status update process completed.
-2024-11-29 10:39:42.66 [TaskScheduler-3] INFO  c.e.t.scheduler.TaskStatusScheduler - Checking for tasks to update status...
-2024-11-29 10:39:42.66 [TaskScheduler-3] INFO  c.e.t.s.impltaskservice.ITaskService - Fetching tasks with status: PENDING 
-2024-11-29 10:39:42.92 [TaskScheduler-3] INFO  c.e.t.s.impltaskservice.ITaskService - Found 0 tasks with status: PENDING 
-2024-11-29 10:39:42.92 [TaskScheduler-3] INFO  c.e.t.scheduler.TaskStatusScheduler - Found 0 pending tasks. 
-2024-11-29 10:39:42.92 [TaskScheduler-3] INFO  c.e.t.scheduler.TaskStatusScheduler - Task status update process completed.
-2024-11-29 10:40:42.58 [TaskScheduler-3] INFO  c.e.t.scheduler.TaskStatusScheduler - Checking for tasks to update status...
-2024-11-29 10:40:42.58 [TaskScheduler-3] INFO  c.e.t.s.impltaskservice.ITaskService - Fetching tasks with status: PENDING 
-2024-11-29 10:40:42.62 [TaskScheduler-3] INFO  c.e.t.s.impltaskservice.ITaskService - Found 0 tasks with status: PENDING 
-2024-11-29 10:40:42.64 [TaskScheduler-3] INFO  c.e.t.scheduler.TaskStatusScheduler - Found 0 pending tasks. 
-2024-11-29 10:40:42.64 [TaskScheduler-3] INFO  c.e.t.scheduler.TaskStatusScheduler - Task status update process completed.
-2024-11-29 10:41:37.81 [http-nio-8090-exec-6] INFO  c.e.t.r.RequestInterceptor - 1 - pre handle.
-2024-11-29 10:41:37.81 [http-nio-8090-exec-6] INFO  c.e.t.r.RequestInterceptor - METHOD type : PUT
-2024-11-29 10:41:37.82 [http-nio-8090-exec-6] INFO  c.e.t.r.RequestInterceptor - Request URI : /v1/tasks/4f652b56-8410-46a4-a9b4-d7de9a96e09c
-2024-11-29 10:41:37.82 [http-nio-8090-exec-6] INFO  c.e.t.r.RequestInterceptor - Servlet PATH : /v1/tasks/4f652b56-8410-46a4-a9b4-d7de9a96e09c
-2024-11-29 10:41:37.82 [http-nio-8090-exec-6] INFO  c.e.t.r.RequestInterceptor - Controller name : com.example.taskmanagement.controller.TaskController
-2024-11-29 10:41:37.82 [http-nio-8090-exec-6] INFO  c.e.t.r.RequestInterceptor - Method name : updateTask
-2024-11-29 10:41:37.87 [http-nio-8090-exec-6] INFO  c.e.t.controller.TaskController - Updating task with ID: 4f652b56-8410-46a4-a9b4-d7de9a96e09c with new details: UpdateTaskDTO(title=Updated Task Title, description=Updated description of the task, dueDate=2024-12-09) 
-2024-11-29 10:41:37.94 [http-nio-8090-exec-6] INFO  c.e.t.s.impltaskservice.ITaskService - Updating task with ID: 4f652b56-8410-46a4-a9b4-d7de9a96e09c 
-2024-11-29 10:41:37.98 [http-nio-8090-exec-6] INFO  c.e.t.s.impltaskservice.ITaskService - Task updated successfully with ID: 4f652b56-8410-46a4-a9b4-d7de9a96e09c 
-2024-11-29 10:41:38.10 [http-nio-8090-exec-6] INFO  c.e.t.r.RequestInterceptor - 2 - Post-handle : Request processed by controller.
-2024-11-29 10:41:38.10 [http-nio-8090-exec-6] INFO  c.e.t.r.RequestInterceptor - 3 - After completion: Request processing finished.
-2024-11-29 10:41:42.59 [TaskScheduler-3] INFO  c.e.t.scheduler.TaskStatusScheduler - Checking for tasks to update status...
-2024-11-29 10:41:42.59 [TaskScheduler-3] INFO  c.e.t.s.impltaskservice.ITaskService - Fetching tasks with status: PENDING 
-2024-11-29 10:41:42.63 [TaskScheduler-3] INFO  c.e.t.s.impltaskservice.ITaskService - Found 0 tasks with status: PENDING 
-2024-11-29 10:41:42.64 [TaskScheduler-3] INFO  c.e.t.scheduler.TaskStatusScheduler - Found 0 pending tasks. 
-2024-11-29 10:41:42.64 [TaskScheduler-3] INFO  c.e.t.scheduler.TaskStatusScheduler - Task status update process completed.
-2024-11-29 10:42:42.59 [TaskScheduler-3] INFO  c.e.t.scheduler.TaskStatusScheduler - Checking for tasks to update status...
-2024-11-29 10:42:42.60 [TaskScheduler-3] INFO  c.e.t.s.impltaskservice.ITaskService - Fetching tasks with status: PENDING 
-2024-11-29 10:42:42.64 [TaskScheduler-3] INFO  c.e.t.s.impltaskservice.ITaskService - Found 0 tasks with status: PENDING 
-2024-11-29 10:42:42.64 [TaskScheduler-3] INFO  c.e.t.scheduler.TaskStatusScheduler - Found 0 pending tasks. 
-2024-11-29 10:42:42.64 [TaskScheduler-3] INFO  c.e.t.scheduler.TaskStatusScheduler - Task status update process completed.
-2024-11-29 10:43:42.57 [TaskScheduler-3] INFO  c.e.t.scheduler.TaskStatusScheduler - Checking for tasks to update status...
-2024-11-29 10:43:42.57 [TaskScheduler-3] INFO  c.e.t.s.impltaskservice.ITaskService - Fetching tasks with status: PENDING 
-2024-11-29 10:43:42.62 [TaskScheduler-3] INFO  c.e.t.s.impltaskservice.ITaskService - Found 0 tasks with status: PENDING 
-2024-11-29 10:43:42.62 [TaskScheduler-3] INFO  c.e.t.scheduler.TaskStatusScheduler - Found 0 pending tasks. 
-2024-11-29 10:43:42.62 [TaskScheduler-3] INFO  c.e.t.scheduler.TaskStatusScheduler - Task status update process completed.
-2024-11-29 10:44:34.18 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
-2024-11-29 10:44:34.18 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
-2024-11-29 10:44:34.20 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2024-12-02 09:05:42.19 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2024-12-02 09:05:42.36 [main] INFO  c.e.t.t.TaskControllerIntegrationTest - Starting TaskControllerIntegrationTest using Java 21 with PID 9064 (started by MANOJ REDDY in H:\Spring Examples, Guides, Projects and Academy\taskmanagement)
+2024-12-02 09:05:42.36 [main] INFO  c.e.t.t.TaskControllerIntegrationTest - The following 1 profile is active: "prod"
+2024-12-02 09:05:45.37 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-12-02 09:05:45.65 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 233 ms. Found 1 JPA repository interface.
+2024-12-02 09:05:51.71 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-12-02 09:05:52.10 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.10.Final
+2024-12-02 09:05:52.47 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2024-12-02 09:05:52.99 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-12-02 09:05:53.13 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-12-02 09:05:54.42 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2e0163cb
+2024-12-02 09:05:54.44 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-12-02 09:05:58.70 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-12-02 09:05:58.98 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-12-02 09:06:01.77 [main] INFO  c.e.t.s.SchedulerConfig - Configuring ThreadPoolTaskScheduler...
+2024-12-02 09:06:01.78 [main] INFO  c.e.t.s.SchedulerConfig - ThreadPoolTaskScheduler configured with pool size: 5 
+2024-12-02 09:06:02.54 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-12-02 09:06:05.43 [main] INFO  o.s.b.t.m.w.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet ''
+2024-12-02 09:06:05.43 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Initializing Servlet ''
+2024-12-02 09:06:05.45 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Completed initialization in 9 ms
+2024-12-02 09:06:05.72 [TaskScheduler-1] INFO  c.e.t.scheduler.TaskStatusScheduler - Checking for tasks to update status...
+2024-12-02 09:06:05.95 [TaskScheduler-1] INFO  c.e.t.scheduler.TaskStatusScheduler - Found 0 pending tasks. 
+2024-12-02 09:06:05.96 [TaskScheduler-1] INFO  c.e.t.scheduler.TaskStatusScheduler - Task status update process completed.
+2024-12-02 09:06:06.02 [main] INFO  c.e.t.t.TaskControllerIntegrationTest - Started TaskControllerIntegrationTest in 24.761 seconds (process running for 28.562)
+2024-12-02 09:06:06.57 [main] INFO  c.e.t.r.RequestInterceptor - 1 - pre handle.
+2024-12-02 09:06:06.58 [main] INFO  c.e.t.r.RequestInterceptor - METHOD type : POST
+2024-12-02 09:06:06.58 [main] INFO  c.e.t.r.RequestInterceptor - Request URI : /v1/tasks
+2024-12-02 09:06:06.58 [main] INFO  c.e.t.r.RequestInterceptor - Servlet PATH : 
+2024-12-02 09:06:06.58 [main] INFO  c.e.t.r.RequestInterceptor - Controller name : com.example.taskmanagement.controller.TaskController
+2024-12-02 09:06:06.58 [main] INFO  c.e.t.r.RequestInterceptor - Method name : createTask
+2024-12-02 09:06:07.92 [main] INFO  c.e.t.r.RequestInterceptor - 3 - After completion: Request processing finished.
+2024-12-02 09:06:08.14 [main] INFO  c.e.t.r.RequestInterceptor - 1 - pre handle.
+2024-12-02 09:06:08.14 [main] INFO  c.e.t.r.RequestInterceptor - METHOD type : PUT
+2024-12-02 09:06:08.14 [main] INFO  c.e.t.r.RequestInterceptor - Request URI : /v1/tasks/fc41973b-6c1e-49da-85e7-1dfec7eaa3af
+2024-12-02 09:06:08.14 [main] INFO  c.e.t.r.RequestInterceptor - Servlet PATH : 
+2024-12-02 09:06:08.14 [main] INFO  c.e.t.r.RequestInterceptor - Controller name : com.example.taskmanagement.controller.TaskController
+2024-12-02 09:06:08.14 [main] INFO  c.e.t.r.RequestInterceptor - Method name : updateTask
+2024-12-02 09:06:08.16 [main] INFO  c.e.t.controller.TaskController - Updating task with ID: fc41973b-6c1e-49da-85e7-1dfec7eaa3af with new details: UpdateTaskDTO(title=Updated Task Title, description=Updated Task Description. Software Engineering Interview Wellness360, dueDate=2024-12-03) 
+2024-12-02 09:06:08.26 [main] INFO  c.e.t.r.RequestInterceptor - 2 - Post-handle : Request processed by controller.
+2024-12-02 09:06:08.26 [main] INFO  c.e.t.r.RequestInterceptor - 3 - After completion: Request processing finished.
+2024-12-02 09:06:08.28 [main] INFO  c.e.t.r.RequestInterceptor - 1 - pre handle.
+2024-12-02 09:06:08.28 [main] INFO  c.e.t.r.RequestInterceptor - METHOD type : PUT
+2024-12-02 09:06:08.28 [main] INFO  c.e.t.r.RequestInterceptor - Request URI : /v1/tasks/c2c8a244-b7a3-4cd5-8f3d-36abbffd7f3d
+2024-12-02 09:06:08.28 [main] INFO  c.e.t.r.RequestInterceptor - Servlet PATH : 
+2024-12-02 09:06:08.28 [main] INFO  c.e.t.r.RequestInterceptor - Controller name : com.example.taskmanagement.controller.TaskController
+2024-12-02 09:06:08.28 [main] INFO  c.e.t.r.RequestInterceptor - Method name : updateTask
+2024-12-02 09:06:08.32 [main] INFO  c.e.t.r.RequestInterceptor - 3 - After completion: Request processing finished.
+2024-12-02 09:06:08.34 [main] INFO  c.e.t.r.RequestInterceptor - 1 - pre handle.
+2024-12-02 09:06:08.34 [main] INFO  c.e.t.r.RequestInterceptor - METHOD type : PUT
+2024-12-02 09:06:08.34 [main] INFO  c.e.t.r.RequestInterceptor - Request URI : /v1/tasks/57c96c33-7e3e-4b32-91fc-103f4ceaa36f
+2024-12-02 09:06:08.34 [main] INFO  c.e.t.r.RequestInterceptor - Servlet PATH : 
+2024-12-02 09:06:08.34 [main] INFO  c.e.t.r.RequestInterceptor - Controller name : com.example.taskmanagement.controller.TaskController
+2024-12-02 09:06:08.34 [main] INFO  c.e.t.r.RequestInterceptor - Method name : updateTask
+2024-12-02 09:06:08.41 [main] INFO  c.e.t.r.RequestInterceptor - 3 - After completion: Request processing finished.
+2024-12-02 09:06:08.56 [main] INFO  c.e.t.r.RequestInterceptor - 1 - pre handle.
+2024-12-02 09:06:08.56 [main] INFO  c.e.t.r.RequestInterceptor - METHOD type : PUT
+2024-12-02 09:06:08.56 [main] INFO  c.e.t.r.RequestInterceptor - Request URI : /v1/tasks/fd7d1ee9-0824-4d8c-9aea-2237f146e7d0cv
+2024-12-02 09:06:08.56 [main] INFO  c.e.t.r.RequestInterceptor - Servlet PATH : 
+2024-12-02 09:06:08.56 [main] INFO  c.e.t.r.RequestInterceptor - Controller name : com.example.taskmanagement.controller.TaskController
+2024-12-02 09:06:08.56 [main] INFO  c.e.t.r.RequestInterceptor - Method name : updateTask
+2024-12-02 09:06:08.57 [main] INFO  c.e.t.controller.TaskController - Updating task with ID: fd7d1ee9-0824-4d8c-9aea-2237f146e7d0cv with new details: UpdateTaskDTO(title=Updated Task Title, description=null, dueDate=null) 
+2024-12-02 09:06:08.58 [main] INFO  c.e.t.r.RequestInterceptor - 3 - After completion: Request processing finished.
+2024-12-02 09:06:08.64 [main] INFO  c.e.t.r.RequestInterceptor - 1 - pre handle.
+2024-12-02 09:06:08.64 [main] INFO  c.e.t.r.RequestInterceptor - METHOD type : PUT
+2024-12-02 09:06:08.64 [main] INFO  c.e.t.r.RequestInterceptor - Request URI : /v1/tasks/d5e039f9-1b99-495d-b97d-e5b8826d6bef
+2024-12-02 09:06:08.64 [main] INFO  c.e.t.r.RequestInterceptor - Servlet PATH : 
+2024-12-02 09:06:08.64 [main] INFO  c.e.t.r.RequestInterceptor - Controller name : com.example.taskmanagement.controller.TaskController
+2024-12-02 09:06:08.64 [main] INFO  c.e.t.r.RequestInterceptor - Method name : updateTask
+2024-12-02 09:06:08.65 [main] INFO  c.e.t.r.RequestInterceptor - 3 - After completion: Request processing finished.
+2024-12-02 09:06:08.68 [main] INFO  c.e.t.r.RequestInterceptor - 1 - pre handle.
+2024-12-02 09:06:08.68 [main] INFO  c.e.t.r.RequestInterceptor - METHOD type : POST
+2024-12-02 09:06:08.68 [main] INFO  c.e.t.r.RequestInterceptor - Request URI : /v1/tasks
+2024-12-02 09:06:08.68 [main] INFO  c.e.t.r.RequestInterceptor - Servlet PATH : 
+2024-12-02 09:06:08.69 [main] INFO  c.e.t.r.RequestInterceptor - Controller name : com.example.taskmanagement.controller.TaskController
+2024-12-02 09:06:08.69 [main] INFO  c.e.t.r.RequestInterceptor - Method name : createTask
+2024-12-02 09:06:08.71 [main] INFO  c.e.t.r.RequestInterceptor - 3 - After completion: Request processing finished.
+2024-12-02 09:06:08.75 [main] INFO  c.e.t.r.RequestInterceptor - 1 - pre handle.
+2024-12-02 09:06:08.75 [main] INFO  c.e.t.r.RequestInterceptor - METHOD type : POST
+2024-12-02 09:06:08.75 [main] INFO  c.e.t.r.RequestInterceptor - Request URI : /v1/tasks
+2024-12-02 09:06:08.75 [main] INFO  c.e.t.r.RequestInterceptor - Servlet PATH : 
+2024-12-02 09:06:08.75 [main] INFO  c.e.t.r.RequestInterceptor - Controller name : com.example.taskmanagement.controller.TaskController
+2024-12-02 09:06:08.75 [main] INFO  c.e.t.r.RequestInterceptor - Method name : createTask
+2024-12-02 09:06:08.75 [main] INFO  c.e.t.controller.TaskController - Creating a new task with details: CreateTaskDTO(title=Sample Task, description=This is a sample task description., dueDate=null) 
+2024-12-02 09:06:08.76 [main] INFO  c.e.t.r.RequestInterceptor - 2 - Post-handle : Request processed by controller.
+2024-12-02 09:06:08.76 [main] INFO  c.e.t.r.RequestInterceptor - 3 - After completion: Request processing finished.
+2024-12-02 09:06:08.80 [main] INFO  c.e.t.r.RequestInterceptor - 1 - pre handle.
+2024-12-02 09:06:08.80 [main] INFO  c.e.t.r.RequestInterceptor - METHOD type : POST
+2024-12-02 09:06:08.80 [main] INFO  c.e.t.r.RequestInterceptor - Request URI : /v1/tasks
+2024-12-02 09:06:08.80 [main] INFO  c.e.t.r.RequestInterceptor - Servlet PATH : 
+2024-12-02 09:06:08.80 [main] INFO  c.e.t.r.RequestInterceptor - Controller name : com.example.taskmanagement.controller.TaskController
+2024-12-02 09:06:08.80 [main] INFO  c.e.t.r.RequestInterceptor - Method name : createTask
+2024-12-02 09:06:08.80 [main] INFO  c.e.t.controller.TaskController - Creating a new task with details: CreateTaskDTO(title=Sample Task, description=This is a sample task description., dueDate=2024-12-05) 
+2024-12-02 09:06:08.80 [main] INFO  c.e.t.r.RequestInterceptor - 2 - Post-handle : Request processed by controller.
+2024-12-02 09:06:08.81 [main] INFO  c.e.t.r.RequestInterceptor - 3 - After completion: Request processing finished.
+2024-12-02 09:06:08.89 [main] INFO  c.e.t.r.RequestInterceptor - 1 - pre handle.
+2024-12-02 09:06:08.89 [main] INFO  c.e.t.r.RequestInterceptor - METHOD type : POST
+2024-12-02 09:06:08.89 [main] INFO  c.e.t.r.RequestInterceptor - Request URI : /v1/tasks
+2024-12-02 09:06:08.89 [main] INFO  c.e.t.r.RequestInterceptor - Servlet PATH : 
+2024-12-02 09:06:08.89 [main] INFO  c.e.t.r.RequestInterceptor - Controller name : com.example.taskmanagement.controller.TaskController
+2024-12-02 09:06:08.89 [main] INFO  c.e.t.r.RequestInterceptor - Method name : createTask
+2024-12-02 09:06:08.89 [main] INFO  c.e.t.r.RequestInterceptor - 3 - After completion: Request processing finished.
+2024-12-02 09:06:08.92 [main] INFO  c.e.t.r.RequestInterceptor - 1 - pre handle.
+2024-12-02 09:06:08.92 [main] INFO  c.e.t.r.RequestInterceptor - METHOD type : POST
+2024-12-02 09:06:08.92 [main] INFO  c.e.t.r.RequestInterceptor - Request URI : /v1/tasks
+2024-12-02 09:06:08.92 [main] INFO  c.e.t.r.RequestInterceptor - Servlet PATH : 
+2024-12-02 09:06:08.92 [main] INFO  c.e.t.r.RequestInterceptor - Controller name : com.example.taskmanagement.controller.TaskController
+2024-12-02 09:06:08.92 [main] INFO  c.e.t.r.RequestInterceptor - Method name : createTask
+2024-12-02 09:06:08.93 [main] INFO  c.e.t.r.RequestInterceptor - 3 - After completion: Request processing finished.
+2024-12-02 09:06:08.97 [main] INFO  c.e.t.r.RequestInterceptor - 1 - pre handle.
+2024-12-02 09:06:08.97 [main] INFO  c.e.t.r.RequestInterceptor - METHOD type : POST
+2024-12-02 09:06:08.97 [main] INFO  c.e.t.r.RequestInterceptor - Request URI : /v1/tasks
+2024-12-02 09:06:08.98 [main] INFO  c.e.t.r.RequestInterceptor - Servlet PATH : 
+2024-12-02 09:06:08.98 [main] INFO  c.e.t.r.RequestInterceptor - Controller name : com.example.taskmanagement.controller.TaskController
+2024-12-02 09:06:08.98 [main] INFO  c.e.t.r.RequestInterceptor - Method name : createTask
+2024-12-02 09:06:08.99 [main] INFO  c.e.t.r.RequestInterceptor - 3 - After completion: Request processing finished.
+2024-12-02 09:06:09.09 [main] INFO  c.e.t.r.RequestInterceptor - 1 - pre handle.
+2024-12-02 09:06:09.09 [main] INFO  c.e.t.r.RequestInterceptor - METHOD type : PUT
+2024-12-02 09:06:09.09 [main] INFO  c.e.t.r.RequestInterceptor - Request URI : /v1/tasks/8f050af5-5bf9-41f7-8775-78432ae0c347
+2024-12-02 09:06:09.09 [main] INFO  c.e.t.r.RequestInterceptor - Servlet PATH : 
+2024-12-02 09:06:09.09 [main] INFO  c.e.t.r.RequestInterceptor - Controller name : com.example.taskmanagement.controller.TaskController
+2024-12-02 09:06:09.09 [main] INFO  c.e.t.r.RequestInterceptor - Method name : updateTask
+2024-12-02 09:06:09.09 [main] INFO  c.e.t.controller.TaskController - Updating task with ID: 8f050af5-5bf9-41f7-8775-78432ae0c347 with new details: UpdateTaskDTO(title=Updated Task Title, description=Updated Task Description. Software Engineering Interview Wellness360, dueDate=2024-12-03) 
+2024-12-02 09:06:09.10 [main] INFO  c.e.t.r.RequestInterceptor - 3 - After completion: Request processing finished.
+2024-12-02 09:06:09.28 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-12-02 09:06:09.31 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2024-12-02 09:06:09.41 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2024-12-02 09:25:51.75 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2024-12-02 09:25:51.91 [main] INFO  c.e.t.t.TaskControllerIntegrationTest - Starting TaskControllerIntegrationTest using Java 21 with PID 4696 (started by MANOJ REDDY in H:\Spring Examples, Guides, Projects and Academy\taskmanagement)
+2024-12-02 09:25:51.91 [main] INFO  c.e.t.t.TaskControllerIntegrationTest - The following 1 profile is active: "prod"
+2024-12-02 09:25:55.59 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-12-02 09:25:55.82 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 211 ms. Found 1 JPA repository interface.
+2024-12-02 09:25:59.05 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-12-02 09:25:59.30 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.10.Final
+2024-12-02 09:25:59.49 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2024-12-02 09:25:59.89 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-12-02 09:26:00.25 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-12-02 09:26:01.29 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@7c048b30
+2024-12-02 09:26:01.29 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-12-02 09:26:03.54 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-12-02 09:26:03.76 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-12-02 09:26:05.36 [main] INFO  c.e.t.s.SchedulerConfig - Configuring ThreadPoolTaskScheduler...
+2024-12-02 09:26:05.36 [main] INFO  c.e.t.s.SchedulerConfig - ThreadPoolTaskScheduler configured with pool size: 5 
+2024-12-02 09:26:06.05 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-12-02 09:26:06.97 [main] INFO  o.s.b.t.m.w.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet ''
+2024-12-02 09:26:06.97 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Initializing Servlet ''
+2024-12-02 09:26:06.98 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Completed initialization in 4 ms
+2024-12-02 09:26:07.06 [main] INFO  c.e.t.t.TaskControllerIntegrationTest - Started TaskControllerIntegrationTest in 16.615 seconds (process running for 20.468)
+2024-12-02 09:26:07.14 [TaskScheduler-1] INFO  c.e.t.scheduler.TaskStatusScheduler - Checking for tasks to update status...
+2024-12-02 09:26:07.20 [TaskScheduler-1] INFO  c.e.t.scheduler.TaskStatusScheduler - Found 0 pending tasks. 
+2024-12-02 09:26:07.20 [TaskScheduler-1] INFO  c.e.t.scheduler.TaskStatusScheduler - Task status update process completed.
+2024-12-02 09:26:07.44 [main] INFO  c.e.t.r.RequestInterceptor - 1 - pre handle.
+2024-12-02 09:26:07.44 [main] INFO  c.e.t.r.RequestInterceptor - METHOD type : POST
+2024-12-02 09:26:07.44 [main] INFO  c.e.t.r.RequestInterceptor - Request URI : /v1/tasks
+2024-12-02 09:26:07.44 [main] INFO  c.e.t.r.RequestInterceptor - Servlet PATH : 
+2024-12-02 09:26:07.44 [main] INFO  c.e.t.r.RequestInterceptor - Controller name : com.example.taskmanagement.controller.TaskController
+2024-12-02 09:26:07.44 [main] INFO  c.e.t.r.RequestInterceptor - Method name : createTask
+2024-12-02 09:26:08.03 [main] INFO  c.e.t.r.RequestInterceptor - 3 - After completion: Request processing finished.
+2024-12-02 09:26:08.19 [main] INFO  c.e.t.r.RequestInterceptor - 1 - pre handle.
+2024-12-02 09:26:08.19 [main] INFO  c.e.t.r.RequestInterceptor - METHOD type : PUT
+2024-12-02 09:26:08.19 [main] INFO  c.e.t.r.RequestInterceptor - Request URI : /v1/tasks/c5996db4-64c8-4ed3-bebb-d1e03c13446b
+2024-12-02 09:26:08.19 [main] INFO  c.e.t.r.RequestInterceptor - Servlet PATH : 
+2024-12-02 09:26:08.19 [main] INFO  c.e.t.r.RequestInterceptor - Controller name : com.example.taskmanagement.controller.TaskController
+2024-12-02 09:26:08.19 [main] INFO  c.e.t.r.RequestInterceptor - Method name : updateTask
+2024-12-02 09:26:08.25 [main] INFO  c.e.t.controller.TaskController - Updating task with ID: c5996db4-64c8-4ed3-bebb-d1e03c13446b with new details: UpdateTaskDTO(title=Updated Task Title, description=Updated Task Description. Software Engineering Interview Wellness360, dueDate=2024-12-03) 
+2024-12-02 09:26:08.31 [main] INFO  c.e.t.r.RequestInterceptor - 2 - Post-handle : Request processed by controller.
+2024-12-02 09:26:08.31 [main] INFO  c.e.t.r.RequestInterceptor - 3 - After completion: Request processing finished.
+2024-12-02 09:26:08.36 [main] INFO  c.e.t.r.RequestInterceptor - 1 - pre handle.
+2024-12-02 09:26:08.36 [main] INFO  c.e.t.r.RequestInterceptor - METHOD type : PUT
+2024-12-02 09:26:08.36 [main] INFO  c.e.t.r.RequestInterceptor - Request URI : /v1/tasks/f2c0b426-7db6-444f-99a1-8a27f74e64df
+2024-12-02 09:26:08.36 [main] INFO  c.e.t.r.RequestInterceptor - Servlet PATH : 
+2024-12-02 09:26:08.36 [main] INFO  c.e.t.r.RequestInterceptor - Controller name : com.example.taskmanagement.controller.TaskController
+2024-12-02 09:26:08.36 [main] INFO  c.e.t.r.RequestInterceptor - Method name : updateTask
+2024-12-02 09:26:08.37 [main] INFO  c.e.t.r.RequestInterceptor - 3 - After completion: Request processing finished.
+2024-12-02 09:26:08.40 [main] INFO  c.e.t.r.RequestInterceptor - 1 - pre handle.
+2024-12-02 09:26:08.40 [main] INFO  c.e.t.r.RequestInterceptor - METHOD type : PUT
+2024-12-02 09:26:08.40 [main] INFO  c.e.t.r.RequestInterceptor - Request URI : /v1/tasks/abc7afb6-f5a3-43b4-822f-9c4a1ae4445f
+2024-12-02 09:26:08.40 [main] INFO  c.e.t.r.RequestInterceptor - Servlet PATH : 
+2024-12-02 09:26:08.40 [main] INFO  c.e.t.r.RequestInterceptor - Controller name : com.example.taskmanagement.controller.TaskController
+2024-12-02 09:26:08.40 [main] INFO  c.e.t.r.RequestInterceptor - Method name : updateTask
+2024-12-02 09:26:08.41 [main] INFO  c.e.t.r.RequestInterceptor - 3 - After completion: Request processing finished.
+2024-12-02 09:26:08.44 [main] INFO  c.e.t.r.RequestInterceptor - 1 - pre handle.
+2024-12-02 09:26:08.44 [main] INFO  c.e.t.r.RequestInterceptor - METHOD type : PUT
+2024-12-02 09:26:08.44 [main] INFO  c.e.t.r.RequestInterceptor - Request URI : /v1/tasks/ca081704-e646-4d83-b4f7-9351f87ed453cv
+2024-12-02 09:26:08.44 [main] INFO  c.e.t.r.RequestInterceptor - Servlet PATH : 
+2024-12-02 09:26:08.44 [main] INFO  c.e.t.r.RequestInterceptor - Controller name : com.example.taskmanagement.controller.TaskController
+2024-12-02 09:26:08.44 [main] INFO  c.e.t.r.RequestInterceptor - Method name : updateTask
+2024-12-02 09:26:08.44 [main] INFO  c.e.t.controller.TaskController - Updating task with ID: ca081704-e646-4d83-b4f7-9351f87ed453cv with new details: UpdateTaskDTO(title=Updated Task Title, description=null, dueDate=null) 
+2024-12-02 09:26:08.47 [main] INFO  c.e.t.r.RequestInterceptor - 3 - After completion: Request processing finished.
+2024-12-02 09:26:08.50 [main] INFO  c.e.t.r.RequestInterceptor - 1 - pre handle.
+2024-12-02 09:26:08.50 [main] INFO  c.e.t.r.RequestInterceptor - METHOD type : PUT
+2024-12-02 09:26:08.50 [main] INFO  c.e.t.r.RequestInterceptor - Request URI : /v1/tasks/0dcb6c15-b50a-481a-817d-16fe8c3e6ef6
+2024-12-02 09:26:08.50 [main] INFO  c.e.t.r.RequestInterceptor - Servlet PATH : 
+2024-12-02 09:26:08.50 [main] INFO  c.e.t.r.RequestInterceptor - Controller name : com.example.taskmanagement.controller.TaskController
+2024-12-02 09:26:08.50 [main] INFO  c.e.t.r.RequestInterceptor - Method name : updateTask
+2024-12-02 09:26:08.51 [main] INFO  c.e.t.r.RequestInterceptor - 3 - After completion: Request processing finished.
+2024-12-02 09:26:08.53 [main] INFO  c.e.t.r.RequestInterceptor - 1 - pre handle.
+2024-12-02 09:26:08.53 [main] INFO  c.e.t.r.RequestInterceptor - METHOD type : POST
+2024-12-02 09:26:08.53 [main] INFO  c.e.t.r.RequestInterceptor - Request URI : /v1/tasks
+2024-12-02 09:26:08.53 [main] INFO  c.e.t.r.RequestInterceptor - Servlet PATH : 
+2024-12-02 09:26:08.53 [main] INFO  c.e.t.r.RequestInterceptor - Controller name : com.example.taskmanagement.controller.TaskController
+2024-12-02 09:26:08.53 [main] INFO  c.e.t.r.RequestInterceptor - Method name : createTask
+2024-12-02 09:26:08.54 [main] INFO  c.e.t.r.RequestInterceptor - 3 - After completion: Request processing finished.
+2024-12-02 09:26:08.56 [main] INFO  c.e.t.r.RequestInterceptor - 1 - pre handle.
+2024-12-02 09:26:08.56 [main] INFO  c.e.t.r.RequestInterceptor - METHOD type : POST
+2024-12-02 09:26:08.56 [main] INFO  c.e.t.r.RequestInterceptor - Request URI : /v1/tasks
+2024-12-02 09:26:08.56 [main] INFO  c.e.t.r.RequestInterceptor - Servlet PATH : 
+2024-12-02 09:26:08.56 [main] INFO  c.e.t.r.RequestInterceptor - Controller name : com.example.taskmanagement.controller.TaskController
+2024-12-02 09:26:08.56 [main] INFO  c.e.t.r.RequestInterceptor - Method name : createTask
+2024-12-02 09:26:08.57 [main] INFO  c.e.t.controller.TaskController - Creating a new task with details: CreateTaskDTO(title=Sample Task, description=This is a sample task description., dueDate=null) 
+2024-12-02 09:26:08.57 [main] INFO  c.e.t.r.RequestInterceptor - 2 - Post-handle : Request processed by controller.
+2024-12-02 09:26:08.57 [main] INFO  c.e.t.r.RequestInterceptor - 3 - After completion: Request processing finished.
+2024-12-02 09:26:08.59 [main] INFO  c.e.t.r.RequestInterceptor - 1 - pre handle.
+2024-12-02 09:26:08.59 [main] INFO  c.e.t.r.RequestInterceptor - METHOD type : POST
+2024-12-02 09:26:08.59 [main] INFO  c.e.t.r.RequestInterceptor - Request URI : /v1/tasks
+2024-12-02 09:26:08.59 [main] INFO  c.e.t.r.RequestInterceptor - Servlet PATH : 
+2024-12-02 09:26:08.59 [main] INFO  c.e.t.r.RequestInterceptor - Controller name : com.example.taskmanagement.controller.TaskController
+2024-12-02 09:26:08.60 [main] INFO  c.e.t.r.RequestInterceptor - Method name : createTask
+2024-12-02 09:26:08.60 [main] INFO  c.e.t.controller.TaskController - Creating a new task with details: CreateTaskDTO(title=Sample Task, description=This is a sample task description., dueDate=2024-12-05) 
+2024-12-02 09:26:08.60 [main] INFO  c.e.t.r.RequestInterceptor - 2 - Post-handle : Request processed by controller.
+2024-12-02 09:26:08.60 [main] INFO  c.e.t.r.RequestInterceptor - 3 - After completion: Request processing finished.
+2024-12-02 09:26:08.63 [main] INFO  c.e.t.r.RequestInterceptor - 1 - pre handle.
+2024-12-02 09:26:08.63 [main] INFO  c.e.t.r.RequestInterceptor - METHOD type : POST
+2024-12-02 09:26:08.63 [main] INFO  c.e.t.r.RequestInterceptor - Request URI : /v1/tasks
+2024-12-02 09:26:08.63 [main] INFO  c.e.t.r.RequestInterceptor - Servlet PATH : 
+2024-12-02 09:26:08.63 [main] INFO  c.e.t.r.RequestInterceptor - Controller name : com.example.taskmanagement.controller.TaskController
+2024-12-02 09:26:08.63 [main] INFO  c.e.t.r.RequestInterceptor - Method name : createTask
+2024-12-02 09:26:08.63 [main] INFO  c.e.t.r.RequestInterceptor - 3 - After completion: Request processing finished.
+2024-12-02 09:26:08.64 [main] INFO  c.e.t.r.RequestInterceptor - 1 - pre handle.
+2024-12-02 09:26:08.64 [main] INFO  c.e.t.r.RequestInterceptor - METHOD type : POST
+2024-12-02 09:26:08.64 [main] INFO  c.e.t.r.RequestInterceptor - Request URI : /v1/tasks
+2024-12-02 09:26:08.64 [main] INFO  c.e.t.r.RequestInterceptor - Servlet PATH : 
+2024-12-02 09:26:08.64 [main] INFO  c.e.t.r.RequestInterceptor - Controller name : com.example.taskmanagement.controller.TaskController
+2024-12-02 09:26:08.65 [main] INFO  c.e.t.r.RequestInterceptor - Method name : createTask
+2024-12-02 09:26:08.65 [main] INFO  c.e.t.r.RequestInterceptor - 3 - After completion: Request processing finished.
+2024-12-02 09:26:08.67 [main] INFO  c.e.t.r.RequestInterceptor - 1 - pre handle.
+2024-12-02 09:26:08.67 [main] INFO  c.e.t.r.RequestInterceptor - METHOD type : POST
+2024-12-02 09:26:08.67 [main] INFO  c.e.t.r.RequestInterceptor - Request URI : /v1/tasks
+2024-12-02 09:26:08.67 [main] INFO  c.e.t.r.RequestInterceptor - Servlet PATH : 
+2024-12-02 09:26:08.67 [main] INFO  c.e.t.r.RequestInterceptor - Controller name : com.example.taskmanagement.controller.TaskController
+2024-12-02 09:26:08.67 [main] INFO  c.e.t.r.RequestInterceptor - Method name : createTask
+2024-12-02 09:26:08.67 [main] INFO  c.e.t.r.RequestInterceptor - 3 - After completion: Request processing finished.
+2024-12-02 09:26:08.73 [main] INFO  c.e.t.r.RequestInterceptor - 1 - pre handle.
+2024-12-02 09:26:08.73 [main] INFO  c.e.t.r.RequestInterceptor - METHOD type : PUT
+2024-12-02 09:26:08.73 [main] INFO  c.e.t.r.RequestInterceptor - Request URI : /v1/tasks/5391ea3d-8c85-4b13-8532-0ade91a6f56a
+2024-12-02 09:26:08.73 [main] INFO  c.e.t.r.RequestInterceptor - Servlet PATH : 
+2024-12-02 09:26:08.73 [main] INFO  c.e.t.r.RequestInterceptor - Controller name : com.example.taskmanagement.controller.TaskController
+2024-12-02 09:26:08.73 [main] INFO  c.e.t.r.RequestInterceptor - Method name : updateTask
+2024-12-02 09:26:08.73 [main] INFO  c.e.t.controller.TaskController - Updating task with ID: 5391ea3d-8c85-4b13-8532-0ade91a6f56a with new details: UpdateTaskDTO(title=Updated Task Title, description=Updated Task Description. Software Engineering Interview Wellness360, dueDate=2024-12-03) 
+2024-12-02 09:26:08.73 [main] INFO  c.e.t.r.RequestInterceptor - 3 - After completion: Request processing finished.
+2024-12-02 09:26:08.76 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-12-02 09:26:08.77 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2024-12-02 09:26:08.81 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2024-12-02 09:41:38.31 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2024-12-02 09:41:38.43 [main] INFO  c.e.t.t.TaskRepositoryIntegrationTest - Starting TaskRepositoryIntegrationTest using Java 21 with PID 11964 (started by MANOJ REDDY in H:\Spring Examples, Guides, Projects and Academy\taskmanagement)
+2024-12-02 09:41:38.44 [main] INFO  c.e.t.t.TaskRepositoryIntegrationTest - The following 1 profile is active: "prod"
+2024-12-02 09:41:41.15 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-12-02 09:41:41.36 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 188 ms. Found 1 JPA repository interface.
+2024-12-02 09:41:43.82 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-12-02 09:41:44.18 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.10.Final
+2024-12-02 09:41:44.27 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2024-12-02 09:41:45.09 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-12-02 09:41:45.18 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-12-02 09:41:46.03 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2616b618
+2024-12-02 09:41:46.04 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-12-02 09:41:49.00 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-12-02 09:41:49.19 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-12-02 09:41:51.74 [main] INFO  c.e.t.t.TaskRepositoryIntegrationTest - Started TaskRepositoryIntegrationTest in 15.017 seconds (process running for 20.418)
+2024-12-02 09:41:53.55 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-12-02 09:41:53.56 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2024-12-02 09:41:53.57 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2024-12-02 09:45:48.66 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2024-12-02 09:45:48.83 [main] INFO  c.e.t.t.TaskRepositoryIntegrationTest - Starting TaskRepositoryIntegrationTest using Java 21 with PID 3112 (started by MANOJ REDDY in H:\Spring Examples, Guides, Projects and Academy\taskmanagement)
+2024-12-02 09:45:48.83 [main] INFO  c.e.t.t.TaskRepositoryIntegrationTest - The following 1 profile is active: "prod"
+2024-12-02 09:45:50.98 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-12-02 09:45:51.23 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 201 ms. Found 1 JPA repository interface.
+2024-12-02 09:45:52.89 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-12-02 09:45:53.10 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.10.Final
+2024-12-02 09:45:53.20 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2024-12-02 09:45:53.93 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-12-02 09:45:54.01 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-12-02 09:45:54.77 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@42d9e8d2
+2024-12-02 09:45:54.78 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-12-02 09:45:56.91 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-12-02 09:45:57.08 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-12-02 09:45:58.01 [main] INFO  c.e.t.t.TaskRepositoryIntegrationTest - Started TaskRepositoryIntegrationTest in 11.264 seconds (process running for 15.085)
+2024-12-02 09:46:00.90 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-12-02 09:46:00.90 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2024-12-02 09:46:00.92 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2024-12-02 09:48:18.79 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2024-12-02 09:48:18.98 [main] INFO  c.e.t.t.TaskRepositoryIntegrationTest - Starting TaskRepositoryIntegrationTest using Java 21 with PID 9160 (started by MANOJ REDDY in H:\Spring Examples, Guides, Projects and Academy\taskmanagement)
+2024-12-02 09:48:18.99 [main] INFO  c.e.t.t.TaskRepositoryIntegrationTest - The following 1 profile is active: "prod"
+2024-12-02 09:48:21.61 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-12-02 09:48:21.77 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 130 ms. Found 1 JPA repository interface.
+2024-12-02 09:48:22.55 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-12-02 09:48:22.71 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.10.Final
+2024-12-02 09:48:22.79 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2024-12-02 09:48:23.30 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-12-02 09:48:23.38 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-12-02 09:48:24.29 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@60deefed
+2024-12-02 09:48:24.29 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-12-02 09:48:25.98 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-12-02 09:48:26.15 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-12-02 09:48:27.08 [main] INFO  c.e.t.t.TaskRepositoryIntegrationTest - Started TaskRepositoryIntegrationTest in 10.231 seconds (process running for 13.78)
+2024-12-02 09:48:29.70 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-12-02 09:48:29.71 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2024-12-02 09:48:29.73 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2024-12-02 10:01:38.63 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2024-12-02 10:01:38.74 [main] INFO  c.e.t.t.TaskRepositoryIntegrationTest - Starting TaskRepositoryIntegrationTest using Java 21 with PID 7760 (started by MANOJ REDDY in H:\Spring Examples, Guides, Projects and Academy\taskmanagement)
+2024-12-02 10:01:38.74 [main] INFO  c.e.t.t.TaskRepositoryIntegrationTest - The following 1 profile is active: "prod"
+2024-12-02 10:01:40.46 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-12-02 10:01:40.85 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 259 ms. Found 1 JPA repository interface.
+2024-12-02 10:01:41.86 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-12-02 10:01:42.04 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.10.Final
+2024-12-02 10:01:42.15 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2024-12-02 10:01:42.79 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-12-02 10:01:42.91 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-12-02 10:01:43.76 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@67d8faec
+2024-12-02 10:01:43.77 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-12-02 10:01:46.04 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-12-02 10:01:46.24 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-12-02 10:01:47.36 [main] INFO  c.e.t.t.TaskRepositoryIntegrationTest - Started TaskRepositoryIntegrationTest in 9.725 seconds (process running for 12.584)
+2024-12-02 10:01:49.47 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-12-02 10:01:49.47 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2024-12-02 10:01:49.49 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2024-12-02 10:02:52.74 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2024-12-02 10:02:52.91 [main] INFO  c.e.t.t.TaskControllerIntegrationTest - Starting TaskControllerIntegrationTest using Java 21 with PID 5256 (started by MANOJ REDDY in H:\Spring Examples, Guides, Projects and Academy\taskmanagement)
+2024-12-02 10:02:52.91 [main] INFO  c.e.t.t.TaskControllerIntegrationTest - The following 1 profile is active: "prod"
+2024-12-02 10:02:55.32 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-12-02 10:02:55.50 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 148 ms. Found 1 JPA repository interface.
+2024-12-02 10:03:02.05 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-12-02 10:03:02.32 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.10.Final
+2024-12-02 10:03:02.41 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2024-12-02 10:03:02.75 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-12-02 10:03:02.84 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-12-02 10:03:03.70 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@301d84f6
+2024-12-02 10:03:03.71 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-12-02 10:03:06.47 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-12-02 10:03:06.63 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-12-02 10:03:08.22 [main] INFO  c.e.t.s.SchedulerConfig - Configuring ThreadPoolTaskScheduler...
+2024-12-02 10:03:08.23 [main] INFO  c.e.t.s.SchedulerConfig - ThreadPoolTaskScheduler configured with pool size: 5 
+2024-12-02 10:03:09.43 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-12-02 10:03:11.44 [main] INFO  o.s.b.t.m.w.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet ''
+2024-12-02 10:03:11.44 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Initializing Servlet ''
+2024-12-02 10:03:11.49 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Completed initialization in 2 ms
+2024-12-02 10:03:11.57 [main] INFO  c.e.t.t.TaskControllerIntegrationTest - Started TaskControllerIntegrationTest in 20.063 seconds (process running for 23.342)
+2024-12-02 10:03:11.69 [TaskScheduler-1] INFO  c.e.t.scheduler.TaskStatusScheduler - Checking for tasks to update status...
+2024-12-02 10:03:11.72 [TaskScheduler-1] INFO  c.e.t.scheduler.TaskStatusScheduler - Found 0 pending tasks. 
+2024-12-02 10:03:11.72 [TaskScheduler-1] INFO  c.e.t.scheduler.TaskStatusScheduler - Task status update process completed.
+2024-12-02 10:03:11.88 [main] INFO  c.e.t.r.RequestInterceptor - 1 - pre handle.
+2024-12-02 10:03:11.88 [main] INFO  c.e.t.r.RequestInterceptor - METHOD type : POST
+2024-12-02 10:03:11.88 [main] INFO  c.e.t.r.RequestInterceptor - Request URI : /v1/tasks
+2024-12-02 10:03:11.88 [main] INFO  c.e.t.r.RequestInterceptor - Servlet PATH : 
+2024-12-02 10:03:11.88 [main] INFO  c.e.t.r.RequestInterceptor - Controller name : com.example.taskmanagement.controller.TaskController
+2024-12-02 10:03:11.89 [main] INFO  c.e.t.r.RequestInterceptor - Method name : createTask
+2024-12-02 10:03:12.18 [main] INFO  c.e.t.r.RequestInterceptor - 3 - After completion: Request processing finished.
+2024-12-02 10:03:12.29 [main] INFO  c.e.t.r.RequestInterceptor - 1 - pre handle.
+2024-12-02 10:03:12.29 [main] INFO  c.e.t.r.RequestInterceptor - METHOD type : PUT
+2024-12-02 10:03:12.29 [main] INFO  c.e.t.r.RequestInterceptor - Request URI : /v1/tasks/3fa68a1d-b4f3-4bc3-af53-1940fbf142c9
+2024-12-02 10:03:12.29 [main] INFO  c.e.t.r.RequestInterceptor - Servlet PATH : 
+2024-12-02 10:03:12.29 [main] INFO  c.e.t.r.RequestInterceptor - Controller name : com.example.taskmanagement.controller.TaskController
+2024-12-02 10:03:12.29 [main] INFO  c.e.t.r.RequestInterceptor - Method name : updateTask
+2024-12-02 10:03:12.32 [main] INFO  c.e.t.controller.TaskController - Updating task with ID: 3fa68a1d-b4f3-4bc3-af53-1940fbf142c9 with new details: UpdateTaskDTO(title=Updated Task Title, description=Updated Task Description. Software Engineering Interview Wellness360, dueDate=2024-12-03) 
+2024-12-02 10:03:12.34 [main] INFO  c.e.t.r.RequestInterceptor - 2 - Post-handle : Request processed by controller.
+2024-12-02 10:03:12.34 [main] INFO  c.e.t.r.RequestInterceptor - 3 - After completion: Request processing finished.
+2024-12-02 10:03:12.43 [main] INFO  c.e.t.r.RequestInterceptor - 1 - pre handle.
+2024-12-02 10:03:12.43 [main] INFO  c.e.t.r.RequestInterceptor - METHOD type : PUT
+2024-12-02 10:03:12.43 [main] INFO  c.e.t.r.RequestInterceptor - Request URI : /v1/tasks/c8021be0-bdca-4388-87fd-c507524daf34
+2024-12-02 10:03:12.43 [main] INFO  c.e.t.r.RequestInterceptor - Servlet PATH : 
+2024-12-02 10:03:12.43 [main] INFO  c.e.t.r.RequestInterceptor - Controller name : com.example.taskmanagement.controller.TaskController
+2024-12-02 10:03:12.43 [main] INFO  c.e.t.r.RequestInterceptor - Method name : updateTask
+2024-12-02 10:03:12.44 [main] INFO  c.e.t.r.RequestInterceptor - 3 - After completion: Request processing finished.
+2024-12-02 10:03:12.46 [main] INFO  c.e.t.r.RequestInterceptor - 1 - pre handle.
+2024-12-02 10:03:12.46 [main] INFO  c.e.t.r.RequestInterceptor - METHOD type : PUT
+2024-12-02 10:03:12.46 [main] INFO  c.e.t.r.RequestInterceptor - Request URI : /v1/tasks/2a012ca8-16c2-4a9f-9d8a-52f6c1d2bff7
+2024-12-02 10:03:12.46 [main] INFO  c.e.t.r.RequestInterceptor - Servlet PATH : 
+2024-12-02 10:03:12.46 [main] INFO  c.e.t.r.RequestInterceptor - Controller name : com.example.taskmanagement.controller.TaskController
+2024-12-02 10:03:12.46 [main] INFO  c.e.t.r.RequestInterceptor - Method name : updateTask
+2024-12-02 10:03:12.50 [main] INFO  c.e.t.r.RequestInterceptor - 3 - After completion: Request processing finished.
+2024-12-02 10:03:12.53 [main] INFO  c.e.t.r.RequestInterceptor - 1 - pre handle.
+2024-12-02 10:03:12.53 [main] INFO  c.e.t.r.RequestInterceptor - METHOD type : PUT
+2024-12-02 10:03:12.53 [main] INFO  c.e.t.r.RequestInterceptor - Request URI : /v1/tasks/76a2ab50-cc44-4f78-b334-652a05adc0b2cv
+2024-12-02 10:03:12.53 [main] INFO  c.e.t.r.RequestInterceptor - Servlet PATH : 
+2024-12-02 10:03:12.53 [main] INFO  c.e.t.r.RequestInterceptor - Controller name : com.example.taskmanagement.controller.TaskController
+2024-12-02 10:03:12.53 [main] INFO  c.e.t.r.RequestInterceptor - Method name : updateTask
+2024-12-02 10:03:12.53 [main] INFO  c.e.t.controller.TaskController - Updating task with ID: 76a2ab50-cc44-4f78-b334-652a05adc0b2cv with new details: UpdateTaskDTO(title=Updated Task Title, description=null, dueDate=null) 
+2024-12-02 10:03:12.54 [main] INFO  c.e.t.r.RequestInterceptor - 3 - After completion: Request processing finished.
+2024-12-02 10:03:12.56 [main] INFO  c.e.t.r.RequestInterceptor - 1 - pre handle.
+2024-12-02 10:03:12.56 [main] INFO  c.e.t.r.RequestInterceptor - METHOD type : PUT
+2024-12-02 10:03:12.56 [main] INFO  c.e.t.r.RequestInterceptor - Request URI : /v1/tasks/bced2af4-dc90-4f53-a8a9-19ae9ae7499d
+2024-12-02 10:03:12.56 [main] INFO  c.e.t.r.RequestInterceptor - Servlet PATH : 
+2024-12-02 10:03:12.56 [main] INFO  c.e.t.r.RequestInterceptor - Controller name : com.example.taskmanagement.controller.TaskController
+2024-12-02 10:03:12.56 [main] INFO  c.e.t.r.RequestInterceptor - Method name : updateTask
+2024-12-02 10:03:12.56 [main] INFO  c.e.t.r.RequestInterceptor - 3 - After completion: Request processing finished.
+2024-12-02 10:03:12.58 [main] INFO  c.e.t.r.RequestInterceptor - 1 - pre handle.
+2024-12-02 10:03:12.58 [main] INFO  c.e.t.r.RequestInterceptor - METHOD type : POST
+2024-12-02 10:03:12.58 [main] INFO  c.e.t.r.RequestInterceptor - Request URI : /v1/tasks
+2024-12-02 10:03:12.58 [main] INFO  c.e.t.r.RequestInterceptor - Servlet PATH : 
+2024-12-02 10:03:12.58 [main] INFO  c.e.t.r.RequestInterceptor - Controller name : com.example.taskmanagement.controller.TaskController
+2024-12-02 10:03:12.58 [main] INFO  c.e.t.r.RequestInterceptor - Method name : createTask
+2024-12-02 10:03:12.58 [main] INFO  c.e.t.r.RequestInterceptor - 3 - After completion: Request processing finished.
+2024-12-02 10:03:12.61 [main] INFO  c.e.t.r.RequestInterceptor - 1 - pre handle.
+2024-12-02 10:03:12.61 [main] INFO  c.e.t.r.RequestInterceptor - METHOD type : POST
+2024-12-02 10:03:12.61 [main] INFO  c.e.t.r.RequestInterceptor - Request URI : /v1/tasks
+2024-12-02 10:03:12.61 [main] INFO  c.e.t.r.RequestInterceptor - Servlet PATH : 
+2024-12-02 10:03:12.61 [main] INFO  c.e.t.r.RequestInterceptor - Controller name : com.example.taskmanagement.controller.TaskController
+2024-12-02 10:03:12.61 [main] INFO  c.e.t.r.RequestInterceptor - Method name : createTask
+2024-12-02 10:03:12.62 [main] INFO  c.e.t.controller.TaskController - Creating a new task with details: CreateTaskDTO(title=Sample Task, description=This is a sample task description., dueDate=null) 
+2024-12-02 10:03:12.63 [main] INFO  c.e.t.r.RequestInterceptor - 2 - Post-handle : Request processed by controller.
+2024-12-02 10:03:12.63 [main] INFO  c.e.t.r.RequestInterceptor - 3 - After completion: Request processing finished.
+2024-12-02 10:03:12.65 [main] INFO  c.e.t.r.RequestInterceptor - 1 - pre handle.
+2024-12-02 10:03:12.65 [main] INFO  c.e.t.r.RequestInterceptor - METHOD type : POST
+2024-12-02 10:03:12.65 [main] INFO  c.e.t.r.RequestInterceptor - Request URI : /v1/tasks
+2024-12-02 10:03:12.65 [main] INFO  c.e.t.r.RequestInterceptor - Servlet PATH : 
+2024-12-02 10:03:12.65 [main] INFO  c.e.t.r.RequestInterceptor - Controller name : com.example.taskmanagement.controller.TaskController
+2024-12-02 10:03:12.65 [main] INFO  c.e.t.r.RequestInterceptor - Method name : createTask
+2024-12-02 10:03:12.65 [main] INFO  c.e.t.controller.TaskController - Creating a new task with details: CreateTaskDTO(title=Sample Task, description=This is a sample task description., dueDate=2024-12-05) 
+2024-12-02 10:03:12.65 [main] INFO  c.e.t.r.RequestInterceptor - 2 - Post-handle : Request processed by controller.
+2024-12-02 10:03:12.66 [main] INFO  c.e.t.r.RequestInterceptor - 3 - After completion: Request processing finished.
+2024-12-02 10:03:12.68 [main] INFO  c.e.t.r.RequestInterceptor - 1 - pre handle.
+2024-12-02 10:03:12.68 [main] INFO  c.e.t.r.RequestInterceptor - METHOD type : POST
+2024-12-02 10:03:12.68 [main] INFO  c.e.t.r.RequestInterceptor - Request URI : /v1/tasks
+2024-12-02 10:03:12.68 [main] INFO  c.e.t.r.RequestInterceptor - Servlet PATH : 
+2024-12-02 10:03:12.68 [main] INFO  c.e.t.r.RequestInterceptor - Controller name : com.example.taskmanagement.controller.TaskController
+2024-12-02 10:03:12.68 [main] INFO  c.e.t.r.RequestInterceptor - Method name : createTask
+2024-12-02 10:03:12.68 [main] INFO  c.e.t.r.RequestInterceptor - 3 - After completion: Request processing finished.
+2024-12-02 10:03:12.70 [main] INFO  c.e.t.r.RequestInterceptor - 1 - pre handle.
+2024-12-02 10:03:12.70 [main] INFO  c.e.t.r.RequestInterceptor - METHOD type : POST
+2024-12-02 10:03:12.70 [main] INFO  c.e.t.r.RequestInterceptor - Request URI : /v1/tasks
+2024-12-02 10:03:12.70 [main] INFO  c.e.t.r.RequestInterceptor - Servlet PATH : 
+2024-12-02 10:03:12.70 [main] INFO  c.e.t.r.RequestInterceptor - Controller name : com.example.taskmanagement.controller.TaskController
+2024-12-02 10:03:12.70 [main] INFO  c.e.t.r.RequestInterceptor - Method name : createTask
+2024-12-02 10:03:12.70 [main] INFO  c.e.t.r.RequestInterceptor - 3 - After completion: Request processing finished.
+2024-12-02 10:03:12.72 [main] INFO  c.e.t.r.RequestInterceptor - 1 - pre handle.
+2024-12-02 10:03:12.72 [main] INFO  c.e.t.r.RequestInterceptor - METHOD type : POST
+2024-12-02 10:03:12.72 [main] INFO  c.e.t.r.RequestInterceptor - Request URI : /v1/tasks
+2024-12-02 10:03:12.72 [main] INFO  c.e.t.r.RequestInterceptor - Servlet PATH : 
+2024-12-02 10:03:12.72 [main] INFO  c.e.t.r.RequestInterceptor - Controller name : com.example.taskmanagement.controller.TaskController
+2024-12-02 10:03:12.72 [main] INFO  c.e.t.r.RequestInterceptor - Method name : createTask
+2024-12-02 10:03:12.72 [main] INFO  c.e.t.r.RequestInterceptor - 3 - After completion: Request processing finished.
+2024-12-02 10:03:12.74 [main] INFO  c.e.t.r.RequestInterceptor - 1 - pre handle.
+2024-12-02 10:03:12.74 [main] INFO  c.e.t.r.RequestInterceptor - METHOD type : PUT
+2024-12-02 10:03:12.74 [main] INFO  c.e.t.r.RequestInterceptor - Request URI : /v1/tasks/7f28daf6-198c-4d5c-a9d6-c545721505d4
+2024-12-02 10:03:12.74 [main] INFO  c.e.t.r.RequestInterceptor - Servlet PATH : 
+2024-12-02 10:03:12.74 [main] INFO  c.e.t.r.RequestInterceptor - Controller name : com.example.taskmanagement.controller.TaskController
+2024-12-02 10:03:12.74 [main] INFO  c.e.t.r.RequestInterceptor - Method name : updateTask
+2024-12-02 10:03:12.74 [main] INFO  c.e.t.controller.TaskController - Updating task with ID: 7f28daf6-198c-4d5c-a9d6-c545721505d4 with new details: UpdateTaskDTO(title=Updated Task Title, description=Updated Task Description. Software Engineering Interview Wellness360, dueDate=2024-12-03) 
+2024-12-02 10:03:12.75 [main] INFO  c.e.t.r.RequestInterceptor - 3 - After completion: Request processing finished.
+2024-12-02 10:03:12.78 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.example.taskmanagement.TaskManagementSystemApplicationTests]: TaskManagementSystemApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-12-02 10:03:12.88 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.example.taskmanagement.TaskManagementSystemApplication for test class com.example.taskmanagement.TaskManagementSystemApplicationTests
+2024-12-02 10:03:12.92 [main] INFO  o.s.b.d.r.RestartApplicationListener - Restart disabled due to context in which it is running
+2024-12-02 10:03:13.08 [main] INFO  c.e.t.TaskManagementSystemApplicationTests - Starting TaskManagementSystemApplicationTests using Java 21 with PID 5256 (started by MANOJ REDDY in H:\Spring Examples, Guides, Projects and Academy\taskmanagement)
+2024-12-02 10:03:13.08 [main] INFO  c.e.t.TaskManagementSystemApplicationTests - The following 1 profile is active: "prod"
+2024-12-02 10:03:15.68 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-12-02 10:03:15.84 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 148 ms. Found 1 JPA repository interface.
+2024-12-02 10:03:16.79 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-12-02 10:03:16.80 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2024-12-02 10:03:16.82 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-12-02 10:03:16.82 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Starting...
+2024-12-02 10:03:17.20 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-2 - Added connection com.mysql.cj.jdbc.ConnectionImpl@58885a2e
+2024-12-02 10:03:17.20 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Start completed.
+2024-12-02 10:03:17.51 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-12-02 10:03:17.58 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-12-02 10:03:17.80 [main] INFO  c.e.t.s.SchedulerConfig - Configuring ThreadPoolTaskScheduler...
+2024-12-02 10:03:17.81 [main] INFO  c.e.t.s.SchedulerConfig - ThreadPoolTaskScheduler configured with pool size: 5 
+2024-12-02 10:03:18.12 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-12-02 10:03:18.78 [main] INFO  c.e.t.TaskManagementSystemApplicationTests - Started TaskManagementSystemApplicationTests in 5.867 seconds (process running for 30.551)
+2024-12-02 10:03:18.88 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.example.taskmanagement.taskrepositoryintegrationtest.TaskRepositoryIntegrationTest]: TaskRepositoryIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-12-02 10:03:18.97 [TaskScheduler-1] INFO  c.e.t.scheduler.TaskStatusScheduler - Checking for tasks to update status...
+2024-12-02 10:03:18.97 [TaskScheduler-1] INFO  c.e.t.s.impltaskservice.ITaskService - Fetching tasks with status: PENDING 
+2024-12-02 10:03:19.02 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.example.taskmanagement.TaskManagementSystemApplication for test class com.example.taskmanagement.taskrepositoryintegrationtest.TaskRepositoryIntegrationTest
+2024-12-02 10:03:19.03 [main] INFO  o.s.b.d.r.RestartApplicationListener - Restart disabled due to context in which it is running
+2024-12-02 10:03:19.12 [main] INFO  c.e.t.t.TaskRepositoryIntegrationTest - Starting TaskRepositoryIntegrationTest using Java 21 with PID 5256 (started by MANOJ REDDY in H:\Spring Examples, Guides, Projects and Academy\taskmanagement)
+2024-12-02 10:03:19.12 [main] INFO  c.e.t.t.TaskRepositoryIntegrationTest - The following 1 profile is active: "prod"
+2024-12-02 10:03:19.42 [TaskScheduler-1] INFO  c.e.t.s.impltaskservice.ITaskService - Found 0 tasks with status: PENDING 
+2024-12-02 10:03:19.42 [TaskScheduler-1] INFO  c.e.t.scheduler.TaskStatusScheduler - Found 0 pending tasks. 
+2024-12-02 10:03:19.42 [TaskScheduler-1] INFO  c.e.t.scheduler.TaskStatusScheduler - Task status update process completed.
+2024-12-02 10:03:19.44 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-12-02 10:03:19.47 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 29 ms. Found 1 JPA repository interface.
+2024-12-02 10:03:19.58 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-12-02 10:03:19.59 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2024-12-02 10:03:19.61 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-12-02 10:03:19.62 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Starting...
+2024-12-02 10:03:19.93 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-3 - Added connection com.mysql.cj.jdbc.ConnectionImpl@62371858
+2024-12-02 10:03:19.94 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Start completed.
+2024-12-02 10:03:20.06 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-12-02 10:03:20.12 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-12-02 10:03:20.20 [main] INFO  c.e.t.t.TaskRepositoryIntegrationTest - Started TaskRepositoryIntegrationTest in 1.168 seconds (process running for 31.968)
+2024-12-02 10:03:20.79 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-12-02 10:03:20.79 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2024-12-02 10:03:20.81 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2024-12-02 10:03:20.81 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-12-02 10:03:20.81 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown initiated...
+2024-12-02 10:03:20.82 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown completed.
+2024-12-02 10:03:20.82 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-12-02 10:03:20.82 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Shutdown initiated...
+2024-12-02 10:03:20.99 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Shutdown completed.
+2024-12-02 10:03:58.27 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2024-12-02 10:03:58.34 [main] INFO  c.e.t.t.TaskControllerIntegrationTest - Starting TaskControllerIntegrationTest using Java 21 with PID 9768 (started by MANOJ REDDY in H:\Spring Examples, Guides, Projects and Academy\taskmanagement)
+2024-12-02 10:03:58.35 [main] INFO  c.e.t.t.TaskControllerIntegrationTest - The following 1 profile is active: "prod"
+2024-12-02 10:04:00.39 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-12-02 10:04:00.61 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 194 ms. Found 1 JPA repository interface.
+2024-12-02 10:04:03.93 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-12-02 10:04:04.08 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.10.Final
+2024-12-02 10:04:04.23 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2024-12-02 10:04:04.61 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-12-02 10:04:04.69 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-12-02 10:04:05.50 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@301d84f6
+2024-12-02 10:04:05.51 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-12-02 10:04:07.38 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-12-02 10:04:07.53 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-12-02 10:04:08.48 [main] INFO  c.e.t.s.SchedulerConfig - Configuring ThreadPoolTaskScheduler...
+2024-12-02 10:04:08.48 [main] INFO  c.e.t.s.SchedulerConfig - ThreadPoolTaskScheduler configured with pool size: 5 
+2024-12-02 10:04:08.95 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-12-02 10:04:10.05 [main] INFO  o.s.b.t.m.w.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet ''
+2024-12-02 10:04:10.05 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Initializing Servlet ''
+2024-12-02 10:04:10.05 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Completed initialization in 2 ms
+2024-12-02 10:04:10.10 [main] INFO  c.e.t.t.TaskControllerIntegrationTest - Started TaskControllerIntegrationTest in 12.586 seconds (process running for 15.572)
+2024-12-02 10:04:10.22 [TaskScheduler-1] INFO  c.e.t.scheduler.TaskStatusScheduler - Checking for tasks to update status...
+2024-12-02 10:04:10.27 [TaskScheduler-1] INFO  c.e.t.scheduler.TaskStatusScheduler - Found 0 pending tasks. 
+2024-12-02 10:04:10.28 [TaskScheduler-1] INFO  c.e.t.scheduler.TaskStatusScheduler - Task status update process completed.
+2024-12-02 10:04:10.46 [main] INFO  c.e.t.r.RequestInterceptor - 1 - pre handle.
+2024-12-02 10:04:10.46 [main] INFO  c.e.t.r.RequestInterceptor - METHOD type : POST
+2024-12-02 10:04:10.46 [main] INFO  c.e.t.r.RequestInterceptor - Request URI : /v1/tasks
+2024-12-02 10:04:10.46 [main] INFO  c.e.t.r.RequestInterceptor - Servlet PATH : 
+2024-12-02 10:04:10.46 [main] INFO  c.e.t.r.RequestInterceptor - Controller name : com.example.taskmanagement.controller.TaskController
+2024-12-02 10:04:10.46 [main] INFO  c.e.t.r.RequestInterceptor - Method name : createTask
+2024-12-02 10:04:10.82 [main] INFO  c.e.t.r.RequestInterceptor - 3 - After completion: Request processing finished.
+2024-12-02 10:04:11.01 [main] INFO  c.e.t.r.RequestInterceptor - 1 - pre handle.
+2024-12-02 10:04:11.01 [main] INFO  c.e.t.r.RequestInterceptor - METHOD type : PUT
+2024-12-02 10:04:11.01 [main] INFO  c.e.t.r.RequestInterceptor - Request URI : /v1/tasks/f39f9b9b-2e70-43d0-ac20-e79b3bdd0778
+2024-12-02 10:04:11.01 [main] INFO  c.e.t.r.RequestInterceptor - Servlet PATH : 
+2024-12-02 10:04:11.01 [main] INFO  c.e.t.r.RequestInterceptor - Controller name : com.example.taskmanagement.controller.TaskController
+2024-12-02 10:04:11.01 [main] INFO  c.e.t.r.RequestInterceptor - Method name : updateTask
+2024-12-02 10:04:11.05 [main] INFO  c.e.t.controller.TaskController - Updating task with ID: f39f9b9b-2e70-43d0-ac20-e79b3bdd0778 with new details: UpdateTaskDTO(title=Updated Task Title, description=Updated Task Description. Software Engineering Interview Wellness360, dueDate=2024-12-03) 
+2024-12-02 10:04:11.07 [main] INFO  c.e.t.r.RequestInterceptor - 2 - Post-handle : Request processed by controller.
+2024-12-02 10:04:11.07 [main] INFO  c.e.t.r.RequestInterceptor - 3 - After completion: Request processing finished.
+2024-12-02 10:04:11.09 [main] INFO  c.e.t.r.RequestInterceptor - 1 - pre handle.
+2024-12-02 10:04:11.09 [main] INFO  c.e.t.r.RequestInterceptor - METHOD type : PUT
+2024-12-02 10:04:11.09 [main] INFO  c.e.t.r.RequestInterceptor - Request URI : /v1/tasks/7a3b68fb-a805-400f-86a7-1e5402d02f81
+2024-12-02 10:04:11.09 [main] INFO  c.e.t.r.RequestInterceptor - Servlet PATH : 
+2024-12-02 10:04:11.09 [main] INFO  c.e.t.r.RequestInterceptor - Controller name : com.example.taskmanagement.controller.TaskController
+2024-12-02 10:04:11.09 [main] INFO  c.e.t.r.RequestInterceptor - Method name : updateTask
+2024-12-02 10:04:11.09 [main] INFO  c.e.t.r.RequestInterceptor - 3 - After completion: Request processing finished.
+2024-12-02 10:04:11.11 [main] INFO  c.e.t.r.RequestInterceptor - 1 - pre handle.
+2024-12-02 10:04:11.11 [main] INFO  c.e.t.r.RequestInterceptor - METHOD type : PUT
+2024-12-02 10:04:11.11 [main] INFO  c.e.t.r.RequestInterceptor - Request URI : /v1/tasks/309d8bab-a187-467e-9756-06b1b2838e5c
+2024-12-02 10:04:11.11 [main] INFO  c.e.t.r.RequestInterceptor - Servlet PATH : 
+2024-12-02 10:04:11.11 [main] INFO  c.e.t.r.RequestInterceptor - Controller name : com.example.taskmanagement.controller.TaskController
+2024-12-02 10:04:11.11 [main] INFO  c.e.t.r.RequestInterceptor - Method name : updateTask
+2024-12-02 10:04:11.12 [main] INFO  c.e.t.r.RequestInterceptor - 3 - After completion: Request processing finished.
+2024-12-02 10:04:11.15 [main] INFO  c.e.t.r.RequestInterceptor - 1 - pre handle.
+2024-12-02 10:04:11.15 [main] INFO  c.e.t.r.RequestInterceptor - METHOD type : PUT
+2024-12-02 10:04:11.15 [main] INFO  c.e.t.r.RequestInterceptor - Request URI : /v1/tasks/0f8fbb82-e92d-4749-bd1c-8ddd91fbe006cv
+2024-12-02 10:04:11.15 [main] INFO  c.e.t.r.RequestInterceptor - Servlet PATH : 
+2024-12-02 10:04:11.15 [main] INFO  c.e.t.r.RequestInterceptor - Controller name : com.example.taskmanagement.controller.TaskController
+2024-12-02 10:04:11.15 [main] INFO  c.e.t.r.RequestInterceptor - Method name : updateTask
+2024-12-02 10:04:11.15 [main] INFO  c.e.t.controller.TaskController - Updating task with ID: 0f8fbb82-e92d-4749-bd1c-8ddd91fbe006cv with new details: UpdateTaskDTO(title=Updated Task Title, description=null, dueDate=null) 
+2024-12-02 10:04:11.16 [main] INFO  c.e.t.r.RequestInterceptor - 3 - After completion: Request processing finished.
+2024-12-02 10:04:11.20 [main] INFO  c.e.t.r.RequestInterceptor - 1 - pre handle.
+2024-12-02 10:04:11.20 [main] INFO  c.e.t.r.RequestInterceptor - METHOD type : PUT
+2024-12-02 10:04:11.20 [main] INFO  c.e.t.r.RequestInterceptor - Request URI : /v1/tasks/b539d6c5-6a97-4248-bfc8-8ad2f4b7e806
+2024-12-02 10:04:11.20 [main] INFO  c.e.t.r.RequestInterceptor - Servlet PATH : 
+2024-12-02 10:04:11.20 [main] INFO  c.e.t.r.RequestInterceptor - Controller name : com.example.taskmanagement.controller.TaskController
+2024-12-02 10:04:11.20 [main] INFO  c.e.t.r.RequestInterceptor - Method name : updateTask
+2024-12-02 10:04:11.21 [main] INFO  c.e.t.r.RequestInterceptor - 3 - After completion: Request processing finished.
+2024-12-02 10:04:11.23 [main] INFO  c.e.t.r.RequestInterceptor - 1 - pre handle.
+2024-12-02 10:04:11.23 [main] INFO  c.e.t.r.RequestInterceptor - METHOD type : POST
+2024-12-02 10:04:11.23 [main] INFO  c.e.t.r.RequestInterceptor - Request URI : /v1/tasks
+2024-12-02 10:04:11.23 [main] INFO  c.e.t.r.RequestInterceptor - Servlet PATH : 
+2024-12-02 10:04:11.23 [main] INFO  c.e.t.r.RequestInterceptor - Controller name : com.example.taskmanagement.controller.TaskController
+2024-12-02 10:04:11.23 [main] INFO  c.e.t.r.RequestInterceptor - Method name : createTask
+2024-12-02 10:04:11.23 [main] INFO  c.e.t.r.RequestInterceptor - 3 - After completion: Request processing finished.
+2024-12-02 10:04:11.25 [main] INFO  c.e.t.r.RequestInterceptor - 1 - pre handle.
+2024-12-02 10:04:11.25 [main] INFO  c.e.t.r.RequestInterceptor - METHOD type : POST
+2024-12-02 10:04:11.25 [main] INFO  c.e.t.r.RequestInterceptor - Request URI : /v1/tasks
+2024-12-02 10:04:11.25 [main] INFO  c.e.t.r.RequestInterceptor - Servlet PATH : 
+2024-12-02 10:04:11.25 [main] INFO  c.e.t.r.RequestInterceptor - Controller name : com.example.taskmanagement.controller.TaskController
+2024-12-02 10:04:11.25 [main] INFO  c.e.t.r.RequestInterceptor - Method name : createTask
+2024-12-02 10:04:11.26 [main] INFO  c.e.t.controller.TaskController - Creating a new task with details: CreateTaskDTO(title=Sample Task, description=This is a sample task description., dueDate=null) 
+2024-12-02 10:04:11.26 [main] INFO  c.e.t.r.RequestInterceptor - 2 - Post-handle : Request processed by controller.
+2024-12-02 10:04:11.26 [main] INFO  c.e.t.r.RequestInterceptor - 3 - After completion: Request processing finished.
+2024-12-02 10:04:11.30 [main] INFO  c.e.t.r.RequestInterceptor - 1 - pre handle.
+2024-12-02 10:04:11.30 [main] INFO  c.e.t.r.RequestInterceptor - METHOD type : POST
+2024-12-02 10:04:11.30 [main] INFO  c.e.t.r.RequestInterceptor - Request URI : /v1/tasks
+2024-12-02 10:04:11.30 [main] INFO  c.e.t.r.RequestInterceptor - Servlet PATH : 
+2024-12-02 10:04:11.30 [main] INFO  c.e.t.r.RequestInterceptor - Controller name : com.example.taskmanagement.controller.TaskController
+2024-12-02 10:04:11.30 [main] INFO  c.e.t.r.RequestInterceptor - Method name : createTask
+2024-12-02 10:04:11.32 [main] INFO  c.e.t.controller.TaskController - Creating a new task with details: CreateTaskDTO(title=Sample Task, description=This is a sample task description., dueDate=2024-12-05) 
+2024-12-02 10:04:11.32 [main] INFO  c.e.t.r.RequestInterceptor - 2 - Post-handle : Request processed by controller.
+2024-12-02 10:04:11.33 [main] INFO  c.e.t.r.RequestInterceptor - 3 - After completion: Request processing finished.
+2024-12-02 10:04:11.39 [main] INFO  c.e.t.r.RequestInterceptor - 1 - pre handle.
+2024-12-02 10:04:11.39 [main] INFO  c.e.t.r.RequestInterceptor - METHOD type : POST
+2024-12-02 10:04:11.39 [main] INFO  c.e.t.r.RequestInterceptor - Request URI : /v1/tasks
+2024-12-02 10:04:11.39 [main] INFO  c.e.t.r.RequestInterceptor - Servlet PATH : 
+2024-12-02 10:04:11.39 [main] INFO  c.e.t.r.RequestInterceptor - Controller name : com.example.taskmanagement.controller.TaskController
+2024-12-02 10:04:11.39 [main] INFO  c.e.t.r.RequestInterceptor - Method name : createTask
+2024-12-02 10:04:11.40 [main] INFO  c.e.t.r.RequestInterceptor - 3 - After completion: Request processing finished.
+2024-12-02 10:04:11.42 [main] INFO  c.e.t.r.RequestInterceptor - 1 - pre handle.
+2024-12-02 10:04:11.42 [main] INFO  c.e.t.r.RequestInterceptor - METHOD type : POST
+2024-12-02 10:04:11.42 [main] INFO  c.e.t.r.RequestInterceptor - Request URI : /v1/tasks
+2024-12-02 10:04:11.43 [main] INFO  c.e.t.r.RequestInterceptor - Servlet PATH : 
+2024-12-02 10:04:11.43 [main] INFO  c.e.t.r.RequestInterceptor - Controller name : com.example.taskmanagement.controller.TaskController
+2024-12-02 10:04:11.43 [main] INFO  c.e.t.r.RequestInterceptor - Method name : createTask
+2024-12-02 10:04:11.43 [main] INFO  c.e.t.r.RequestInterceptor - 3 - After completion: Request processing finished.
+2024-12-02 10:04:11.45 [main] INFO  c.e.t.r.RequestInterceptor - 1 - pre handle.
+2024-12-02 10:04:11.45 [main] INFO  c.e.t.r.RequestInterceptor - METHOD type : POST
+2024-12-02 10:04:11.46 [main] INFO  c.e.t.r.RequestInterceptor - Request URI : /v1/tasks
+2024-12-02 10:04:11.46 [main] INFO  c.e.t.r.RequestInterceptor - Servlet PATH : 
+2024-12-02 10:04:11.46 [main] INFO  c.e.t.r.RequestInterceptor - Controller name : com.example.taskmanagement.controller.TaskController
+2024-12-02 10:04:11.46 [main] INFO  c.e.t.r.RequestInterceptor - Method name : createTask
+2024-12-02 10:04:11.46 [main] INFO  c.e.t.r.RequestInterceptor - 3 - After completion: Request processing finished.
+2024-12-02 10:04:11.50 [main] INFO  c.e.t.r.RequestInterceptor - 1 - pre handle.
+2024-12-02 10:04:11.50 [main] INFO  c.e.t.r.RequestInterceptor - METHOD type : PUT
+2024-12-02 10:04:11.50 [main] INFO  c.e.t.r.RequestInterceptor - Request URI : /v1/tasks/fbe3f1f3-b210-4fee-aaca-a26d3d9f46ad
+2024-12-02 10:04:11.50 [main] INFO  c.e.t.r.RequestInterceptor - Servlet PATH : 
+2024-12-02 10:04:11.51 [main] INFO  c.e.t.r.RequestInterceptor - Controller name : com.example.taskmanagement.controller.TaskController
+2024-12-02 10:04:11.51 [main] INFO  c.e.t.r.RequestInterceptor - Method name : updateTask
+2024-12-02 10:04:11.51 [main] INFO  c.e.t.controller.TaskController - Updating task with ID: fbe3f1f3-b210-4fee-aaca-a26d3d9f46ad with new details: UpdateTaskDTO(title=Updated Task Title, description=Updated Task Description. Software Engineering Interview Wellness360, dueDate=2024-12-03) 
+2024-12-02 10:04:11.52 [main] INFO  c.e.t.r.RequestInterceptor - 3 - After completion: Request processing finished.
+2024-12-02 10:04:11.58 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.example.taskmanagement.TaskManagementSystemApplicationTests]: TaskManagementSystemApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-12-02 10:04:11.67 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.example.taskmanagement.TaskManagementSystemApplication for test class com.example.taskmanagement.TaskManagementSystemApplicationTests
+2024-12-02 10:04:11.69 [main] INFO  o.s.b.d.r.RestartApplicationListener - Restart disabled due to context in which it is running
+2024-12-02 10:04:12.00 [main] INFO  c.e.t.TaskManagementSystemApplicationTests - Starting TaskManagementSystemApplicationTests using Java 21 with PID 9768 (started by MANOJ REDDY in H:\Spring Examples, Guides, Projects and Academy\taskmanagement)
+2024-12-02 10:04:12.00 [main] INFO  c.e.t.TaskManagementSystemApplicationTests - The following 1 profile is active: "prod"
+2024-12-02 10:04:12.76 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-12-02 10:04:12.85 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 82 ms. Found 1 JPA repository interface.
+2024-12-02 10:04:13.13 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-12-02 10:04:13.14 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2024-12-02 10:04:13.15 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-12-02 10:04:13.15 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Starting...
+2024-12-02 10:04:13.52 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-2 - Added connection com.mysql.cj.jdbc.ConnectionImpl@58885a2e
+2024-12-02 10:04:13.52 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Start completed.
+2024-12-02 10:04:13.67 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-12-02 10:04:13.75 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-12-02 10:04:13.96 [main] INFO  c.e.t.s.SchedulerConfig - Configuring ThreadPoolTaskScheduler...
+2024-12-02 10:04:13.96 [main] INFO  c.e.t.s.SchedulerConfig - ThreadPoolTaskScheduler configured with pool size: 5 
+2024-12-02 10:04:14.07 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-12-02 10:04:14.42 [main] INFO  c.e.t.TaskManagementSystemApplicationTests - Started TaskManagementSystemApplicationTests in 2.73 seconds (process running for 19.89)
+2024-12-02 10:04:14.49 [TaskScheduler-1] INFO  c.e.t.scheduler.TaskStatusScheduler - Checking for tasks to update status...
+2024-12-02 10:04:14.49 [TaskScheduler-1] INFO  c.e.t.s.impltaskservice.ITaskService - Fetching tasks with status: PENDING 
+2024-12-02 10:04:14.53 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.example.taskmanagement.taskrepositoryintegrationtest.TaskRepositoryIntegrationTest]: TaskRepositoryIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-12-02 10:04:14.77 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.example.taskmanagement.TaskManagementSystemApplication for test class com.example.taskmanagement.taskrepositoryintegrationtest.TaskRepositoryIntegrationTest
+2024-12-02 10:04:14.82 [main] INFO  o.s.b.d.r.RestartApplicationListener - Restart disabled due to context in which it is running
+2024-12-02 10:04:15.00 [main] INFO  c.e.t.t.TaskRepositoryIntegrationTest - Starting TaskRepositoryIntegrationTest using Java 21 with PID 9768 (started by MANOJ REDDY in H:\Spring Examples, Guides, Projects and Academy\taskmanagement)
+2024-12-02 10:04:15.00 [main] INFO  c.e.t.t.TaskRepositoryIntegrationTest - The following 1 profile is active: "prod"
+2024-12-02 10:04:15.18 [TaskScheduler-1] INFO  c.e.t.s.impltaskservice.ITaskService - Found 0 tasks with status: PENDING 
+2024-12-02 10:04:15.18 [TaskScheduler-1] INFO  c.e.t.scheduler.TaskStatusScheduler - Found 0 pending tasks. 
+2024-12-02 10:04:15.18 [TaskScheduler-1] INFO  c.e.t.scheduler.TaskStatusScheduler - Task status update process completed.
+2024-12-02 10:04:15.34 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-12-02 10:04:15.38 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 39 ms. Found 1 JPA repository interface.
+2024-12-02 10:04:15.55 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-12-02 10:04:15.56 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2024-12-02 10:04:15.57 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-12-02 10:04:15.58 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Starting...
+2024-12-02 10:04:15.94 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-3 - Added connection com.mysql.cj.jdbc.ConnectionImpl@62371858
+2024-12-02 10:04:15.94 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Start completed.
+2024-12-02 10:04:16.14 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-12-02 10:04:16.21 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-12-02 10:04:16.31 [main] INFO  c.e.t.t.TaskRepositoryIntegrationTest - Started TaskRepositoryIntegrationTest in 1.491 seconds (process running for 21.783)
+2024-12-02 10:04:17.04 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-12-02 10:04:17.04 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2024-12-02 10:04:17.06 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2024-12-02 10:04:17.07 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-12-02 10:04:17.07 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown initiated...
+2024-12-02 10:04:17.08 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown completed.
+2024-12-02 10:04:17.08 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-12-02 10:04:17.08 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Shutdown initiated...
+2024-12-02 10:04:17.31 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Shutdown completed.
