@@ -17,7 +17,6 @@ A **RESTful API** for managing tasks, built with **Spring Boot** and **MySQL**, 
 - **Backend:** Java 17+, Spring Boot, Spring Data JPA  
 - **Database:** MySQL  
 - **Build Tool:** Apache Maven  
-- **Frontend (Future):** Angular  
 - **Testing Tools:** JUnit, Mockito  
 - **API Testing:** Postman or HTTPie
 
@@ -44,7 +43,6 @@ A **RESTful API** for managing tasks, built with **Spring Boot** and **MySQL**, 
 - **Gamification:** Streaks and points for completing high-priority tasks.  
 - **Docker Support:** Containerized deployment for consistent environments.
 
----
 
 ### Prerequisites
 
@@ -52,12 +50,6 @@ A **RESTful API** for managing tasks, built with **Spring Boot** and **MySQL**, 
 - Apache Maven  
 - MySQL (running instance)  
 - IDE: IntelliJ, Eclipse, VSCode, or Spring Tools Suite  
-- API testing tools: Postman or HTTPie
+- API testing tools: Postman
 
----
 
-### Getting Started
-
-1. Clone the repository:  
-```bash
-git clone https://github.com/YourUsername/Wellness360.git
