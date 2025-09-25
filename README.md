@@ -51,5 +51,3 @@ A **RESTful API** for managing tasks, built with **Spring Boot** and **MySQL**, 
 - MySQL (running instance)  
 - IDE: IntelliJ, Eclipse, VSCode, or Spring Tools Suite  
 - API testing tools: Postman
-
-
