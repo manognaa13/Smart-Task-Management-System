@@ -27,8 +27,6 @@ A **RESTful API** for managing tasks, built with **Spring Boot** and **MySQL**, 
 - **Validation** ensures invalid inputs and incorrect UUIDs are handled gracefully.  
 - Designed to **scale** with clean, modular code and maintainable architecture.
 
----
-
 ### Future Enhancements
 
 - **Spring Security & JWT:** Secure endpoints with role-based access.  
@@ -42,7 +40,6 @@ A **RESTful API** for managing tasks, built with **Spring Boot** and **MySQL**, 
 - **Notification System:** Email, SMS, or push notifications for task updates.  
 - **Gamification:** Streaks and points for completing high-priority tasks.  
 - **Docker Support:** Containerized deployment for consistent environments.
-
 
 ### Prerequisites
 
